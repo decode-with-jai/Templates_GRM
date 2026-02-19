@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disney+ Hotstar - Watch TV Shows, Movies, Live Sports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #0f0f0f;
+            color: #fff;
+        }
+        
+        /* HEADER */
+        .header {
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 0.5rem 0;
+        }
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff0000, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 2rem;
+            position: relative;
+        }
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 3rem 0.8rem 1rem;
+            background: #333;
+            border: none;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 1rem;
+        }
+        .search-input::placeholder { color: #999; }
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            width: 40px;
+            height: 35px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .nav-links a:hover { color: #fff; }
+        .login-btn {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .subscribe-btn {
+            background: linear-gradient(45deg, #ff0000, #ff4d4d);
+            color: white;
+            padding: 0.6rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* HERO BANNER */
+        .hero-banner {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23000" width="1200" height="600"/><text x="50%" y="50%" font-size="48" fill="%23fff" text-anchor="middle" dy=".3em">Featured Movie</text></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            margin-top: 70px;
+        }
+        .banner-content {
+            max-width: 500px;
+        }
+        .banner-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .banner-desc {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .banner-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .play-btn {
+            background: #ff0000;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .info-btn {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* CONTENT ROWS */
+        .content-section {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .content-poster {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: linear-gradient(45deg, #333, #555);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .content-poster:hover {
+            transform: scale(1.05);
+        }
+        .poster-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 0, 0, 0.9);
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .content-poster:hover .play-overlay {
+            opacity: 1;
+        }
+        .content-title {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+
+        /* GENRES */
+        .genres {
+            padding: 2rem;
+            background: #1a1a1a;
+        }
+        .genres-grid {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+        }
+        .genre-tag {
+            background: #333;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            white-space: nowrap;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .genre-tag:hover {
+            background: #ff0000;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #000;
+            padding: 3rem 2rem 1rem;
+            border-top: 1px solid #333;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .footer h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .footer a:hover { color: #ff0000; }
+        .footer-bottom {
+            text-align: center;
+            color: #666;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+                flex-wrap: wrap;
+            }
+            .nav-right {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 1rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero-banner {
+                height: 50vh;
+                padding: 0 1rem;
+            }
+            .banner-title {
+                font-size: 2rem;
+            }
+            .content-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 0.8rem;
+            }
+            .genres-grid {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="nav">
+            <a href="https://www.hotstar.com/" class="logo">Disney+ Hotstar</a>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search shows, movies & more">
+                <a href="https://www.hotstar.com/" class="search-btn"><i class="fas fa-search"></i></a>
+            </div>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="https://www.hotstar.com/">Live TV</a>
+                    <a href="https://www.hotstar.com/">TV</a>
+                    <a href="https://www.hotstar.com/">Movies</a>
+                    <a href="https://www.hotstar.com/">Sports</a>
+                </div>
+                <a href="https://www.hotstar.com/" class="login-btn">Log In</a>
+                <a href="https://www.hotstar.com/subscribe" class="subscribe-btn">Subscribe Now</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section class="hero-banner">
+        <div class="banner-content">
+            <h1 class="banner-title">Featured Blockbuster</h1>
+            <p class="banner-desc">Watch the latest movies, TV shows, live sports and more. Subscribe now!</p>
+            <div class="banner-buttons">
+                <a href="https://www.hotstar.com/" class="play-btn">
+                    <i class="fas fa-play"></i> Play Now
+                </a>
+                <a href="https://www.hotstar.com/" class="info-btn">More Info</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GENRES -->
+    <section class="genres">
+        <div class="content-section">
+            <div class="genres-grid">
+                <a href="https://www.hotstar.com/" class="genre-tag">All</a>
+                <a href="https://www.hotstar.com/" class="genre-tag">Action</a>
+                <a href="https://www.hotstar.com/" class="genre-tag">Comedy</a>
+                <a href="https://www.hotstar.com/" class="genre-tag">Drama</a>
+                <a href="https://www.hotstar.com/" class="genre-tag">Thriller</a>
+                <a href="https://www.hotstar.com/" class="genre-tag">Romance</a>
+                <a href="https://www.hotstar.com/" class="genre-tag">Horror</a>
+                <a href="https://www.hotstar.com/" class="genre-tag">Sports</a>
+                <a href="https://www.hotstar.com/" class="genre-tag">Kids</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRENDING NOW -->
+    <section class="content-section">
+        <h2 class="section-title">Trending Now</h2>
+        <div class="content-grid">
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">Pathaan</div>
+            </a>
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">Jawan</div>
+            </a>
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">Fighter</div>
+            </a>
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">Animal</div>
+            </a>
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">Dunki</div>
+            </a>
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">Gadar 2</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- BOLLYWOOD MOVIES -->
+    <section class="content-section">
+        <h2 class="section-title">Bollywood Movies</h2>
+        <div class="content-grid">
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">RRR</div>
+            </a>
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">Brahmastra</div>
+            </a>
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">Gangubai</div>
+            </a>
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">Shershaah</div>
+            </a>
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">83</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- LIVE SPORTS -->
+    <section class="content-section">
+        <h2 class="section-title">Live Sports</h2>
+        <div class="content-grid">
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">IPL 2026 Live</div>
+            </a>
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">Pro Kabaddi</div>
+            </a>
+            <a href="https://www.hotstar.com/" class="content-poster">
+                <div class="poster-img"></div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <div class="content-title">Football League</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h3>Hotstar</h3>
+                <a href="https://www.hotstar.com/">About Us</a>
+                <a href="https://www.hotstar.com/">Careers</a>
+                <a href="https://www.hotstar.com/">Press</a>
+            </div>
+            <div>
+                <h3>Support</h3>
+                <a href="https://www.hotstar.com/">Help Center</a>
+                <a href="https://www.hotstar.com/">Contact Us</a>
+            </div>
+            <div>
+                <h3>Legal</h3>
+                <a href="https://www.hotstar.com/">Privacy</a>
+                <a href="https://www.hotstar.com/">Terms</a>
+            </div>
+            <div>
+                <h3>Follow Us</h3>
+                <a href="https://www.hotstar.com/">Facebook</a>
+                <a href="https://www.hotstar.com/">Twitter</a>
+                <a href="https://www.hotstar.com/">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Disney+ Hotstar Clone - Educational Purpose</p>
+        </div>
+    </footer>
+</body>
+</html>

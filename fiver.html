@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Root Media | Find Top Freelance Talent</title>
+    <style>
+        /* CSS Styles - Modern, Green-themed mimicking Fiverr */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+        header { background: linear-gradient(135deg, #00b140, #007a30); color: white; padding: 1rem 2rem; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .logo { font-size: 1.8rem; font-weight: bold; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: white; text-decoration: none; transition: opacity 0.3s; }
+        .nav-links a:hover { opacity: 0.8; }
+        .hero { background: linear-gradient(rgba(0,176,64,0.8), rgba(0,122,48,0.8)), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MDAiIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjMDBCRTQwIi8+Cjwvc3ZnPgo='); background-size: cover; height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; margin-top: 80px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.3rem; margin-bottom: 2rem; }
+        .cta { background: white; color: #00b140; padding: 1rem 2rem; border: none; border-radius: 50px; font-size: 1.1rem; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; display: inline-block; }
+        .cta:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+        .categories { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .categories h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #007a30; }
+        .cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .cat-card { background: white; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; }
+        .cat-card:hover { transform: translateY(-5px); }
+        .cat-card img { width: 60px; height: 60px; margin-bottom: 1rem; }
+        .cat-card h3 { color: #007a30; margin-bottom: 0.5rem; }
+        .gigs { padding: 4rem 2rem; background: #f8f9fa; }
+        .gigs h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #007a30; }
+        .gigs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .gig-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .gig-card:hover { transform: translateY(-5px); }
+        .gig-img { height: 200px; background: linear-gradient(45deg, #00b140, #007a30); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; }
+        .gig-info { padding: 1.5rem; }
+        .gig-title { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .gig-price { font-size: 1.5rem; color: #00b140; font-weight: bold; margin-bottom: 1rem; }
+        .gig-seller { color: #666; margin-bottom: 1rem; }
+        .gig-btn { background: #00b140; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 25px; cursor: pointer; width: 100%; transition: background 0.3s; text-decoration: none; display: block; }
+        .gig-btn:hover { background: #007a30; }
+        footer { background: #333; color: white; text-align: center; padding: 2rem; }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Green Root Media</div>
+            <ul class="nav-links">
+                <li><a href="https://www.fiverr.com/">Home</a></li>
+                <li><a href="https://www.fiverr.com/#categories">Categories</a></li>
+                <li><a href="https://www.fiverr.com/#gigs">Gigs</a></li>
+                <li><a href="https://www.fiverr.com/login">Sign In</a></li>
+                <li><a href="https://www.fiverr.com/become-seller">Become Seller</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div>
+            <h1>Find the Best Global Talent</h1>
+            <p>Connect with skilled freelancers for your projects. Fast, affordable, and reliable.</p>
+            <a href="https://www.fiverr.com/" class="cta">Browse Gigs</a>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories" class="categories">
+        <h2>Popular Categories</h2>
+        <div class="cat-grid">
+            <div class="cat-card">
+                <div style="font-size: 3rem;">🎨</div>
+                <h3>Graphics & Design</h3>
+                <a href="https://www.fiverr.com/categories/graphics-design" style="text-decoration: none; color: inherit; display: block; margin-top: 1rem; color: #00b140;">Explore</a>
+            </div>
+            <div class="cat-card">
+                <div style="font-size: 3rem;">💻</div>
+                <h3>Programming & Tech</h3>
+                <a href="https://www.fiverr.com/categories/programming-tech" style="text-decoration: none; color: inherit; display: block; margin-top: 1rem; color: #00b140;">Explore</a>
+            </div>
+            <div class="cat-card">
+                <div style="font-size: 3rem;">📈</div>
+                <h3>Digital Marketing</h3>
+                <a href="https://www.fiverr.com/categories/digital-marketing" style="text-decoration: none; color: inherit; display: block; margin-top: 1rem; color: #00b140;">Explore</a>
+            </div>
+            <div class="cat-card">
+                <div style="font-size: 3rem;">📊</div>
+                <h3>Data Science</h3>
+                <a href="https://www.fiverr.com/categories/programming-tech/data-analysis" style="text-decoration: none; color: inherit; display: block; margin-top: 1rem; color: #00b140;">Explore</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gigs Section -->
+    <section id="gigs" class="gigs">
+        <h2>Featured Gigs</h2>
+        <div class="gigs-grid" id="gigsGrid">
+            <!-- Gigs populated by JS -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Green Root Media. All buttons redirect to <a href="https://www.fiverr.com/" style="color: #00b140;">Fiverr.com</a></p>
+    </footer>
+
+    <script>
+        // JavaScript - Dynamic functionality with Fiverr redirects
+        const gigsData = [
+            { id: 1, title: 'Python Data Analysis Dashboard', price: '$50', seller: 'DataPro Guru', category: 'data' },
+            { id: 2, title: 'Logo Design in 24hrs', price: '$25', seller: 'DesignMaster', category: 'graphics' },
+            { id: 3, title: 'Full Stack Web App', price: '$200', seller: 'CodeWizard IN', category: 'programming' },
+            { id: 4, title: 'SEO Audit & Strategy', price: '$75', seller: 'MarketingNinja', category: 'marketing' },
+            { id: 5, title: 'ML Model Training', price: '$150', seller: 'AI_Expert', category: 'data' },
+            { id: 6, title: 'React.js Landing Page', price: '$100', seller: 'FrontendPro', category: 'programming' }
+        ];
+
+        let currentFilter = 'all';
+
+        function renderGigs(filter = 'all') {
+            const grid = document.getElementById('gigsGrid');
+            grid.innerHTML = '';
+            gigsData.filter(gig => filter === 'all' || gig.category === filter).forEach(gig => {
+                const card = document.createElement('div');
+                card.className = 'gig-card';
+                card.innerHTML = `
+                    <div class="gig-img">${gig.category === 'data' ? '📊' : gig.category === 'graphics' ? '🎨' : gig.category === 'programming' ? '💻' : '📈'}</div>
+                    <div class="gig-info">
+                        <div class="gig-title">${gig.title}</div>
+                        <div class="gig-price">${gig.price}</div>
+                        <div class="gig-seller">by ${gig.seller} • 4.9 (120 reviews)</div>
+                        <a href="https://www.fiverr.com/" class="gig-btn">Order Now</a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterGigs(category) {
+            currentFilter = category;
+            renderGigs(category);
+            // Still redirects to Fiverr on category click via HTML links
+        }
+
+        function scrollToGigs() {
+            window.location.href = 'https://www.fiverr.com/';
+        }
+
+        // Initial load
+        renderGigs();
+    </script>
+</body>
+</html>

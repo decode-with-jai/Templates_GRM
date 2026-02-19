@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tours & Activities</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
+        
+        /* HEADER */
+        .header { background: white; box-shadow: 0 2px 20px rgba(0,168,89,0.1); position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 1.8rem; font-weight: 700; color: #00A859; }
+        .search-main { flex: 1; max-width: 500px; margin: 0 3rem; position: relative; }
+        .search-main input { width: 100%; padding: 1rem 1.5rem; border: 2px solid #e5f7ee; border-radius: 50px; font-size: 1rem; transition: all 0.3s; }
+        .search-main input:focus { outline: none; border-color: #00A859; box-shadow: 0 0 0 3px rgba(0,168,89,0.1); }
+        .search-btn { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: #00A859; color: white; border: none; border-radius: 50px; width: 60px; height: 50px; cursor: pointer; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: #333; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: #00A859; }
+        .auth-btn { background: #00A859; color: white; padding: 0.7rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: 600; }
+
+        /* HERO */
+        .hero { background: linear-gradient(135deg, #00A859 0%, #00D47A 100%); color: white; text-align: center; padding: 6rem 2rem 4rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><polygon fill="%23ffffff10" points="0,100 1000,0 1000,100"/></svg>'); }
+        .hero-content { max-width: 900px; margin: 0 auto; position: relative; z-index: 2; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; margin-bottom: 1.5rem; }
+        .hero-subtitle { font-size: 1.3rem; margin-bottom: 2.5rem; opacity: 0.95; }
+        .hero-search { background: white; border-radius: 20px; padding: 1.5rem; max-width: 700px; margin: 0 auto 3rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .search-row { display: flex; gap: 1rem; margin-bottom: 1rem; }
+        .search-row input { flex: 1; padding: 1rem 1.5rem; border: 2px solid #e5f7ee; border-radius: 12px; font-size: 1rem; }
+        .search-row input:focus { outline: none; border-color: #00A859; }
+        .search-row select { padding: 1rem 1.5rem; border: 2px solid #e5f7ee; border-radius: 12px; background: white; }
+        .hero-search-btn { width: 100%; padding: 1.2rem; background: white; color: #00A859; border: none; border-radius: 12px; font-size: 1.2rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .hero-search-btn:hover { background: #f0f9f4; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,168,89,0.3); }
+
+        /* CATEGORIES */
+        .categories { max-width: 1400px; margin: 4rem auto; padding: 0 2rem; }
+        .section-title { text-align: center; font-size: 2.5rem; font-weight: 700; color: #00A859; margin-bottom: 3rem; }
+        .cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .cat-card { text-align: center; padding: 2rem; border-radius: 20px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s; cursor: pointer; }
+        .cat-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,168,89,0.15); }
+        .cat-icon { font-size: 3rem; color: #00A859; margin-bottom: 1rem; }
+        .cat-card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; }
+
+        /* TOURS */
+        .tours { background: #f8fff9; padding: 5rem 2rem; }
+        .tours-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .tour-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: all 0.3s; }
+        .tour-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0,168,89,0.2); }
+        .tour-img { width: 100%; height: 220px; background: linear-gradient(45deg, #00A859, #00D47A); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: 600; }
+        .tour-content { padding: 1.8rem; }
+        .tour-title { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.8rem; }
+        .tour-location { color: #666; margin-bottom: 1rem; }
+        .tour-rating { display: flex; align-items: center; gap: 0.5rem; color: #00A859; font-weight: 600; margin-bottom: 1rem; }
+        .tour-price { font-size: 1.8rem; font-weight: 700; color: #00A859; }
+        .tour-book { width: 100%; margin-top: 1rem; padding: 1rem; background: #00A859; color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .tour-book:hover { background: #00944f; transform: translateY(-2px); }
+
+        /* FOOTER */
+        .footer { background: #00A859; color: white; padding: 4rem 2rem 2rem; }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-section h3 { margin-bottom: 1rem; font-weight: 600; }
+        .footer-section a { color: white; text-decoration: none; display: block; margin-bottom: 0.5rem; opacity: 0.9; transition: opacity 0.3s; }
+        .footer-section a:hover { opacity: 1; }
+        .footer-bottom { text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); }
+
+        @media (max-width: 768px) {
+            .nav-container { padding: 1rem; }
+            .search-main { margin: 0 1rem; order: 3; width: 100%; }
+            .nav-links { display: none; }
+            .search-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-map-marker-alt"></i> Book Tours
+            </div>
+            <div class="search-main">
+                <input type="text" placeholder="Where to?">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <a href="#">Things to Do</a>
+                <a href="#">Travel Agent</a>
+                <a href="#">Support</a>
+            </div>
+            <a href="#" class="auth-btn">Sign In</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Book unforgettable tours & activities</h1>
+            <p>Discover amazing experiences with free cancellation and real traveler reviews</p>
+            <div class="hero-search">
+                <div class="search-row">
+                    <input type="text" placeholder="Where to?">
+                    <select>
+                        <option>Anytime</option>
+                        <option>Today</option>
+                        <option>Tomorrow</option>
+                    </select>
+                </div>
+                <div class="search-row">
+                    <select>
+                        <option>1 Guest</option>
+                        <option>2 Guests</option>
+                        <option>3+ Guests</option>
+                    </select>
+                    <input type="text" placeholder="Keywords (optional)">
+                </div>
+                <button class="hero-search-btn">Search Tours <i class="fas fa-arrow-right ml-2"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories">
+        <h2 class="section-title">Explore by category</h2>
+        <div class="cat-grid">
+            <div class="cat-card">
+                <div class="cat-icon"><i class="fas fa-mountain"></i></div>
+                <h3>Outdoor Activities</h3>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon"><i class="fas fa-plane"></i></div>
+                <h3>Air Tours</h3>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon"><i class="fas fa-ship"></i></div>
+                <h3>Water Tours</h3>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon"><i class="fas fa-utensils"></i></div>
+                <h3>Food Experiences</h3>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon"><i class="fas fa-palette"></i></div>
+                <h3>Cultural Tours</h3>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon"><i class="fas fa-child"></i></div>
+                <h3>Family Friendly</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED TOURS -->
+    <section class="tours">
+        <div class="section-title" style="margin-bottom: 2rem;">Featured Tours</div>
+        <div class="tours-grid">
+            <div class="tour-card">
+                <div class="tour-img">Taj Mahal Day Tour</div>
+                <div class="tour-content">
+                    <h3 class="tour-title">Taj Mahal Day Tour from Delhi</h3>
+                    <div class="tour-location"><i class="fas fa-map-marker-alt"></i> Agra, India</div>
+                    <div class="tour-rating">
+                        <i class="fas fa-star"></i> 4.9 (2,347 reviews)
+                    </div>
+                    <div class="tour-price">From $89</div>
+                    <button class="tour-book">Book Now</button>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="tour-img">Goa Beach Hopping</div>
+                <div class="tour-content">
+                    <h3 class="tour-title">Goa Beach Hopping Adventure</h3>
+                    <div class="tour-location"><i class="fas fa-map-marker-alt"></i> Goa, India</div>
+                    <div class="tour-rating">
+                        <i class="fas fa-star"></i> 4.8 (1,892 reviews)
+                    </div>
+                    <div class="tour-price">From $45</div>
+                    <button class="tour-book">Book Now</button>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="tour-img">Jaipur City Tour</div>
+                <div class="tour-content">
+                    <h3 class="tour-title">Jaipur Pink City Full Day Tour</h3>
+                    <div class="tour-location"><i class="fas fa-map-marker-alt"></i> Jaipur, India</div>
+                    <div class="tour-rating">
+                        <i class="fas fa-star"></i> 4.9 (1,654 reviews)
+                    </div>
+                    <div class="tour-price">From $65</div>
+                    <button class="tour-book">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Company</h3>
+                <a href="#">About</a>
+                <a href="#">Careers</a>
+                <a href="#">Press</a>
+                <a href="#">Partners</a>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <a href="#">Help Center</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Safety</a>
+                <a href="#">FAQs</a>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Cookies</a>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Viator Clone. Built for educational purposes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive features
+        document.querySelectorAll('.tour-book, .hero-search-btn, .search-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => this.style.transform = '', 150);
+                alert('Redirecting to booking page...');
+            });
+        });
+
+        // Smooth scroll for category cards
+        document.querySelectorAll('.cat-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                    alert('Explore ' + this.querySelector('h3').textContent + ' tours!');
+                }, 150);
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255,255,255,0.95)';
+                header.style.backdropFilter = 'blur(20px)';
+            } else {
+                header.style.background = 'white';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

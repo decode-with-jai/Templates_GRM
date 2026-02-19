@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coursera Clone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6; 
+            color: #333;
+        }
+        
+        /* SIMPLE HEADER */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px #eee;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0056d2;
+            text-decoration: none;
+        }
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 2rem;
+            position: relative;
+        }
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 3rem 0.8rem 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 25px;
+            font-size: 1rem;
+        }
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #0056d2;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            width: 40px;
+            height: 35px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .nav-links a:hover { color: #0056d2; }
+        .signup-btn {
+            background: #0056d2;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+
+        /* SIMPLE HERO */
+        .hero {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-search {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            box-shadow: 0 5px 20px #ddd;
+        }
+        .search-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .search-row input, .search-row select {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+        }
+        .search-btn-large {
+            width: 100%;
+            padding: 1rem;
+            background: #0056d2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* CATEGORIES */
+        .categories {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+        .cat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 3px 10px #ddd;
+            transition: transform 0.2s;
+        }
+        .cat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px #ccc;
+        }
+        .cat-icon {
+            font-size: 2.5rem;
+            color: #0056d2;
+            margin-bottom: 1rem;
+        }
+
+        /* COURSES - FIXED & RESPONSIVE */
+        .courses {
+            padding: 4rem 2rem;
+            background: white;
+        }
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .course-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px #ddd;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s;
+        }
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px #ccc;
+        }
+        .course-img {
+            height: 160px;
+            background: linear-gradient(45deg, #0056d2, #007bff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .course-content {
+            padding: 1.5rem;
+        }
+        .course-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+        .course-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .stars { 
+            color: #ffc107; 
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .course-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0056d2;
+            margin-bottom: 1rem;
+        }
+        .course-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #0056d2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 3rem 2rem 1rem;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+        .footer h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .footer a:hover { color: #0056d2; }
+        .footer-bottom {
+            text-align: sabse;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        /* MOBILE FRIENDLY */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            .nav-links { 
+                display: none; 
+            }
+            .search-box {
+                margin: 0 1rem;
+                order: 3;
+                max-width: none;
+            }
+            .search-row { 
+                flex-direction: column; 
+            }
+            .hero h1 { 
+                font-size: 1.8rem; 
+            }
+            .hero p { 
+                font-size: 1rem; 
+            }
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .cat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .cat-grid {
+                grid-template-columns: 1fr;
+            }
+            .courses-grid {
+                margin: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="nav">
+            <a href="https://www.coursera.org/" class="logo">Coursera</a>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search courses...">
+                <a href="https://www.coursera.org/" class="search-btn"><i class="fas fa-search"></i></a>
+            </div>
+            <div class="nav-links">
+                <a href="https://www.coursera.org/browse">Courses</a>
+                <a href="https://www.coursera.org/degrees">Degrees</a>
+                <a href="https://www.coursera.org/professional-certificates">Certificates</a>
+                <a href="https://www.coursera.org/business">Enterprise</a>
+                <a href="https://www.coursera.org/government">Government</a>
+            </div>
+            <a href="https://www.coursera.org/signup" class="signup-btn">Sign Up</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>Learn online with top universities</h1>
+            <p>Join millions of learners worldwide. Find courses, certificates, and degrees.</p>
+            <div class="hero-search">
+                <div class="search-row">
+                    <input type="text" placeholder="What do you want to learn?">
+                    <select><option>All courses</option></select>
+                </div>
+                <div class="search-row">
+                    <select><option>Beginner</option></select>
+                    <select><option>Free</option></select>
+                </div>
+                <a href="https://www.coursera.org/" class="search-btn-large">Search</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Popular Categories</h2>
+            <div class="cat-grid">
+                <a href="https://www.coursera.org/browse/data-science" class="cat-card">
+                    <i class="fas fa-laptop-code cat-icon"></i>
+                    <h3>Data Science</h3>
+                </a>
+                <a href="https://www.coursera.org/browse/machine-learning" class="cat-card">
+                    <i class="fas fa-brain cat-icon"></i>
+                    <h3>Machine Learning</h3>
+                </a>
+                <a href="https://www.coursera.org/business" class="cat-card">
+                    <i class="fas fa-chart-line cat-icon"></i>
+                    <h3>Business</h3>
+                </a>
+                <a href="https://www.coursera.org/browse/health" class="cat-card">
+                    <i class="fas fa-user-md cat-icon"></i>
+                    <h3>Health</h3>
+                </a>
+                <a href="https://www.coursera.org/browse/language-learning" class="cat-card">
+                    <i class="fas fa-language cat-icon"></i>
+                    <h3>Languages</h3>
+                </a>
+                <a href="https://www.coursera.org/browse/arts-humanities" class="cat-card">
+                    <i class="fas fa-paint-brush cat-icon"></i>
+                    <h3>Arts</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES - 6 Courses in Perfect Grid -->
+    <section class="courses">
+        <div class="container">
+            <h2 class="section-title">Top Courses</h2>
+            <div class="courses-grid">
+                <a href="https://www.coursera.org/specializations/python" class="course-card">
+                    <div class="course-img">Python for Everybody</div>
+                    <div class="course-content">
+                        <h3 class="course-title">Python for Everybody</h3>
+                        <div class="course-meta">University of Michigan</div>
+                        <div class="stars">★★★★★ 4.8 (234K)</div>
+                        <div class="course-price">Free</div>
+                        <a href="https://www.coursera.org/specializations/python" class="course-btn">Enroll Free</a>
+                    </div>
+                </a>
+                <a href="https://www.coursera.org/professional-certificates/google-data-analytics" class="course-card">
+                    <div class="course-img">Google Data Analytics</div>
+                    <div class="course-content">
+                        <h3 class="course-title">Google Data Analytics</h3>
+                        <div class="course-meta">Google</div>
+                        <div class="stars">★★★★★ 4.8 (156K)</div>
+                        <div class="course-price">$49/mo</div>
+                        <a href="https://www.coursera.org/professional-certificates/google-data-analytics" class="course-btn">Enroll</a>
+                    </div>
+                </a>
+                <a href="https://www.coursera.org/specializations/deep-learning" class="course-card">
+                    <div class="course-img">Deep Learning</div>
+                    <div class="course-content">
+                        <h3 class="course-title">Deep Learning Specialization</h3>
+                        <div class="course-meta">DeepLearning.AI</div>
+                        <div class="stars">★★★★★ 4.9 (89K)</div>
+                        <div class="course-price">$49/mo</div>
+                        <a href="https://www.coursera.org/specializations/deep-learning" class="course-btn">Enroll</a>
+                    </div>
+                </a>
+                <a href="https://www.coursera.org/professional-certificates/ibm-data-science" class="course-card">
+                    <div class="course-img">IBM Data Science</div>
+                    <div class="course-content">
+                        <h3 class="course-title">IBM Data Science Professional</h3>
+                        <div class="course-meta">IBM</div>
+                        <div class="stars">★★★★★ 4.6 (78K)</div>
+                        <div class="course-price">$39/mo</div>
+                        <a href="https://www.coursera.org/professional-certificates/ibm-data-science" class="course-btn">Enroll</a>
+                    </div>
+                </a>
+                <a href="https://www.coursera.org/learn/machine-learning" class="course-card">
+                    <div class="course-img">Machine Learning</div>
+                    <div class="course-content">
+                        <h3 class="course-title">Machine Learning by Andrew Ng</h3>
+                        <div class="course-meta">Stanford University</div>
+                        <div class="stars">★★★★★ 4.9 (200K)</div>
+                        <div class="course-price">Free</div>
+                        <a href="https://www.coursera.org/learn/machine-learning" class="course-btn">Enroll Free</a>
+                    </div>
+                </a>
+                <a href="https://www.coursera.org/professional-certificates/google-project-management" class="course-card">
+                    <div class="course-img">Google Project Mgmt</div>
+                    <div class="course-content">
+                        <h3 class="course-title">Google Project Management</h3>
+                        <div class="course-meta">Google</div>
+                        <div class="stars">★★★★★ 4.8 (98K)</div>
+                        <div class="course-price">$49/mo</div>
+                        <a href="https://www.coursera.org/professional-certificates/google-project-management" class="course-btn">Enroll</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h3>Coursera</h3>
+                <a href="https://www.coursera.org/about">About</a>
+                <a href="https://www.coursera.org/about/careers">Careers</a>
+                <a href="https://blog.coursera.org/">Blog</a>
+            </div>
+            <div>
+                <h3>Teach</h3>
+                <a href="https://www.coursera.org/teach">Teach on Coursera</a>
+                <a href="https://www.coursera.org/business/articles/partners">Partners</a>
+            </div>
+            <div>
+                <h3>Business</h3>
+                <a href="https://www.coursera.org/business">For Business</a>
+                <a href="https://www.coursera.org/government">For Government</a>
+            </div>
+            <div>
+                <h3>Legal</h3>
+                <a href="https://www.coursera.org/about/privacy">Privacy</a>
+                <a href="https://www.coursera.org/about/terms">Terms</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Coursera Clone - Educational Purpose</p>
+        </div>
+    </footer>
+</body>
+</html>

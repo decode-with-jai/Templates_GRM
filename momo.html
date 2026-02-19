@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RedBlack Trade — Demo</title>
+
+  <style>
+    :root{
+      --bg0:#050507;
+      --bg1:#0b0b10;
+
+      --red:#ff2d2d;
+      --red2:#ff4d6d;
+
+      --text:#fff3f3;
+      --muted:rgba(255,243,243,.72);
+
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.04);
+      --border: rgba(255,255,255,.14);
+
+      --shadow: rgba(0,0,0,.55);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 620px at 18% 10%, rgba(255,45,45,.22), transparent 55%),
+        radial-gradient(700px 520px at 85% 20%, rgba(255,77,109,.18), transparent 52%),
+        radial-gradient(850px 620px at 55% 92%, rgba(255,45,45,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+
+    .glass{
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 55px var(--shadow);
+      backdrop-filter: blur(26px) saturate(160%);
+      -webkit-backdrop-filter: blur(26px) saturate(160%);
+      border-radius: 18px;
+    }
+
+    .bg-blur{
+      position:fixed; inset:-60px;
+      pointer-events:none;
+      filter: blur(40px);
+      opacity:.95;
+      z-index:-1;
+    }
+    .blob{position:absolute; border-radius:999px; mix-blend-mode: screen;}
+    .b1{width:560px;height:560px;left:-180px;top:-180px;background:rgba(255,45,45,.24)}
+    .b2{width:520px;height:520px;right:-180px;top:-80px;background:rgba(255,77,109,.20)}
+    .b3{width:700px;height:700px;left:18%;bottom:-260px;background:rgba(255,45,45,.14)}
+
+    header{
+      position:sticky; top:0; z-index:10;
+      padding:12px 0;
+      background: rgba(5,5,7,.42);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+    .logo{
+      width:34px;height:34px;border-radius:10px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,45,45,.95), transparent 55%),
+        radial-gradient(circle at 75% 70%, rgba(255,77,109,.85), transparent 55%),
+        rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 14px 34px rgba(0,0,0,.55);
+    }
+    .links{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px}
+    .links a{padding:8px 10px;border-radius:10px}
+    .links a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+
+    .actions{display:flex;gap:10px;align-items:center}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      height:40px;padding:0 14px;border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:700;font-size:14px;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
+    .btn.primary{
+      border-color: rgba(255,45,45,.45);
+      background: linear-gradient(90deg, rgba(255,45,45,.28), rgba(255,77,109,.20));
+    }
+    .btn.ghost{background:transparent}
+
+    .hero{
+      padding:56px 0 18px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .kicker{
+      display:inline-flex;gap:10px;align-items:center;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--muted);
+      width:fit-content;
+      font-size:13px;
+    }
+    .dot{width:9px;height:9px;border-radius:999px;background:var(--red);box-shadow:0 0 18px rgba(255,45,45,.65)}
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.55;
+      max-width: 56ch;
+    }
+    .hero-ctas{display:flex;gap:10px;flex-wrap:wrap}
+
+    .panel{padding:16px;display:flex;flex-direction:column;gap:12px}
+    .panel-top{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:13px}
+
+    .ticker-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .tile{
+      padding:12px;border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      position:relative;overflow:hidden;
+    }
+    .tile::after{
+      content:"";
+      position:absolute; inset:-60px;
+      background:
+        radial-gradient(240px 170px at 20% 20%, rgba(255,45,45,.18), transparent 58%),
+        radial-gradient(240px 170px at 80% 80%, rgba(255,77,109,.14), transparent 58%);
+      filter: blur(18px);
+      opacity:.95;
+      pointer-events:none;
+    }
+    .tile > *{position:relative; z-index:1}
+    .row{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+    .sym{font-weight:900;letter-spacing:.2px}
+    .price{font-weight:900}
+    .chg.up{color:#7CFFB2}
+    .chg.down{color:#FF6B8B}
+    .small{font-size:12px;color:var(--muted)}
+    .spark{margin-top:10px;width:100%;height:40px;display:block}
+
+    .section{padding:34px 0}
+    .section h2{margin:0 0 10px;font-size:24px;letter-spacing:-.3px}
+    .section p{margin:0 0 18px;color:var(--muted);line-height:1.6;max-width: 78ch}
+
+    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .card{grid-column:span 4;padding:16px}
+    .ic{
+      width:38px;height:38px;border-radius:14px;
+      display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      margin-bottom:12px;
+    }
+    .card h3{margin:0 0 6px;font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+
+    footer{
+      padding:26px 0 40px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .foot{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+
+    /* ---------- Security Popup Overlay ---------- */
+    .overlay{
+      position:fixed; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      padding:18px;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index:9999;
+    }
+    .overlay.hidden{display:none}
+
+    /* WHITE POPUP + BLACK TEXT */
+    .modal{
+      width:min(640px, 100%);
+      padding:22px;
+      border-radius:20px;
+      background:#ffffff;
+      border:1px solid rgba(0,0,0,.10);
+      box-shadow: 0 25px 60px rgba(0,0,0,.18);
+      position:relative;
+      overflow:hidden;
+    }
+    /* soft blue glow in background */
+    .modal::before{
+      content:"";
+      position:absolute; inset:-80px;
+      background:
+        radial-gradient(420px 260px at 50% 40%, rgba(0,120,255,.15), transparent 60%);
+      filter: blur(22px);
+      opacity:.95;
+      pointer-events:none;
+    }
+    .modal > *{position:relative; z-index:1}
+
+    .modal-head{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      margin-bottom:12px;
+    }
+
+    /* keep shield red-ish so page vibe same */
+    .shield{
+      width:44px;height:44px;border-radius:16px;
+      display:grid;place-items:center;
+      border:1px solid rgba(255,45,45,.25);
+      background: rgba(255,45,45,.10);
+      box-shadow: 0 18px 40px rgba(0,0,0,.18);
+      flex:0 0 auto;
+    }
+
+    .modal h2{margin:0;font-size:18px;letter-spacing:-.2px;color:#111}
+    .modal p{margin:6px 0 0;color:#333;line-height:1.55;font-size:14px}
+
+    /* Countdown row - centered + big */
+    .countdown{
+      margin-top:18px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      padding:18px;
+      border-radius:18px;
+      border:1px solid rgba(0,0,0,.08);
+      background: rgba(0,0,0,.02);
+    }
+
+    /* Circular countdown */
+    .circle-wrap{
+      position:relative;
+      width:160px;
+      height:160px;
+      flex:0 0 auto;
+    }
+    .circle-wrap svg{
+      width:100%;
+      height:100%;
+      transform: rotate(-90deg);
+    }
+    .ring-bg{
+      fill:none;
+      stroke: rgba(0,0,0,.10);
+      stroke-width:14;
+    }
+    .ring-fg{
+      fill:none;
+      stroke: rgba(0,120,255,.95); /* BLUE RING */
+      stroke-width:14;
+      stroke-linecap:round;
+      stroke-dasharray:289;
+      stroke-dashoffset:0;
+      transition:stroke-dashoffset 1s linear;
+      filter: drop-shadow(0 0 15px rgba(0,120,255,.35));
+    }
+    .circle-text{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:48px;
+      font-weight:950;
+      color:#0078ff; /* BLUE NUMBER */
+      text-shadow: 0 0 12px rgba(0,120,255,.25);
+    }
+
+    .modal-actions{
+      margin-top:14px;
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .modal-actions .btn{height:42px}
+
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr; padding-top:34px}
+      .ticker-grid{grid-template-columns:1fr}
+      .card{grid-column:span 6}
+      .links{display:none}
+    }
+    @media (max-width: 520px){
+      .card{grid-column:span 12}
+      .circle-text{font-size:34px}
+      .circle-wrap{width:140px;height:140px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-blur" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <!-- Security overlay (shows on load) -->
+  <div class="overlay" id="securityOverlay" role="dialog" aria-modal="true" aria-label="Security Check">
+    <div class="modal">
+      <div class="modal-head">
+        <div style="display:flex; gap:12px; align-items:flex-start">
+          <div class="shield" aria-hidden="true">🛡️</div>
+          <div>
+            <h2>Security Check</h2>
+            <p>Verifying session integrity and enabling secure mode. Redirecting after countdown…</p>
+          </div>
+        </div>
+        <button class="btn ghost" id="closeNow" title="Close overlay" style="color:#111;border-color:rgba(0,0,0,.12)">
+          Close
+        </button>
+      </div>
+
+      <!-- Circular Countdown -->
+      <div class="countdown">
+        <div class="circle-wrap">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ring-bg" cx="60" cy="60" r="46"></circle>
+            <circle class="ring-fg" id="ringFg" cx="60" cy="60" r="46"></circle>
+          </svg>
+          <div class="circle-text"><span id="countNum">5</span></div>
+        </div>
+
+        <div style="text-align:center;color:#111">
+          <div class="small" style="color:#111;opacity:.75">Auto redirect in</div>
+          <div class="small" style="color:#111;opacity:.75">seconds</div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn primary" id="proceed">Proceed</button>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#">
+        <span class="logo" aria-hidden="true"></span>
+        <span>RedBlack <span style="opacity:.7;font-weight:700">Trade • Demo</span></span>
+      </a>
+
+      <nav class="links">
+        <a href="#features">Features</a>
+        <a href="#tools">Tools</a>
+        <a href="#learn">Learn</a>
+      </nav>
+
+      <div class="actions">
+        <button class="btn">Log in</button>
+        <button class="btn primary">Get the app</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="kicker"><span class="dot"></span> Red + Black UI • extra blur • demo only</div>
+        <h1>Trade vibes, but make it dark, sharp, and clean.</h1>
+        <p class="sub">
+          This is a moomoo-inspired style landing page (original layout + demo content) with heavier frosted-glass blur.
+        </p>
+        <div class="hero-ctas">
+          <button class="btn primary">Create free account</button>
+          <button class="btn">Explore features</button>
+          <button class="btn ghost" onclick="window.showOverlay && window.showOverlay()">Trigger security popup</button>
+        </div>
+      </div>
+
+      <aside class="glass panel" aria-label="Market preview panel">
+        <div class="panel-top">
+          <span>Market snapshot</span>
+          <span class="small">Delayed data (demo)</span>
+        </div>
+
+        <div class="ticker-grid" id="tickers"></div>
+
+        <div class="glass" style="padding:14px;border-radius:16px">
+          <h3 style="margin-bottom:10px">Headlines (demo)</h3>
+          <div class="small" style="line-height:1.6">
+            • Risk-on rotation shows up again<br/>
+            • Volatility compresses into key levels<br/>
+            • Big red candles… then bounce
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="features">
+      <h2>Minimal noise. Max signal.</h2>
+      <p>Watchlists, charts, and alerts — designed for quick scanning with a cinematic red/black aesthetic.</p>
+
+      <div class="cards">
+        <div class="glass card">
+          <div class="ic">📈</div>
+          <h3>Fast charts</h3>
+          <p>Sparklines + panels with extra blur for that premium dashboard feel.</p>
+        </div>
+        <div class="glass card">
+          <div class="ic">🔔</div>
+          <h3>Alerts</h3>
+          <p>Price + volume alerts so you can step away and still stay locked in.</p>
+        </div>
+        <div class="glass card">
+          <div class="ic">🧠</div>
+          <h3>Insights (placeholder)</h3>
+          <p>Room for AI summaries, catalyst notes, and trend context.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="glass" style="padding:18px">
+        <h2 style="margin-top:0">Next upgrade?</h2>
+        <p style="margin-bottom:0">
+          I can add a real chart section, smooth animations, login screen, or a full dashboard page with sidebar + tables.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© <span id="year"></span> RedBlack Trade Demo • UI mock only</div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="#" style="opacity:.9">Privacy</a>
+        <a href="#" style="opacity:.9">Terms</a>
+        <a href="#" style="opacity:.9">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Demo ticker data + sparkline generator
+    const demoTickers = [
+      { sym: "SPY",  price: 511.32, chg: +1.12, series: [22,24,23,25,28,27,30,31,29,33,35,34] },
+      { sym: "AAPL", price: 191.08, chg: -0.64, series: [40,39,41,40,38,37,38,39,40,41,40,39] },
+      { sym: "NVDA", price: 904.55, chg: +2.81, series: [18,19,18,20,22,21,23,26,25,27,29,31] },
+      { sym: "TSLA", price: 186.44, chg: -1.35, series: [30,31,29,28,27,28,26,25,26,24,23,22] },
+    ];
+
+    const tickersEl = document.getElementById("tickers");
+
+    function svgSparkline(values){
+      const w = 220, h = 48, pad = 6;
+      const min = Math.min(...values), max = Math.max(...values);
+      const xStep = (w - pad*2) / (values.length - 1);
+      const normY = v => {
+        if (max === min) return h/2;
+        const t = (v - min) / (max - min);
+        return (h - pad) - t * (h - pad*2);
+      };
+      const d = values.map((v,i)=>`${i===0?"M":"L"} ${pad + i*xStep} ${normY(v)}`).join(" ");
+      return `
+        <svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
+          <path d="${d}" fill="none" stroke="rgba(255,243,243,.75)" stroke-width="2.4" stroke-linecap="round" />
+          <path d="${d} L ${w-pad} ${h-pad} L ${pad} ${h-pad} Z" fill="rgba(255,45,45,.10)"/>
+        </svg>`;
+    }
+
+    function formatSigned(n){
+      const sign = n >= 0 ? "+" : "";
+      return `${sign}${n.toFixed(2)}%`;
+    }
+
+    function renderTiles(){
+      tickersEl.innerHTML = "";
+      demoTickers.forEach(t => {
+        const up = t.chg >= 0;
+        const tile = document.createElement("div");
+        tile.className = "tile";
+        tile.innerHTML = `
+          <div class="row">
+            <div>
+              <div class="sym">${t.sym}</div>
+              <div class="small">Demo instrument</div>
+            </div>
+            <div style="text-align:right">
+              <div class="price">$${t.price.toFixed(2)}</div>
+              <div class="chg ${up ? "up":"down"}">${formatSigned(t.chg)}</div>
+            </div>
+          </div>
+          ${svgSparkline(t.series)}
+        `;
+        tickersEl.appendChild(tile);
+      });
+    }
+
+    // -------- Circular Countdown + Redirect at 0 --------
+    document.addEventListener("DOMContentLoaded", () => {
+      const overlay = document.getElementById("securityOverlay");
+      const countNum = document.getElementById("countNum");
+      const ringFg = document.getElementById("ringFg");
+
+      if (!overlay || !countNum || !ringFg) return;
+
+      let timer = null;
+      let remaining = 5;
+
+      const r = 46;
+      const C = 2 * Math.PI * r;
+      ringFg.style.strokeDasharray = C;
+
+      function setRing(){
+        ringFg.style.strokeDashoffset = C * (1 - (remaining / 5));
+      }
+
+      function redirectNow(){
+        window.location.href = "https://www.moomoo.com/us/";
+      }
+
+      function hideOverlay(){
+        overlay.classList.add("hidden");
+        clearInterval(timer);
+      }
+
+      function startCountdown(){
+        clearInterval(timer);
+        remaining = 5;
+        countNum.textContent = remaining;
+        setRing();
+
+        timer = setInterval(() => {
+          remaining--;
+          countNum.textContent = Math.max(0, remaining);
+          setRing();
+
+          if (remaining <= 0){
+            clearInterval(timer);
+            redirectNow(); // redirect exactly when countdown ends
+          }
+        }, 1000);
+      }
+
+      function showOverlay(){
+        overlay.classList.remove("hidden");
+        startCountdown();
+      }
+
+      window.showOverlay = showOverlay;
+
+      document.getElementById("closeNow")?.addEventListener("click", hideOverlay);
+      document.getElementById("restart")?.addEventListener("click", startCountdown);
+      document.getElementById("proceed")?.addEventListener("click", redirectNow);
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+      renderTiles();
+      showOverlay();
+    });
+  </script>
+</body>
+</html>

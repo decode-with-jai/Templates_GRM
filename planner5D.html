@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner 5D - Free Home & Interior Design Software</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* HEADER */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #4a90e2;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: #4a90e2; }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .login-btn {
+            background: transparent;
+            color: #333;
+            border: 2px solid #4a90e2;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .login-btn:hover {
+            background: #4a90e2;
+            color: white;
+        }
+        .signup-btn {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            padding: 0.8rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #f8fbff 0%, #e3f2fd 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+        }
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .hero-btn {
+            padding: 1.2rem 3rem;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .hero-btn-primary {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+        }
+        .hero-btn-secondary {
+            background: white;
+            color: #4a90e2;
+            border: 2px solid #4a90e2;
+        }
+        .hero-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        /* FEATURES */
+        .features {
+            padding: 6rem 2rem;
+            background: white;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            color: #1a1a1a;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            background: #f8f9fa;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+        .feature-icon {
+            font-size: 4rem;
+            color: #4a90e2;
+            margin-bottom: 1.5rem;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .feature-card p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* GALLERY */
+        .gallery {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f8fbff 0%, #e3f2fd 100%);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .gallery-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        .gallery-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        .gallery-img {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #4a90e2, #357abd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            font-weight: 600;
+        }
+        .gallery-content {
+            padding: 2rem;
+        }
+        .gallery-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .gallery-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        .gallery-stats {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+        .cta-btn {
+            background: white;
+            color: #4a90e2;
+            padding: 1.2rem 4rem;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 40px rgba(255,255,255,0.3);
+            transition: all 0.3s;
+        }
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(255,255,255,0.4);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 4rem 2rem 2rem;
+        }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        .footer h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+            transition: color 0.3s;
+        }
+        .footer a:hover { color: #4a90e2; }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .features-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="nav">
+            <a href="https://planner5d.com/" class="logo">
+                <i class="fas fa-home" style="margin-right: 0.5rem;"></i>
+                Planner 5D
+            </a>
+            <div class="nav-links">
+                <a href="https://planner5d.com/">Home</a>
+                <a href="https://planner5d.com/use/free-floor-plan-creator">Floor Plans</a>
+                <a href="https://planner5d.com/">Projects</a>
+                <a href="https://planner5d.com/">Gallery</a>
+                <a href="https://planner5d.com/">Pricing</a>
+            </div>
+            <div class="cta-buttons">
+                <a href="https://planner5d.com/" class="login-btn">Log In</a>
+                <a href="https://planner5d.com/" class="signup-btn">Start Free</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Create Your Dream Home in 5D</h1>
+            <p class="hero-subtitle">Design stunning floor plans and interiors with our powerful AI-powered tool. No experience needed - start creating in minutes!</p>
+            <div class="hero-buttons">
+                <a href="https://planner5d.com/" class="hero-btn hero-btn-primary">Start Designing Free</a>
+                <a href="https://planner5d.com/" class="hero-btn hero-btn-secondary">Watch Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Everything You Need to Design</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h3>Easy Floor Plans</h3>
+                    <p>Create precise 2D floor plans with automatic measurements and AI snapping. Switch to 3D instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>3D Visualization</h3>
+                    <p>Walk through your designs in real-time 3D. See every angle before building.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>7,000+ Items</h3>
+                    <p>Huge catalog of furniture, decor, and materials from top brands to style any space.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>AI Design Tools</h3>
+                    <p>Smart suggestions, auto-layout, and rendering tools make professional designs effortless.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Team Collaboration</h3>
+                    <p>Share projects, get feedback, and work together in real-time across all devices.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Works Everywhere</h3>
+                    <p>Design on web, desktop, tablet, or mobile. Everything syncs automatically.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">Real Projects Created with Planner 5D</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <div class="gallery-img">
+                        Modern Living Room
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Luxury Modern Apartment</h3>
+                        <p>Complete redesign with smart furniture placement and premium materials.</p>
+                        <div class="gallery-stats">
+                            <span>1,247 Views</span>
+                            <span>89 Likes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-img">
+                        Kitchen Design
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Contemporary Kitchen</h3>
+                        <p>Functional layout with high-end appliances and custom cabinetry.</p>
+                        <div class="gallery-stats">
+                            <span>2,156 Views</span>
+                            <span>124 Likes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-img">
+                        Bedroom Suite
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Master Bedroom Retreat</h3>
+                        <p>Serene design with walk-in closet and spa-like bathroom.</p>
+                        <div class="gallery-stats">
+                            <span>987 Views</span>
+                            <span>67 Likes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Design Your Dream Space?</h2>
+            <p>Join 90+ million users creating beautiful homes worldwide</p>
+            <a href="https://planner5d.com/" class="cta-btn">Start Free Trial</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>Product</h3>
+                <a href="https://planner5d.com/">Floor Plans</a>
+                <a href="https://planner5d.com/">3D Design</a>
+                <a href="https://planner5d.com/">Gallery</a>
+                <a href="https://planner5d.com/">Templates</a>
+            </div>
+            <div>
+                <h3>Company</h3>
+                <a href="https://planner5d.com/">About</a>
+                <a href="https://planner5d.com/">Careers</a>
+                <a href="https://planner5d.com/">Blog</a>
+                <a href="https://planner5d.com/">Press</a>
+            </div>
+            <div>
+                <h3>Support</h3>
+                <a href="https://planner5d.com/">Help Center</a>
+                <a href="https://planner5d.com/">Tutorials</a>
+                <a href="https://planner5d.com/">Contact</a>
+            </div>
+            <div>
+                <h3>Legal</h3>
+                <a href="https://planner5d.com/">Privacy</a>
+                <a href="https://planner5d.com/">Terms</a>
+                <a href="https://planner5d.com/">Cookies</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Planner 5D Clone - Educational Purpose. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
