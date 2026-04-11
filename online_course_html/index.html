@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillShare - Learn Smarter, Grow Faster</title>
+  <meta name="description" content="SkillShare is a modern education landing page to sell online courses with sales, coupons, featured categories, and a smart course inquiry popup." />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #5f5f5f;
+      --light-green: #a8f0a1;
+      --light-green-hover: #93e78b;
+      --soft-green: #efffee;
+      --border: #e9e9e9;
+      --card: #ffffff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --max-width: 1220px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--light-green);
+      color: #111;
+      font-weight: 700;
+      padding: 14px 26px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: 0.25s ease;
+      box-shadow: 0 8px 18px rgba(168, 240, 161, 0.35);
+    }
+
+    .btn:hover {
+      background: var(--light-green-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #111;
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--soft-green);
+      color: #111;
+      border: 1px solid #d7f5d4;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 14px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 700px;
+      font-size: 1rem;
+    }
+
+    .section-head {
+      margin-bottom: 34px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .logo span {
+      background: var(--light-green);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      color: #222;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #000;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.7rem;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 50px;
+      background:
+        radial-gradient(circle at top right, rgba(168,240,161,0.17), transparent 25%),
+        radial-gradient(circle at bottom left, rgba(168,240,161,0.12), transparent 28%),
+        #fff;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin: 18px 0 18px;
+    }
+
+    .hero-content p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 640px;
+      margin-bottom: 28px;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    .hero-points span {
+      background: #fafafa;
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fff7 100%);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: rgba(168, 240, 161, 0.4);
+      border-radius: 50%;
+      right: -50px;
+      top: -50px;
+      filter: blur(25px);
+    }
+
+    .mini-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #111;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .pricing-card {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 16px;
+    }
+
+    .pricing-top {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .pricing-top h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .price small {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .save-box {
+      background: var(--light-green);
+      border-radius: 18px;
+      padding: 18px;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: #222;
+      font-weight: 600;
+    }
+
+    .list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    /* Stats */
+    .stats {
+      padding: 10px 0 50px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .stat-card h3 {
+      font-size: 2rem;
+      margin-bottom: 6px;
+      font-weight: 900;
+    }
+
+    .stat-card p {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* Categories */
+    section {
+      padding: 80px 0;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .category-card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .category-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--soft-green);
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      font-weight: 900;
+    }
+
+    .category-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .category-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .category-card strong {
+      font-size: 0.95rem;
+    }
+
+    /* Courses */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .course-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .course-thumb {
+      background: linear-gradient(135deg, #f6fff4, #e8fde5);
+      min-height: 220px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .course-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .course-badge {
+      background: #111;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .discount-badge {
+      background: var(--light-green);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .thumb-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      max-width: 280px;
+      line-height: 1.15;
+    }
+
+    .course-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .course-body p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .course-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.86rem;
+      color: #222;
+      font-weight: 700;
+    }
+
+    .course-meta span {
+      background: #f8f8f8;
+      border: 1px solid var(--border);
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    .course-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .course-price {
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+
+    .course-price del {
+      color: #8a8a8a;
+      font-size: 0.95rem;
+      margin-left: 8px;
+      font-weight: 600;
+    }
+
+    /* Sale banner */
+    .sale-banner {
+      background: linear-gradient(135deg, #111 0%, #202020 100%);
+      color: #fff;
+      border-radius: 30px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sale-banner::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -80px;
+      width: 220px;
+      height: 220px;
+      background: rgba(168, 240, 161, 0.2);
+      border-radius: 50%;
+      filter: blur(20px);
+    }
+
+    .sale-banner h3 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin: 12px 0 14px;
+    }
+
+    .sale-banner p {
+      color: #d8d8d8;
+      max-width: 620px;
+      margin-bottom: 22px;
+    }
+
+    .coupon-box {
+      background: #fff;
+      color: #111;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+      position: relative;
+      z-index: 2;
+    }
+
+    .coupon-code {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      margin: 10px 0 14px;
+    }
+
+    .coupon-box p {
+      color: #444;
+      margin-bottom: 16px;
+    }
+
+    .copy-btn {
+      width: 100%;
+    }
+
+    /* Why us */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      background: #fff;
+    }
+
+    .feature-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    /* Testimonials */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .stars {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-card p {
+      color: #333;
+      margin-bottom: 16px;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--soft-green);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .user-info strong {
+      display: block;
+    }
+
+    .user-info span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: #fff;
+      border: none;
+      text-align: left;
+      padding: 20px 22px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      color: #111;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 22px 20px;
+      color: var(--muted);
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* CTA */
+    .cta-box {
+      text-align: center;
+      background: linear-gradient(180deg, #ffffff, #f6fff4);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 50px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 12px auto 24px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 30px 0 40px;
+      border-top: 1px solid var(--border);
+      margin-top: 30px;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-wrap p,
+    .footer-links a {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* Popup */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s ease;
+      z-index: 9999;
+    }
+
+    .popup-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .popup-box {
+      width: 100%;
+      max-width: 600px;
+      background: #fff;
+      border-radius: 26px;
+      padding: 30px 24px 24px;
+      position: relative;
+      box-shadow: 0 24px 50px rgba(0,0,0,0.2);
+      animation: popupUp 0.35s ease;
+    }
+
+    @keyframes popupUp {
+      from {
+        transform: translateY(20px) scale(0.96);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 50%;
+      background: #f3f3f3;
+      color: #111;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .popup-close:hover {
+      background: #e9e9e9;
+    }
+
+    .popup-box h3 {
+      font-size: 2rem;
+      line-height: 1.15;
+      margin-bottom: 10px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .popup-box p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .popup-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .popup-form input,
+    .popup-form select,
+    .popup-form textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: #111;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    .popup-form input:focus,
+    .popup-form select:focus,
+    .popup-form textarea:focus {
+      border-color: #b7eeb1;
+      box-shadow: 0 0 0 4px rgba(168, 240, 161, 0.18);
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 12px;
+      background: var(--soft-green);
+      border: 1px solid #d7f5d4;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-weight: 700;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .sale-banner {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .courses-grid,
+      .features-grid,
+      .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 4%;
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-actions .btn-outline {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 50px;
+      }
+
+      .stats-grid,
+      .categories-grid,
+      .courses-grid,
+      .features-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .sale-banner,
+      .popup-box,
+      .cta-box,
+      .hero-card {
+        border-radius: 22px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        min-height: 70px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-btns {
+        flex-direction: column;
+      }
+
+      .course-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .popup-box h3 {
+        font-size: 1.6rem;
+      }
+
+      .price {
+        font-size: 2rem;
+      }
+
+      .coupon-code {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container navbar">
+      <a href="#" class="logo">Skill<span>Share</span></a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#courses">Courses</a>
+        <a href="#categories">Categories</a>
+        <a href="#offers">Offers</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#courses" class="btn btn-outline">Browse Courses</a>
+        <a href="#offers" class="btn">Buy Now</a>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="tag">Trusted by learners across multiple skill sectors</span>
+        <h1>Master future-ready skills with premium online courses.</h1>
+        <p>
+          SkillShare is built for ambitious learners who want real growth. From coding, design, AI, business, marketing, and personal development to exam prep and career-ready programs — explore high-value courses, limited-time sales, and exclusive coupons in one clean learning platform.
+        </p>
+
+        <div class="hero-btns">
+          <a href="#courses" class="btn">Explore Courses</a>
+          <a href="#offers" class="btn btn-outline">Get Coupon</a>
+        </div>
+
+        <div class="hero-points">
+          <span>✔ 1,000+ Courses</span>
+          <span>✔ Lifetime Access</span>
+          <span>✔ Certificates Included</span>
+          <span>✔ Beginner to Advanced</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="mini-badge">🔥 Limited Sale Live</div>
+
+        <div class="pricing-card">
+          <div class="pricing-top">
+            <h3>SkillShare Pro Learning Pack</h3>
+            <div class="price">₹999 <small>/ one-time</small></div>
+            <p style="color: var(--muted);">Unlock top-rated courses in tech, business, design, marketing, and career skills with a single purchase bundle.</p>
+          </div>
+
+          <div class="save-box">
+            Save up to 70% today with exclusive course discounts and bundle deals.
+          </div>
+
+          <ul class="list">
+            <li>✔ Premium recorded lessons with step-by-step learning paths</li>
+            <li>✔ Industry-focused course structure for practical skill building</li>
+            <li>✔ Downloadable notes, projects, assignments, and templates</li>
+            <li>✔ Dedicated support and regular content updates</li>
+          </ul>
+
+          <a href="#offers" class="btn">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container stats-grid">
+      <div class="stat-card">
+        <h3>1,000+</h3>
+        <p>Online Courses</p>
+      </div>
+      <div class="stat-card">
+        <h3>50K+</h3>
+        <p>Active Learners</p>
+      </div>
+      <div class="stat-card">
+        <h3>4.9/5</h3>
+        <p>Average Rating</p>
+      </div>
+      <div class="stat-card">
+        <h3>70%</h3>
+        <p>Max Discount Offers</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section id="categories">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Explore high-demand education categories</h2>
+        <p class="section-subtitle">
+          Whether you want to level up your career, switch industries, build an online income stream, or sharpen your creative edge, SkillShare gives you access to in-demand course sectors made for real-world learning.
+        </p>
+      </div>
+
+      <div class="categories-grid">
+        <div class="category-card">
+          <div class="category-icon">💻</div>
+          <h3>Technology & Coding</h3>
+          <p>Frontend, backend, Python, React, AI tools, data science, cloud basics, and practical dev projects.</p>
+          <strong>120+ Courses</strong>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">📈</div>
+          <h3>Marketing & Growth</h3>
+          <p>SEO, Meta Ads, Google Ads, affiliate marketing, branding, social media, and conversion funnels.</p>
+          <strong>90+ Courses</strong>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">🎨</div>
+          <h3>Design & Creativity</h3>
+          <p>UI/UX, graphic design, Canva, branding, motion basics, content creation, and visual storytelling.</p>
+          <strong>80+ Courses</strong>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">💼</div>
+          <h3>Business & Career</h3>
+          <p>Communication, sales, resume building, freelancing, startups, productivity, and leadership growth.</p>
+          <strong>110+ Courses</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="courses">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Best-selling courses on SkillShare</h2>
+        <p class="section-subtitle">
+          These top picks are crafted to help learners get maximum value with practical knowledge, modern tools, and high-converting skill sets.
+        </p>
+      </div>
+
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-thumb">
+            <div class="course-topline">
+              <span class="course-badge">Best Seller</span>
+              <span class="discount-badge">50% OFF</span>
+            </div>
+            <div class="thumb-title">Full Stack Web Development Bootcamp</div>
+          </div>
+          <div class="course-body">
+            <p>Learn HTML, CSS, JavaScript, React, APIs, responsive design, deployment, and portfolio building from scratch.</p>
+            <div class="course-meta">
+              <span>Beginner Friendly</span>
+              <span>42 Hours</span>
+              <span>Certificate</span>
+            </div>
+            <div class="course-footer">
+              <div class="course-price">₹499 <del>₹999</del></div>
+              <button class="btn open-popup-btn" data-course="Full Stack Web Development Bootcamp">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-thumb">
+            <div class="course-topline">
+              <span class="course-badge">Hot Deal</span>
+              <span class="discount-badge">55% OFF</span>
+            </div>
+            <div class="thumb-title">Digital Marketing & Performance Ads Mastery</div>
+          </div>
+          <div class="course-body">
+            <p>Master SEO, Meta Ads, Google Ads, content strategy, funnels, lead generation, and real business growth frameworks.</p>
+            <div class="course-meta">
+              <span>Career Focused</span>
+              <span>36 Hours</span>
+              <span>Templates Included</span>
+            </div>
+            <div class="course-footer">
+              <div class="course-price">₹599 <del>₹1299</del></div>
+              <button class="btn open-popup-btn" data-course="Digital Marketing & Performance Ads Mastery">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-thumb">
+            <div class="course-topline">
+              <span class="course-badge">New Launch</span>
+              <span class="discount-badge">40% OFF</span>
+            </div>
+            <div class="thumb-title">Data Science, AI & Analytics Program</div>
+          </div>
+          <div class="course-body">
+            <p>Dive into Python, data analysis, machine learning basics, dashboarding, prompts, and future-ready AI workflows.</p>
+            <div class="course-meta">
+              <span>Trending Skill</span>
+              <span>48 Hours</span>
+              <span>Projects Included</span>
+            </div>
+            <div class="course-footer">
+              <div class="course-price">₹799 <del>₹1399</del></div>
+              <button class="btn open-popup-btn" data-course="Data Science, AI & Analytics Program">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-thumb">
+            <div class="course-topline">
+              <span class="course-badge">Top Rated</span>
+              <span class="discount-badge">60% OFF</span>
+            </div>
+            <div class="thumb-title">Graphic Design & Canva Creator Course</div>
+          </div>
+          <div class="course-body">
+            <p>Create premium social posts, ads, banners, reels assets, branding kits, and professional marketing visuals.</p>
+            <div class="course-meta">
+              <span>Creative Skill</span>
+              <span>24 Hours</span>
+              <span>Design Files</span>
+            </div>
+            <div class="course-footer">
+              <div class="course-price">₹399 <del>₹999</del></div>
+              <button class="btn open-popup-btn" data-course="Graphic Design & Canva Creator Course">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-thumb">
+            <div class="course-topline">
+              <span class="course-badge">Fast Growing</span>
+              <span class="discount-badge">45% OFF</span>
+            </div>
+            <div class="thumb-title">UI/UX Design from Basics to Portfolio</div>
+          </div>
+          <div class="course-body">
+            <p>Understand user experience, wireframes, layout systems, mobile-first thinking, and premium interface design.</p>
+            <div class="course-meta">
+              <span>Portfolio Ready</span>
+              <span>28 Hours</span>
+              <span>Case Studies</span>
+            </div>
+            <div class="course-footer">
+              <div class="course-price">₹549 <del>₹999</del></div>
+              <button class="btn open-popup-btn" data-course="UI/UX Design from Basics to Portfolio">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-thumb">
+            <div class="course-topline">
+              <span class="course-badge">Career Boost</span>
+              <span class="discount-badge">35% OFF</span>
+            </div>
+            <div class="thumb-title">Freelancing, Personal Branding & Online Income</div>
+          </div>
+          <div class="course-body">
+            <p>Learn client acquisition, portfolio building, pricing, proposals, online visibility, and personal brand growth.</p>
+            <div class="course-meta">
+              <span>Income Focused</span>
+              <span>22 Hours</span>
+              <span>Actionable Guide</span>
+            </div>
+            <div class="course-footer">
+              <div class="course-price">₹699 <del>₹1099</del></div>
+              <button class="btn open-popup-btn" data-course="Freelancing, Personal Branding & Online Income">Buy Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sale / Offers -->
+  <section id="offers">
+    <div class="container">
+      <div class="sale-banner">
+        <div>
+          <span class="tag">Mega Learning Sale</span>
+          <h3>Get premium education bundles with exclusive coupons and limited-time discounts.</h3>
+          <p>
+            Upgrade your skills without spending heavy. Use our special coupon code and unlock savings on selected professional courses. Perfect for students, creators, developers, marketers, and working professionals.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:14px;">
+            <a href="#courses" class="btn">Shop Courses</a>
+            <button class="btn btn-outline" id="showPopupOffer">Choose a Course</button>
+          </div>
+        </div>
+
+        <div class="coupon-box">
+          <span class="tag">Exclusive Coupon</span>
+          <div class="coupon-code" id="couponCode">LEARN20</div>
+          <p>Apply this code at checkout to get an extra 20% OFF on selected SkillShare programs.</p>
+          <button class="btn copy-btn" id="copyCouponBtn">Copy Coupon</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Why learners choose SkillShare</h2>
+        <p class="section-subtitle">
+          This isn’t just another course page. The platform is designed to convert curiosity into real capability with structured lessons, value-packed offers, and simple buying flow.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <h4>Structured learning paths</h4>
+          <p>Courses are organized from basics to advanced concepts so learners don’t feel lost or overwhelmed.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Affordable sales & bundles</h4>
+          <p>Coupons, combo packs, flash sales, and discounted premium content help maximize learning value.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Responsive experience</h4>
+          <p>Whether on mobile, tablet, or desktop, the platform stays clean, readable, and easy to navigate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">What students are saying</h2>
+        <p class="section-subtitle">
+          Real learners join SkillShare to gain practical skills, improve career confidence, and stay ahead in digital sectors.
+        </p>
+      </div>
+
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>The course structure is actually super clean. I joined for web development and ended up learning faster than I expected.</p>
+          <div class="user">
+            <div class="avatar">A</div>
+            <div class="user-info">
+              <strong>Aman</strong>
+              <span>Frontend Learner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>I loved the marketing courses and coupon deals. The content felt practical, not just theory for the sake of it.</p>
+          <div class="user">
+            <div class="avatar">S</div>
+            <div class="user-info">
+              <strong>Sneha</strong>
+              <span>Digital Marketer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>Very smooth on mobile too. I checked lessons, course details, and offers from my phone and it all felt easy.</p>
+          <div class="user">
+            <div class="avatar">R</div>
+            <div class="user-info">
+              <strong>Rahul</strong>
+              <span>Freelance Designer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Frequently asked questions</h2>
+        <p class="section-subtitle">
+          A few common things learners usually want to know before purchasing courses.
+        </p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item active">
+          <button class="faq-question">Do I get lifetime access to purchased courses? <span>+</span></button>
+          <div class="faq-answer">
+            Yes, most courses on SkillShare are provided with long-term or lifetime access so learners can study at their own pace.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Can I use coupon codes during checkout? <span>+</span></button>
+          <div class="faq-answer">
+            Yes, you can apply active promo codes like the one shown on this page to get additional discounts on selected courses.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Are these courses beginner-friendly? <span>+</span></button>
+          <div class="faq-answer">
+            Absolutely. Many courses start from fundamentals and gradually move into practical and advanced modules.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Will I get a certificate after course completion? <span>+</span></button>
+          <div class="faq-answer">
+            Yes, many programs include completion certificates that can support your learning portfolio and professional growth.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="container">
+      <div class="cta-box">
+        <span class="tag">Start Learning Today</span>
+        <h2 class="section-title" style="margin-top:14px;">Build smarter skills with premium courses and better offers.</h2>
+        <p>
+          From career-ready education to creator-focused learning, SkillShare helps you discover the right course, grab the best discount, and move with confidence.
+        </p>
+        <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
+          <a href="#courses" class="btn">Buy Your Course</a>
+          <button class="btn btn-outline" id="ctaPopupBtn">Choose a Course</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-wrap">
+      <p>© 2026 SkillShare. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Popup -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-box">
+      <button class="popup-close" id="popupClose">✕</button>
+      <h3>Which course would you like to buy?</h3>
+      <p>Tell us your preferred course and basic details. This helps us guide you to the best offer quickly.</p>
+
+      <form class="popup-form" id="popupForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email Address" required />
+
+        <select id="courseSelect" required>
+          <option value="">Select a Course</option>
+          <option value="Full Stack Web Development Bootcamp">Full Stack Web Development Bootcamp</option>
+          <option value="Digital Marketing & Performance Ads Mastery">Digital Marketing & Performance Ads Mastery</option>
+          <option value="Data Science, AI & Analytics Program">Data Science, AI & Analytics Program</option>
+          <option value="Graphic Design & Canva Creator Course">Graphic Design & Canva Creator Course</option>
+          <option value="UI/UX Design from Basics to Portfolio">UI/UX Design from Basics to Portfolio</option>
+          <option value="Freelancing, Personal Branding & Online Income">Freelancing, Personal Branding & Online Income</option>
+        </select>
+
+        <textarea id="message" rows="4" placeholder="Write your interest, budget, or preferred learning goal..."></textarea>
+
+        <button type="submit" class="btn">Submit</button>
+
+        <div class="success-message" id="successMessage">
+          Thanks! Your course preference has been submitted successfully.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // FAQ
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach(item => {
+      const btn = item.querySelector(".faq-question");
+      btn.addEventListener("click", () => {
+        item.classList.toggle("active");
+      });
+    });
+
+    // Popup elements
+    const popupOverlay = document.getElementById("popupOverlay");
+    const popupClose = document.getElementById("popupClose");
+    const popupForm = document.getElementById("popupForm");
+    const successMessage = document.getElementById("successMessage");
+    const courseSelect = document.getElementById("courseSelect");
+    const openPopupBtns = document.querySelectorAll(".open-popup-btn");
+    const showPopupOffer = document.getElementById("showPopupOffer");
+    const ctaPopupBtn = document.getElementById("ctaPopupBtn");
+
+    let popupShown = false;
+
+    function openPopup(selectedCourse = "") {
+      popupOverlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+      if (selectedCourse) {
+        courseSelect.value = selectedCourse;
+      }
+    }
+
+    function closePopup() {
+      popupOverlay.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    // Auto popup after 10 sec
+    setTimeout(() => {
+      if (!popupShown) {
+        openPopup();
+        popupShown = true;
+      }
+    }, 10000);
+
+    popupClose.addEventListener("click", closePopup);
+
+    popupOverlay.addEventListener("click", (e) => {
+      if (e.target === popupOverlay) {
+        closePopup();
+      }
+    });
+
+    openPopupBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const selectedCourse = btn.getAttribute("data-course");
+        openPopup(selectedCourse);
+      });
+    });
+
+    showPopupOffer.addEventListener("click", () => openPopup());
+    ctaPopupBtn.addEventListener("click", () => openPopup());
+
+    // Form submit demo
+    popupForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      successMessage.style.display = "block";
+
+      setTimeout(() => {
+        popupForm.reset();
+        successMessage.style.display = "none";
+        closePopup();
+      }, 1800);
+    });
+
+    // Copy coupon
+    const copyCouponBtn = document.getElementById("copyCouponBtn");
+    const couponCode = document.getElementById("couponCode").innerText;
+
+    copyCouponBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(couponCode);
+        copyCouponBtn.textContent = "Coupon Copied!";
+        setTimeout(() => {
+          copyCouponBtn.textContent = "Copy Coupon";
+        }, 1800);
+      } catch (error) {
+        copyCouponBtn.textContent = "Copy Failed";
+        setTimeout(() => {
+          copyCouponBtn.textContent = "Copy Coupon";
+        }, 1800);
+      }
+    });
+  </script>
+</body>
+</html>
