@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cash Doc | Personal Loan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      background:#fff;
+      color:#10233a;
+      line-height:1.6;
+    }
+
+    :root{
+      --primary:#1f6fff;
+      --primary-2:#5a97ff;
+      --secondary:#0d2745;
+      --text:#5b6d84;
+      --border:rgba(13,39,69,.12);
+      --shadow:0 24px 60px rgba(8,27,51,.14);
+      --soft:#f6faff;
+      --maxw:1180px;
+    }
+
+    .container{
+      width:min(var(--maxw), calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .navbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(255,255,255,.9);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(13,39,69,.08);
+    }
+
+    .nav-inner{
+      min-height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .brand{
+      font-weight:800;
+      font-size:1.35rem;
+      color:var(--secondary);
+      letter-spacing:-.03em;
+    }
+
+    .nav-btn{
+      text-decoration:none;
+      color:#fff;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:700;
+      box-shadow:0 12px 28px rgba(31,111,255,.24);
+      transition:.25s ease;
+    }
+
+    .nav-btn:hover{transform:translateY(-2px)}
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(90deg, rgba(9,27,49,.72) 0%, rgba(9,27,49,.56) 42%, rgba(9,27,49,.38) 100%),
+        url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1800&q=80') center center / cover no-repeat;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(255,255,255,0) 75%, rgba(255,255,255,.06) 100%);
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:minmax(320px,420px) minmax(0,1fr);
+      gap:54px;
+      align-items:center;
+      width:100%;
+      padding:54px 0;
+    }
+
+    .lead-card{
+      background:rgba(255,255,255,.94);
+      backdrop-filter:blur(14px);
+      border:1px solid rgba(255,255,255,.45);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .lead-card h2{
+      color:var(--secondary);
+      font-size:1.7rem;
+      line-height:1.1;
+      margin-bottom:8px;
+      letter-spacing:-.03em;
+    }
+
+    .lead-card p{
+      color:var(--text);
+      font-size:.96rem;
+      margin-bottom:18px;
+    }
+
+    .field{margin-bottom:15px}
+
+    .field label{
+      display:block;
+      font-size:.92rem;
+      font-weight:700;
+      color:var(--secondary);
+      margin-bottom:8px;
+    }
+
+    .field input{
+      width:100%;
+      min-height:56px;
+      border:1px solid rgba(13,39,69,.12);
+      background:#fff;
+      color:#10233a;
+      padding:14px 15px;
+      border-radius:16px;
+      font-size:1rem;
+      outline:none;
+      transition:.2s ease;
+    }
+
+    .field input:focus{
+      border-color:rgba(31,111,255,.5);
+      box-shadow:0 0 0 4px rgba(31,111,255,.1);
+    }
+
+    .country-picker{position:relative}
+
+    .country-trigger{
+      width:100%;
+      min-height:56px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      border:1px solid rgba(13,39,69,.12);
+      background:#fff;
+      color:#10233a;
+      padding:12px 15px;
+      border-radius:16px;
+      font-size:1rem;
+      cursor:pointer;
+      transition:.2s ease;
+      text-align:left;
+    }
+
+    .country-trigger:hover,
+    .country-trigger.active{
+      border-color:rgba(31,111,255,.5);
+      box-shadow:0 0 0 4px rgba(31,111,255,.1);
+    }
+
+    .country-value{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+
+    .flag-chip{
+      width:36px;
+      height:36px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:#eef5ff;
+      font-size:1.1rem;
+      flex:0 0 auto;
+    }
+
+    .country-text{
+      display:flex;
+      flex-direction:column;
+      min-width:0;
+    }
+
+    .country-text strong{
+      font-size:.96rem;
+      color:var(--secondary);
+      font-weight:700;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .country-text span{
+      font-size:.82rem;
+      color:#6a7a8e;
+    }
+
+    .chevron{
+      color:#6a7a8e;
+      font-size:1rem;
+      transition:transform .2s ease;
+      flex:0 0 auto;
+    }
+
+    .country-trigger.active .chevron{transform:rotate(180deg)}
+
+    .country-dropdown{
+      position:absolute;
+      top:calc(100% + 10px);
+      left:0;
+      right:0;
+      background:#fff;
+      border:1px solid rgba(13,39,69,.1);
+      border-radius:18px;
+      box-shadow:0 26px 50px rgba(9,27,49,.16);
+      padding:12px;
+      display:none;
+      z-index:50;
+    }
+
+    .country-dropdown.open{display:block}
+
+    .country-search{
+      width:100%;
+      min-height:48px;
+      border:1px solid rgba(13,39,69,.1);
+      background:#f8fbff;
+      color:#10233a;
+      padding:12px 14px;
+      border-radius:12px;
+      outline:none;
+      font-size:.95rem;
+      margin-bottom:10px;
+    }
+
+    .country-list{
+      max-height:250px;
+      overflow:auto;
+      display:grid;
+      gap:4px;
+      padding-right:2px;
+    }
+
+    .country-item{
+      width:100%;
+      border:none;
+      background:#fff;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:11px 12px;
+      cursor:pointer;
+      text-align:left;
+      transition:.18s ease;
+    }
+
+    .country-item:hover{background:#f3f8ff}
+
+    .country-item-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+
+    .country-item small{
+      color:#6a7a8e;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .submit-btn{
+      width:100%;
+      border:none;
+      cursor:pointer;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      color:#fff;
+      min-height:56px;
+      padding:14px 18px;
+      border-radius:16px;
+      font-weight:800;
+      font-size:1rem;
+      box-shadow:0 14px 30px rgba(31,111,255,.24);
+      transition:.25s ease;
+    }
+
+    .submit-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 34px rgba(31,111,255,.28);
+    }
+
+    .mini-note{
+      text-align:center;
+      color:#73839a;
+      font-size:.8rem;
+      margin-top:12px;
+    }
+
+    .hero-copy{
+      color:#fff;
+      max-width:720px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.16);
+      color:#fff;
+      font-weight:700;
+      font-size:.88rem;
+      backdrop-filter:blur(10px);
+      margin-bottom:18px;
+    }
+
+    .hero-copy h1{
+      font-size:clamp(2.4rem,4vw,4.7rem);
+      line-height:1.02;
+      letter-spacing:-.05em;
+      margin-bottom:16px;
+      max-width:760px;
+    }
+
+    .hero-copy p{
+      font-size:1.08rem;
+      max-width:620px;
+      color:rgba(255,255,255,.92);
+      margin-bottom:24px;
+    }
+
+    .hero-points{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      max-width:660px;
+    }
+
+    .hero-point{
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter:blur(12px);
+      border-radius:18px;
+      padding:15px 16px;
+    }
+
+    .hero-point strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:.98rem;
+      color:#fff;
+    }
+
+    .hero-point span{
+      color:rgba(255,255,255,.88);
+      font-size:.92rem;
+    }
+
+    .about{
+      padding:70px 0;
+      background:var(--soft);
+    }
+
+    .about-card{
+      background:#fff;
+      border:1px solid rgba(13,39,69,.08);
+      border-radius:30px;
+      padding:34px;
+      box-shadow:0 18px 42px rgba(13,39,69,.06);
+    }
+
+    .about-card h2{
+      font-size:1.9rem;
+      line-height:1.1;
+      letter-spacing:-.03em;
+      color:var(--secondary);
+      margin-bottom:12px;
+    }
+
+    .about-card > p{
+      color:var(--text);
+      max-width:850px;
+      margin-bottom:24px;
+    }
+
+    .detail-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .detail-item{
+      background:#f8fbff;
+      border:1px solid rgba(13,39,69,.06);
+      border-radius:20px;
+      padding:22px;
+    }
+
+    .detail-item h4{
+      color:var(--secondary);
+      font-size:1rem;
+      margin-bottom:8px;
+    }
+
+    .detail-item p{
+      color:var(--text);
+      font-size:.95rem;
+    }
+
+    .footer{
+      padding:24px 0 40px;
+      text-align:center;
+      color:#73839a;
+      font-size:.92rem;
+    }
+
+    @media (max-width: 980px){
+      .hero{
+        min-height:auto;
+      }
+      .hero-grid{
+        grid-template-columns:1fr;
+        gap:28px;
+        padding:42px 0 56px;
+      }
+      .hero-points,
+      .detail-grid{
+        grid-template-columns:1fr;
+      }
+      .hero-copy h1{
+        max-width:620px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .nav-inner{min-height:68px}
+      .brand{font-size:1.12rem}
+      .nav-btn{padding:10px 14px;font-size:.92rem}
+      .lead-card{padding:20px;border-radius:22px}
+      .about-card{padding:22px;border-radius:24px}
+      .hero-copy h1{font-size:2.3rem}
+      .country-dropdown{padding:10px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <div class="brand">Cash Doc</div>
+      <a class="nav-btn" href="#">Start Now</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <form class="lead-card" id="apply">
+          <h2>Start Your Loan</h2>
+          <p>Enter your details and continue to the next step.</p>
+
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input id="name" type="text" placeholder="Full Name" required />
+          </div>
+
+          <div class="field">
+            <label for="countryButton">Country</label>
+            <div class="country-picker">
+              <button type="button" class="country-trigger" id="countryButton" aria-expanded="false">
+                <div class="country-value">
+                  <span class="flag-chip" id="selectedFlag">🌍</span>
+                  <div class="country-text">
+                    <strong id="selectedCountryName">Select your country</strong>
+                    <span id="selectedCountryCode">Choose from worldwide markets</span>
+                  </div>
+                </div>
+                <span class="chevron">⌄</span>
+              </button>
+
+              <div class="country-dropdown" id="countryDropdown">
+                <input type="text" class="country-search" id="countrySearch" placeholder="Search country or code">
+                <div class="country-list" id="countryList"></div>
+              </div>
+            </div>
+            <input type="hidden" id="country" required />
+          </div>
+
+          <button class="submit-btn" type="submit">Continue</button>
+          <div class="mini-note">Simple lead capture for personal loan interest.</div>
+        </form>
+
+        <div class="hero-copy">
+          <div class="eyebrow">Personal loan support</div>
+          <h1>Get Personal Loans Faster &amp; Smarter</h1>
+          <p>
+            Cash Doc helps people begin their personal loan journey with a clear first step. Whether the need is emergency expenses, family planning, repairs, education, or bill management, the experience is designed to feel simple, direct, and easy to start.
+          </p>
+
+          <div class="hero-points">
+            <div class="hero-point">
+              <strong>Family-focused support</strong>
+              <span>Useful for real household needs, planned expenses, and unexpected costs.</span>
+            </div>
+            <div class="hero-point">
+              <strong>Worldwide market selection</strong>
+              <span>Choose your country from a searchable list with flags and dial codes.</span>
+            </div>
+            <div class="hero-point">
+              <strong>Quick first step</strong>
+              <span>Only basic details are needed before moving ahead in the journey.</span>
+            </div>
+            <div class="hero-point">
+              <strong>Clear and digital</strong>
+              <span>A short landing page built for better focus and smoother action.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="container">
+      <div class="about-card">
+        <h2>About Cash Doc personal loans</h2>
+        <p>
+          Personal loans are commonly used for everyday financial goals such as medical needs, home repairs, travel, education, debt consolidation, or urgent household expenses. In many markets, they are popular because they often offer fixed repayment schedules and a more predictable borrowing structure. Cash Doc is designed as a clean first-touch landing page where users can enter their details and move toward the next stage with less friction.
+        </p>
+
+        <div class="detail-grid">
+          <div class="detail-item">
+            <h4>Fixed repayment structure</h4>
+            <p>Many personal loan products are valued for predictable monthly payments over a defined term.</p>
+          </div>
+          <div class="detail-item">
+            <h4>Common real-life uses</h4>
+            <p>Families and individuals often look at personal loans for repairs, bills, education, and short-term cash flow needs.</p>
+          </div>
+          <div class="detail-item">
+            <h4>Simple entry experience</h4>
+            <p>This page keeps the first action light so users can begin quickly without extra complexity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © 2026 Cash Doc. All rights reserved.
+  </footer>
+
+  <script>
+    const countries = [
+      {name:"Afghanistan", code:"+93", flag:"🇦🇫"},
+      {name:"Albania", code:"+355", flag:"🇦🇱"},
+      {name:"Algeria", code:"+213", flag:"🇩🇿"},
+      {name:"Andorra", code:"+376", flag:"🇦🇩"},
+      {name:"Angola", code:"+244", flag:"🇦🇴"},
+      {name:"Antigua and Barbuda", code:"+1-268", flag:"🇦🇬"},
+      {name:"Argentina", code:"+54", flag:"🇦🇷"},
+      {name:"Armenia", code:"+374", flag:"🇦🇲"},
+      {name:"Australia", code:"+61", flag:"🇦🇺"},
+      {name:"Austria", code:"+43", flag:"🇦🇹"},
+      {name:"Azerbaijan", code:"+994", flag:"🇦🇿"},
+      {name:"Bahamas", code:"+1-242", flag:"🇧🇸"},
+      {name:"Bahrain", code:"+973", flag:"🇧🇭"},
+      {name:"Bangladesh", code:"+880", flag:"🇧🇩"},
+      {name:"Barbados", code:"+1-246", flag:"🇧🇧"},
+      {name:"Belarus", code:"+375", flag:"🇧🇾"},
+      {name:"Belgium", code:"+32", flag:"🇧🇪"},
+      {name:"Belize", code:"+501", flag:"🇧🇿"},
+      {name:"Benin", code:"+229", flag:"🇧🇯"},
+      {name:"Bhutan", code:"+975", flag:"🇧🇹"},
+      {name:"Bolivia", code:"+591", flag:"🇧🇴"},
+      {name:"Bosnia and Herzegovina", code:"+387", flag:"🇧🇦"},
+      {name:"Botswana", code:"+267", flag:"🇧🇼"},
+      {name:"Brazil", code:"+55", flag:"🇧🇷"},
+      {name:"Brunei", code:"+673", flag:"🇧🇳"},
+      {name:"Bulgaria", code:"+359", flag:"🇧🇬"},
+      {name:"Burkina Faso", code:"+226", flag:"🇧🇫"},
+      {name:"Burundi", code:"+257", flag:"🇧🇮"},
+      {name:"Cambodia", code:"+855", flag:"🇰🇭"},
+      {name:"Cameroon", code:"+237", flag:"🇨🇲"},
+      {name:"Canada", code:"+1", flag:"🇨🇦"},
+      {name:"Cape Verde", code:"+238", flag:"🇨🇻"},
+      {name:"Central African Republic", code:"+236", flag:"🇨🇫"},
+      {name:"Chad", code:"+235", flag:"🇹🇩"},
+      {name:"Chile", code:"+56", flag:"🇨🇱"},
+      {name:"China", code:"+86", flag:"🇨🇳"},
+      {name:"Colombia", code:"+57", flag:"🇨🇴"},
+      {name:"Comoros", code:"+269", flag:"🇰🇲"},
+      {name:"Congo", code:"+242", flag:"🇨🇬"},
+      {name:"Costa Rica", code:"+506", flag:"🇨🇷"},
+      {name:"Croatia", code:"+385", flag:"🇭🇷"},
+      {name:"Cuba", code:"+53", flag:"🇨🇺"},
+      {name:"Cyprus", code:"+357", flag:"🇨🇾"},
+      {name:"Czech Republic", code:"+420", flag:"🇨🇿"},
+      {name:"Denmark", code:"+45", flag:"🇩🇰"},
+      {name:"Djibouti", code:"+253", flag:"🇩🇯"},
+      {name:"Dominica", code:"+1-767", flag:"🇩🇲"},
+      {name:"Dominican Republic", code:"+1-809", flag:"🇩🇴"},
+      {name:"Ecuador", code:"+593", flag:"🇪🇨"},
+      {name:"Egypt", code:"+20", flag:"🇪🇬"},
+      {name:"El Salvador", code:"+503", flag:"🇸🇻"},
+      {name:"Equatorial Guinea", code:"+240", flag:"🇬🇶"},
+      {name:"Eritrea", code:"+291", flag:"🇪🇷"},
+      {name:"Estonia", code:"+372", flag:"🇪🇪"},
+      {name:"Eswatini", code:"+268", flag:"🇸🇿"},
+      {name:"Ethiopia", code:"+251", flag:"🇪🇹"},
+      {name:"Fiji", code:"+679", flag:"🇫🇯"},
+      {name:"Finland", code:"+358", flag:"🇫🇮"},
+      {name:"France", code:"+33", flag:"🇫🇷"},
+      {name:"Gabon", code:"+241", flag:"🇬🇦"},
+      {name:"Gambia", code:"+220", flag:"🇬🇲"},
+      {name:"Georgia", code:"+995", flag:"🇬🇪"},
+      {name:"Germany", code:"+49", flag:"🇩🇪"},
+      {name:"Ghana", code:"+233", flag:"🇬🇭"},
+      {name:"Greece", code:"+30", flag:"🇬🇷"},
+      {name:"Grenada", code:"+1-473", flag:"🇬🇩"},
+      {name:"Guatemala", code:"+502", flag:"🇬🇹"},
+      {name:"Guinea", code:"+224", flag:"🇬🇳"},
+      {name:"Guinea-Bissau", code:"+245", flag:"🇬🇼"},
+      {name:"Guyana", code:"+592", flag:"🇬🇾"},
+      {name:"Haiti", code:"+509", flag:"🇭🇹"},
+      {name:"Honduras", code:"+504", flag:"🇭🇳"},
+      {name:"Hungary", code:"+36", flag:"🇭🇺"},
+      {name:"Iceland", code:"+354", flag:"🇮🇸"},
+      {name:"India", code:"+91", flag:"🇮🇳"},
+      {name:"Indonesia", code:"+62", flag:"🇮🇩"},
+      {name:"Iran", code:"+98", flag:"🇮🇷"},
+      {name:"Iraq", code:"+964", flag:"🇮🇶"},
+      {name:"Ireland", code:"+353", flag:"🇮🇪"},
+      {name:"Israel", code:"+972", flag:"🇮🇱"},
+      {name:"Italy", code:"+39", flag:"🇮🇹"},
+      {name:"Jamaica", code:"+1-876", flag:"🇯🇲"},
+      {name:"Japan", code:"+81", flag:"🇯🇵"},
+      {name:"Jordan", code:"+962", flag:"🇯🇴"},
+      {name:"Kazakhstan", code:"+7", flag:"🇰🇿"},
+      {name:"Kenya", code:"+254", flag:"🇰🇪"},
+      {name:"Kiribati", code:"+686", flag:"🇰🇮"},
+      {name:"Kuwait", code:"+965", flag:"🇰🇼"},
+      {name:"Kyrgyzstan", code:"+996", flag:"🇰🇬"},
+      {name:"Laos", code:"+856", flag:"🇱🇦"},
+      {name:"Latvia", code:"+371", flag:"🇱🇻"},
+      {name:"Lebanon", code:"+961", flag:"🇱🇧"},
+      {name:"Lesotho", code:"+266", flag:"🇱🇸"},
+      {name:"Liberia", code:"+231", flag:"🇱🇷"},
+      {name:"Libya", code:"+218", flag:"🇱🇾"},
+      {name:"Liechtenstein", code:"+423", flag:"🇱🇮"},
+      {name:"Lithuania", code:"+370", flag:"🇱🇹"},
+      {name:"Luxembourg", code:"+352", flag:"🇱🇺"},
+      {name:"Madagascar", code:"+261", flag:"🇲🇬"},
+      {name:"Malawi", code:"+265", flag:"🇲🇼"},
+      {name:"Malaysia", code:"+60", flag:"🇲🇾"},
+      {name:"Maldives", code:"+960", flag:"🇲🇻"},
+      {name:"Mali", code:"+223", flag:"🇲🇱"},
+      {name:"Malta", code:"+356", flag:"🇲🇹"},
+      {name:"Marshall Islands", code:"+692", flag:"🇲🇭"},
+      {name:"Mauritania", code:"+222", flag:"🇲🇷"},
+      {name:"Mauritius", code:"+230", flag:"🇲🇺"},
+      {name:"Mexico", code:"+52", flag:"🇲🇽"},
+      {name:"Micronesia", code:"+691", flag:"🇫🇲"},
+      {name:"Moldova", code:"+373", flag:"🇲🇩"},
+      {name:"Monaco", code:"+377", flag:"🇲🇨"},
+      {name:"Mongolia", code:"+976", flag:"🇲🇳"},
+      {name:"Montenegro", code:"+382", flag:"🇲🇪"},
+      {name:"Morocco", code:"+212", flag:"🇲🇦"},
+      {name:"Mozambique", code:"+258", flag:"🇲🇿"},
+      {name:"Myanmar", code:"+95", flag:"🇲🇲"},
+      {name:"Namibia", code:"+264", flag:"🇳🇦"},
+      {name:"Nauru", code:"+674", flag:"🇳🇷"},
+      {name:"Nepal", code:"+977", flag:"🇳🇵"},
+      {name:"Netherlands", code:"+31", flag:"🇳🇱"},
+      {name:"New Zealand", code:"+64", flag:"🇳🇿"},
+      {name:"Nicaragua", code:"+505", flag:"🇳🇮"},
+      {name:"Niger", code:"+227", flag:"🇳🇪"},
+      {name:"Nigeria", code:"+234", flag:"🇳🇬"},
+      {name:"North Korea", code:"+850", flag:"🇰🇵"},
+      {name:"North Macedonia", code:"+389", flag:"🇲🇰"},
+      {name:"Norway", code:"+47", flag:"🇳🇴"},
+      {name:"Oman", code:"+968", flag:"🇴🇲"},
+      {name:"Pakistan", code:"+92", flag:"🇵🇰"},
+      {name:"Palau", code:"+680", flag:"🇵🇼"},
+      {name:"Panama", code:"+507", flag:"🇵🇦"},
+      {name:"Papua New Guinea", code:"+675", flag:"🇵🇬"},
+      {name:"Paraguay", code:"+595", flag:"🇵🇾"},
+      {name:"Peru", code:"+51", flag:"🇵🇪"},
+      {name:"Philippines", code:"+63", flag:"🇵🇭"},
+      {name:"Poland", code:"+48", flag:"🇵🇱"},
+      {name:"Portugal", code:"+351", flag:"🇵🇹"},
+      {name:"Qatar", code:"+974", flag:"🇶🇦"},
+      {name:"Romania", code:"+40", flag:"🇷🇴"},
+      {name:"Russia", code:"+7", flag:"🇷🇺"},
+      {name:"Rwanda", code:"+250", flag:"🇷🇼"},
+      {name:"Saint Kitts and Nevis", code:"+1-869", flag:"🇰🇳"},
+      {name:"Saint Lucia", code:"+1-758", flag:"🇱🇨"},
+      {name:"Saint Vincent and the Grenadines", code:"+1-784", flag:"🇻🇨"},
+      {name:"Samoa", code:"+685", flag:"🇼🇸"},
+      {name:"San Marino", code:"+378", flag:"🇸🇲"},
+      {name:"Sao Tome and Principe", code:"+239", flag:"🇸🇹"},
+      {name:"Saudi Arabia", code:"+966", flag:"🇸🇦"},
+      {name:"Senegal", code:"+221", flag:"🇸🇳"},
+      {name:"Serbia", code:"+381", flag:"🇷🇸"},
+      {name:"Seychelles", code:"+248", flag:"🇸🇨"},
+      {name:"Sierra Leone", code:"+232", flag:"🇸🇱"},
+      {name:"Singapore", code:"+65", flag:"🇸🇬"},
+      {name:"Slovakia", code:"+421", flag:"🇸🇰"},
+      {name:"Slovenia", code:"+386", flag:"🇸🇮"},
+      {name:"Solomon Islands", code:"+677", flag:"🇸🇧"},
+      {name:"Somalia", code:"+252", flag:"🇸🇴"},
+      {name:"South Africa", code:"+27", flag:"🇿🇦"},
+      {name:"South Korea", code:"+82", flag:"🇰🇷"},
+      {name:"South Sudan", code:"+211", flag:"🇸🇸"},
+      {name:"Spain", code:"+34", flag:"🇪🇸"},
+      {name:"Sri Lanka", code:"+94", flag:"🇱🇰"},
+      {name:"Sudan", code:"+249", flag:"🇸🇩"},
+      {name:"Suriname", code:"+597", flag:"🇸🇷"},
+      {name:"Sweden", code:"+46", flag:"🇸🇪"},
+      {name:"Switzerland", code:"+41", flag:"🇨🇭"},
+      {name:"Syria", code:"+963", flag:"🇸🇾"},
+      {name:"Taiwan", code:"+886", flag:"🇹🇼"},
+      {name:"Tajikistan", code:"+992", flag:"🇹🇯"},
+      {name:"Tanzania", code:"+255", flag:"🇹🇿"},
+      {name:"Thailand", code:"+66", flag:"🇹🇭"},
+      {name:"Timor-Leste", code:"+670", flag:"🇹🇱"},
+      {name:"Togo", code:"+228", flag:"🇹🇬"},
+      {name:"Tonga", code:"+676", flag:"🇹🇴"},
+      {name:"Trinidad and Tobago", code:"+1-868", flag:"🇹🇹"},
+      {name:"Tunisia", code:"+216", flag:"🇹🇳"},
+      {name:"Turkey", code:"+90", flag:"🇹🇷"},
+      {name:"Turkmenistan", code:"+993", flag:"🇹🇲"},
+      {name:"Tuvalu", code:"+688", flag:"🇹🇻"},
+      {name:"Uganda", code:"+256", flag:"🇺🇬"},
+      {name:"Ukraine", code:"+380", flag:"🇺🇦"},
+      {name:"United Arab Emirates", code:"+971", flag:"🇦🇪"},
+      {name:"United Kingdom", code:"+44", flag:"🇬🇧"},
+      {name:"United States", code:"+1", flag:"🇺🇸"},
+      {name:"Uruguay", code:"+598", flag:"🇺🇾"},
+      {name:"Uzbekistan", code:"+998", flag:"🇺🇿"},
+      {name:"Vanuatu", code:"+678", flag:"🇻🇺"},
+      {name:"Vatican City", code:"+379", flag:"🇻🇦"},
+      {name:"Venezuela", code:"+58", flag:"🇻🇪"},
+      {name:"Vietnam", code:"+84", flag:"🇻🇳"},
+      {name:"Yemen", code:"+967", flag:"🇾🇪"},
+      {name:"Zambia", code:"+260", flag:"🇿🇲"},
+      {name:"Zimbabwe", code:"+263", flag:"🇿🇼"}
+    ];
+
+    const countryButton = document.getElementById('countryButton');
+    const countryDropdown = document.getElementById('countryDropdown');
+    const countryList = document.getElementById('countryList');
+    const countrySearch = document.getElementById('countrySearch');
+    const selectedFlag = document.getElementById('selectedFlag');
+    const selectedCountryName = document.getElementById('selectedCountryName');
+    const selectedCountryCode = document.getElementById('selectedCountryCode');
+    const hiddenCountry = document.getElementById('country');
+
+    function renderCountries(items){
+      countryList.innerHTML = items.map(country => `
+        <button type="button" class="country-item" data-name="${country.name}" data-code="${country.code}" data-flag="${country.flag}">
+          <div class="country-item-left">
+            <span class="flag-chip">${country.flag}</span>
+            <div class="country-text">
+              <strong>${country.name}</strong>
+              <span>${country.code}</span>
+            </div>
+          </div>
+          <small>Select</small>
+        </button>
+      `).join('');
+
+      countryList.querySelectorAll('.country-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedFlag.textContent = btn.dataset.flag;
+          selectedCountryName.textContent = btn.dataset.name;
+          selectedCountryCode.textContent = btn.dataset.code;
+          hiddenCountry.value = `${btn.dataset.name} (${btn.dataset.code})`;
+          closeDropdown();
+        });
+      });
+    }
+
+    function openDropdown(){
+      countryDropdown.classList.add('open');
+      countryButton.classList.add('active');
+      countryButton.setAttribute('aria-expanded', 'true');
+      setTimeout(() => countrySearch.focus(), 50);
+    }
+
+    function closeDropdown(){
+      countryDropdown.classList.remove('open');
+      countryButton.classList.remove('active');
+      countryButton.setAttribute('aria-expanded', 'false');
+    }
+
+    countryButton.addEventListener('click', () => {
+      countryDropdown.classList.contains('open') ? closeDropdown() : openDropdown();
+    });
+
+    countrySearch.addEventListener('input', (e) => {
+      const value = e.target.value.trim().toLowerCase();
+      const filtered = countries.filter(country =>
+        country.name.toLowerCase().includes(value) ||
+        country.code.toLowerCase().includes(value)
+      );
+      renderCountries(filtered);
+    });
+
+    document.addEventListener('click', (e) => {
+      if(!e.target.closest('.country-picker')){
+        closeDropdown();
+      }
+    });
+
+    renderCountries(countries);
+
+    document.querySelector('form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const country = hiddenCountry.value.trim();
+      if(!name || !country){
+        alert('Please enter your name and select your country.');
+        return;
+      }
+      alert(`Thank you, ${name}! Your selected country is ${country}.`);
+    });
+
+    document.querySelector('form').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const country = document.getElementById('country').value.trim();
+
+  if(!name || !country){
+    alert('Please enter your name and select your country.');
+    return;
+  }
+
+  window.location.href = "#";
+});
+  </script>
+</body>
+</html>
