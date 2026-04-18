@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manychat Style Landing Page</title>
+  <style>
+    :root {
+      :root {
+      --bg: #ffffff;
+      --panel: rgba(0, 0, 0, 0.04);
+      --panel-strong: rgba(0, 0, 0, 0.08);
+      --text: #111111;
+      --muted: rgba(0,0,0,0.72);
+      --subtle: rgba(0,0,0,0.58);
+      --outline: rgba(0,0,0,0.14);
+      --outline-strong: rgba(0,0,0,0.28);
+      --accent-start: #ff00d6;
+      --accent-end: #9a00ff;
+      --focus: #5b9cff;
+      --shadow: 0 18px 40px rgba(0,0,0,0.12);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --blur: blur(10px);
+    }
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    a, button { -webkit-tap-highlight-color: transparent; text-decoration: none; }
+
+    .page-shell {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.86) 34%, rgba(255,255,255,0.62) 58%, rgba(255,255,255,0.34) 100%),
+        linear-gradient(0deg, rgba(0,0,0,0.18), rgba(0,0,0,0.18)),
+        url('https://images.unsplash.com/photo-1556745757-8d76bdb6984b?q=80&w=1600&auto=format&fit=crop') center center / cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: none;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .chat-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.95;
+    }
+
+    .bubble {
+      position: absolute;
+      max-width: 220px;
+      padding: 12px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(0,0,0,0.08);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #111;
+      font-size: 0.9rem;
+      line-height: 1.35;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+    }
+
+    .bubble small {
+      display: block;
+      margin-top: 6px;
+      color: rgba(0,0,0,0.5);
+      font-size: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+
+    .bubble.one { top: 18%; right: 10%; }
+    .bubble.two { top: 36%; right: 6%; max-width: 220px; }
+    .bubble.three { bottom: 18%; right: 17%; max-width: 200px; }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: min(1380px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 32px;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 5;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .header::before {
+      content: none;
+    }
+
+    .brand-group, .nav, .actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-group {
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .logo {
+      font-size: clamp(2rem, 2.2vw, 2.85rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.075em;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .lang-btn,
+    .nav-link,
+    .ghost-btn,
+    .sign-in,
+    .cta-btn,
+    .secondary-btn,
+    .lang-option,
+    .mobile-toggle,
+    .feature-card {
+      position: relative;
+      padding: 20px;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid rgba(17,17,17,0.08);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+    }
+
+    .lang-btn,
+    .nav-link,
+    .ghost-btn,
+    .sign-in,
+    .cta-btn,
+    .secondary-btn {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: #f5f5f5;
+      color: #111;
+      border: none;
+    }
+
+    .lang-wrap {
+      position: relative;
+    }
+
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 0 12px;
+      border-radius: 999px;
+      color: #111;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(0,0,0,0.08);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .lang-btn .caret {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid currentColor;
+      transform: translateY(1px);
+    }
+
+    .lang-menu {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      min-width: 150px;
+      padding: 8px;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.10);
+    }
+
+    .lang-menu[hidden] { display: none; }
+
+    .lang-option {
+      width: 100%;
+      text-align: left;
+      border: 0;
+      background: transparent;
+      color: #111;
+      font: inherit;
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .lang-option:hover,
+    .lang-option[aria-selected="true"] {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      gap: clamp(18px, 1.8vw, 38px);
+      flex: 1;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      padding: 8px 10px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: #111;
+      border-radius: 10px;
+    }
+
+    .actions {
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .ghost-btn {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: transparent;
+      color: #111;
+      border: none;
+    }
+
+    .sign-in {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 14px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      background: transparent;
+      color: #111;
+      border: none;
+    }
+
+    .content {
+      display: flex;
+      align-items: center;
+      min-height: calc(100vh - 110px);
+      padding: 44px 0 78px;
+    }
+
+    .copy {
+      max-width: 770px;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(0,0,0,0.08);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      font-size: 0.88rem;
+      color: #111;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #111;
+      box-shadow: none;
+    }
+
+    .title {
+      margin: 0;
+      max-width: 700px;
+      font-size: clamp(4rem, 7vw, 7.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.075em;
+      font-weight: 900;
+      text-wrap: balance;
+    }
+
+    .title .accent {
+      color: #111;
+      background: none;
+      -webkit-background-clip: initial;
+      background-clip: initial;
+    }
+
+    .description {
+      margin: 28px 0 34px;
+      max-width: 760px;
+      font-size: clamp(1.12rem, 1.9vw, 1.6rem);
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .cta-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .cta-btn {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 24px;
+      border-radius: 999px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: #111;
+      border: none;
+    }
+
+    .secondary-btn {
+      color: #111;
+    }
+
+    .trust-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--subtle);
+      font-size: 0.96rem;
+    }
+
+    .trust-pills {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.84);
+      border: 1px solid rgba(17,17,17,0.08);
+      font-weight: 600;
+      color: #111;
+      font-size: 0.86rem;
+    }
+
+    .feature-strip {
+      width: min(1380px, calc(100% - 64px));
+      margin: -26px auto 0;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      position: relative;
+      padding: 22px 22px 20px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--muted);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.36);
+    }
+
+    .feature-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+      font-size: 1.15rem;
+      background: #f5f5f5;
+      border: 1px solid rgba(17,17,17,0.06);
+    }
+
+    .feature-card h2 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.2;
+      color: #111;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: rgba(17,17,17,0.64);
+      line-height: 1.5;
+      font-size: 0.92rem;
+    }
+
+    .lang-btn:hover,
+    .nav-link:hover,
+    .ghost-btn:hover,
+    .sign-in:hover,
+    .cta-btn:hover,
+    .secondary-btn:hover,
+    .feature-card:hover,
+    .lang-option:hover,
+    .mobile-toggle:hover {
+      transform: translateY(-2px);
+    }
+
+    .nav-link:hover,
+    .sign-in:hover {
+      background: rgba(17,17,17,0.05);
+    }
+
+    .ghost-btn:hover,
+    .secondary-btn:hover {
+      background: #ffffff;
+      border-color: rgba(17,17,17,0.36);
+    }
+
+    .cta-btn:hover {
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+      background: #222222;
+    }
+
+    .lang-btn:focus-visible,
+    .nav-link:focus-visible,
+    .ghost-btn:focus-visible,
+    .sign-in:focus-visible,
+    .cta-btn:focus-visible,
+    .secondary-btn:focus-visible,
+    .lang-option:focus-visible,
+    .mobile-toggle:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .mobile-toggle {
+      display: none;
+      position: relative;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.05);
+      color: #111;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .mobile-toggle span,
+    .mobile-toggle::before,
+    .mobile-toggle::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 999px;
+      transform: translateX(-50%);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .mobile-toggle span { top: 23px; }
+    .mobile-toggle::before { top: 17px; }
+    .mobile-toggle::after { top: 29px; }
+
+    .mobile-toggle[aria-expanded="true"] span { opacity: 0; }
+    .mobile-toggle[aria-expanded="true"]::before { transform: translateX(-50%) rotate(45deg); top: 23px; }
+    .mobile-toggle[aria-expanded="true"]::after { transform: translateX(-50%) rotate(-45deg); top: 23px; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1180px) {
+      .bubble.one { right: 5%; }
+      .bubble.two { right: 3%; }
+      .bubble.three { right: 12%; }
+    }
+
+    @media (max-width: 980px) {
+      .container,
+      .feature-strip {
+        width: min(100% - 40px, 1380px);
+      }
+
+      .header {
+        flex-wrap: wrap;
+        row-gap: 18px;
+      }
+
+      .header::before {
+        inset: 6px -6px auto;
+      }
+
+      .mobile-toggle {
+        display: inline-flex;
+        margin-left: auto;
+      }
+
+      .nav,
+      .actions {
+        display: none;
+        width: 100%;
+      }
+
+      .header.is-open .nav,
+      .header.is-open .actions {
+        display: flex;
+      }
+
+      .header.is-open .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 8px;
+        padding-top: 8px;
+      }
+
+      .header.is-open .actions {
+        padding-top: 8px;
+        gap: 12px;
+      }
+
+      .content {
+        min-height: auto;
+        padding: 34px 0 96px;
+      }
+
+      .feature-strip {
+        grid-template-columns: 1fr;
+        margin-top: -52px;
+      }
+
+      .bubble {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container,
+      .feature-strip {
+        width: min(100% - 24px, 1380px);
+      }
+
+      .hero {
+        background-position: 62% center;
+      }
+
+      .header {
+        padding-top: 12px;
+      }
+
+      .brand-group {
+        gap: 10px;
+      }
+
+      .logo { font-size: 2rem; }
+
+      .eyebrow {
+        font-size: 0.88rem;
+        padding: 9px 13px;
+      }
+
+      .description {
+        margin: 22px 0 26px;
+      }
+
+      .cta-group,
+      .header.is-open .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .cta-btn,
+      .secondary-btn,
+      .ghost-btn {
+        width: 100%;
+      }
+
+      .trust-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <section class="hero" aria-label="Hero section">
+      <div class="chat-decor" aria-hidden="true">
+        <div class="bubble one">Reply faster with smart automations 💬<small>Instagram • WhatsApp • Messenger</small></div>
+        <div class="bubble two">Turn every DM into a conversion ⚡<small>Grow engagement automatically</small></div>
+        <div class="bubble three">More chats. Better results. 📈<small>Built for creators and brands</small></div>
+      </div>
+
+      <div class="container">
+        <header class="header" id="siteHeader">
+          <div class="brand-group">
+            <a href="#" class="logo global-link-btn" aria-label="Manychat home">Manychat</a>
+
+            <div class="lang-wrap">
+              <button
+                class="lang-btn"
+                id="langButton"
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="langMenu"
+              >
+                <span id="currentLang">EN</span>
+                <span class="caret" aria-hidden="true"></span>
+              </button>
+
+              <div class="lang-menu" id="langMenu" role="listbox" aria-label="Select language" hidden>
+                <button class="lang-option" type="button" role="option" aria-selected="true" data-lang="EN">English</button>
+                <button class="lang-option" type="button" role="option" aria-selected="false" data-lang="ES">Español</button>
+                <button class="lang-option" type="button" role="option" aria-selected="false" data-lang="FR">Français</button>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="mobile-toggle"
+            id="mobileToggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="primaryNav primaryActions"
+            aria-label="Open navigation menu"
+          >
+            <span aria-hidden="true"></span>
+          </button>
+
+          <nav class="nav" id="primaryNav" aria-label="Primary navigation">
+            <a class="nav-link global-link-btn" href="#product">Product</a>
+            <a class="nav-link global-link-btn" href="#solutions">Solutions</a>
+            <a class="nav-link global-link-btn" href="#agencies">Agencies</a>
+            <a class="nav-link global-link-btn" href="#pricing">Pricing</a>
+            <a class="nav-link global-link-btn" href="#resources">Resources</a>
+          </nav>
+
+          <div class="actions" id="primaryActions">
+            <a class="ghost-btn global-link-btn" href="#get-started" aria-label="Get started with Manychat">Get Started</a>
+            <a class="sign-in global-link-btn" href="#sign-in" aria-label="Sign in to your account">Sign In</a>
+          </div>
+        </header>
+
+        <div class="content">
+          <div class="copy">
+            <div class="eyebrow">
+              <span class="eyebrow-dot" aria-hidden="true"></span>
+              Chat marketing automation for modern brands
+            </div>
+
+            <h1 class="title">Make the most out of every <span class="accent">conversation</span></h1>
+
+            <p class="description">
+              Sell more, engage better, and grow your audience with powerful automations for Instagram, WhatsApp, TikTok, and Messenger.
+            </p>
+
+            <div class="cta-group">
+              <a class="cta-btn global-link-btn" href="#get-started" aria-label="Get started now">Get Started</a>
+              <a class="secondary-btn global-link-btn" href="#product" aria-label="Explore product features">Explore Product</a>
+            </div>
+
+            <div class="trust-row" aria-label="Supported channels">
+              <span>Works with:</span>
+              <div class="trust-pills">
+                <span class="pill">Instagram</span>
+                <span class="pill">WhatsApp</span>
+                <span class="pill">TikTok</span>
+                <span class="pill">Messenger</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-strip" aria-label="Key features overview">
+      <article class="feature-card" id="product">
+        <div class="feature-icon" aria-hidden="true">💬</div>
+        <h2>Smarter Conversations</h2>
+        <p>Build personalized flows that welcome users, answer common questions, and guide them to action with less manual effort.</p>
+      </article>
+
+      <article class="feature-card" id="solutions">
+        <div class="feature-icon" aria-hidden="true">⚡</div>
+        <h2>Fast Lead Capture</h2>
+        <p>Collect leads instantly from chats and create smooth user journeys that reduce friction and improve conversion rates.</p>
+      </article>
+
+      <article class="feature-card" id="resources">
+        <div class="feature-icon" aria-hidden="true">📈</div>
+        <h2>Growth-Focused UX</h2>
+        <p>Clean hierarchy, accessible actions, and a polished interface designed to keep attention on the message and the call to action.</p>
+      </article>
+    </section>
+  </div>
+
+  <script>
+    const header = document.getElementById('siteHeader');
+    const mobileToggle = document.getElementById('mobileToggle');
+    const langButton = document.getElementById('langButton');
+    const langMenu = document.getElementById('langMenu');
+    const currentLang = document.getElementById('currentLang');
+    const langOptions = Array.from(document.querySelectorAll('.lang-option'));
+
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', String(!isOpen));
+      mobileToggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+      header.classList.toggle('is-open', !isOpen);
+    });
+
+    langButton.addEventListener('click', () => {
+      const isExpanded = langButton.getAttribute('aria-expanded') === 'true';
+      langButton.setAttribute('aria-expanded', String(!isExpanded));
+      langMenu.hidden = isExpanded;
+    });
+
+    langOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        currentLang.textContent = option.dataset.lang;
+        langOptions.forEach(btn => btn.setAttribute('aria-selected', String(btn === option)));
+        langButton.setAttribute('aria-expanded', 'false');
+        langMenu.hidden = true;
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      const clickedInsideLang = langButton.contains(event.target) || langMenu.contains(event.target);
+      if (!clickedInsideLang) {
+        langButton.setAttribute('aria-expanded', 'false');
+        langMenu.hidden = true;
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        langButton.setAttribute('aria-expanded', 'false');
+        langMenu.hidden = true;
+
+        if (header.classList.contains('is-open')) {
+          header.classList.remove('is-open');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          mobileToggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+      }
+    });
+
+    class GlobalLinkHandler {
+    constructor(link, className = "global-link-btn") {
+      this.link = link;
+      this.className = className;
+      this.init();
+    }
+
+    init() {
+      const elements = document.querySelectorAll(`.${this.className}`);
+
+      elements.forEach(el => {
+        // If it's an anchor → set href
+        if (el.tagName.toLowerCase() === "a") {
+          el.setAttribute("href", this.link);
+        }
+
+        // Universal click fallback
+        el.addEventListener("click", (e) => {
+          if (el.tagName.toLowerCase() !== "a") {
+            window.location.href = this.link;
+          }
+        });
+
+        // Cursor pointer (UX)
+        el.style.cursor = "pointer";
+      });
+    }
+  }
+
+  // 🔗 Use here (change only this)
+  new GlobalLinkHandler("#");
+  </script>
+</body>
+</html>
