@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decode Online | Premium Sticky Sidebar Website</title>
+  <meta name="description" content="Decode Online is a premium full stack digital marketing agency website with a sticky left sidebar, responsive layout, modern animations, and conversion-focused sections." />
+  <meta name="keywords" content="Decode Online, digital marketing agency, SEO, Google Ads, Meta Ads, social media marketing, performance marketing, content strategy, branding" />
+  <meta name="theme-color" content="#0b3f6f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root{
+      --primary:#0b3f6f;
+      --primary-2:#1d4ed8;
+      --accent:#60a5fa;
+      --accent-2:#93c5fd;
+      --text:#07111f;
+      --muted:#52627b;
+      --bg:#ffffff;
+      --soft:#f4f8fc;
+      --line:rgba(8,18,37,0.08);
+      --card:rgba(255,255,255,0.74);
+      --glass:rgba(255,255,255,0.14);
+      --shadow:0 28px 80px rgba(10,58,102,0.14);
+      --shadow-soft:0 16px 40px rgba(10,58,102,0.08);
+      --sidebar-w:300px;
+      --radius:28px;
+      --radius-sm:20px;
+      --page-max:1580px;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(29,78,216,0.08), transparent 24%),
+        radial-gradient(circle at 92% 10%, rgba(96,165,250,0.10), transparent 22%),
+        linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size:40px 40px;
+      pointer-events:none;
+      opacity:.18;
+      z-index:-1;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    button,input,textarea{font:inherit}
+
+    .page-shell{
+      width:min(calc(100% - 28px), var(--page-max));
+      margin:14px auto 24px;
+      display:grid;
+      grid-template-columns:var(--sidebar-w) minmax(0,1fr);
+      gap:30px;
+      align-items:start;
+    }
+
+    .sidebar{
+      position:sticky;
+      top:14px;
+      align-self:start;
+      width:100%;
+      background:linear-gradient(180deg,rgba(5,25,45,0.92),rgba(11,63,111,0.92) 48%,rgba(29,78,216,0.86));
+      color:#fff;
+      padding:24px 20px;
+      display:flex;
+      flex-direction:column;
+      border:1px solid rgba(255,255,255,0.14);
+      border-radius:34px;
+      backdrop-filter:blur(20px) saturate(135%);
+      box-shadow:0 35px 90px rgba(5,25,45,0.28);
+      overflow:visible;
+      min-height:min-content;
+      z-index:20;
+    }
+    .sidebar::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      background:linear-gradient(180deg,rgba(255,255,255,0.10),transparent 20%,transparent 72%,rgba(255,255,255,0.03));
+      pointer-events:none;
+    }
+    .sidebar::after{
+      content:"";
+      position:absolute;
+      width:220px;height:220px;
+      top:-60px;right:-40px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(147,197,253,0.22), transparent 60%);
+      pointer-events:none;
+    }
+
+    .brand,.sidebar-tag,.nav-links,.sidebar-footer{position:relative;z-index:1}
+    .brand{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+    .brand-mark{
+      width:58px;height:58px;border-radius:20px;
+      background:linear-gradient(135deg,rgba(255,255,255,0.24),rgba(255,255,255,0.08));
+      border:1px solid rgba(255,255,255,0.18);
+      display:grid;place-items:center;
+      font-size:1.34rem;
+      box-shadow:0 16px 34px rgba(0,0,0,0.18);
+    }
+    .brand h1{font-size:1.34rem;line-height:1.02;letter-spacing:-0.03em}
+    .brand p{font-size:.89rem;color:rgba(255,255,255,.74);margin-top:4px}
+
+    .sidebar-tag{
+      padding:15px 16px;
+      border-radius:20px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.12);
+      color:rgba(255,255,255,0.9);
+      font-size:.93rem;
+      line-height:1.6;
+      margin-bottom:20px;
+    }
+
+    .nav-links{display:grid;gap:10px}
+    .nav-links a{
+      display:flex;align-items:center;gap:12px;
+      padding:13px 14px;border-radius:18px;
+      color:rgba(255,255,255,0.82);
+      font-weight:600;
+      transition:.28s ease;
+      border:1px solid transparent;
+    }
+    .nav-links a:hover,
+    .nav-links a.active{
+      background:rgba(255,255,255,0.14);
+      color:#fff;
+      border-color:rgba(255,255,255,0.14);
+      transform:translateX(4px);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+
+    .sidebar-footer{margin-top:22px}
+    .sidebar-cta{
+      padding:20px;
+      border-radius:26px;
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.12);
+      backdrop-filter:blur(12px);
+    }
+    .sidebar-cta h3{font-size:1.06rem;margin-bottom:8px}
+    .sidebar-cta p{font-size:.91rem;color:rgba(255,255,255,.78);margin-bottom:14px;line-height:1.56}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:13px 18px;border-radius:15px;
+      font-weight:700;transition:.3s ease;cursor:pointer;border:1px solid transparent;
+    }
+    .btn-primary{background:linear-gradient(135deg,#ffffff,#eaf2ff);color:var(--primary);box-shadow:0 14px 34px rgba(0,0,0,.1)}
+    .btn-dark{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;box-shadow:0 18px 40px rgba(10,58,102,.22)}
+    .btn-light{background:#fff;border:1px solid var(--line);color:var(--text)}
+    .btn-primary:hover,.btn-dark:hover,.btn-light:hover{transform:translateY(-2px)}
+
+    .menu-toggle{
+      display:none;
+      position:fixed;top:16px;left:16px;z-index:1200;
+      width:52px;height:52px;border:none;border-radius:18px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      color:#fff;box-shadow:0 18px 38px rgba(10,58,102,.24)
+    }
+
+    .main{min-width:0}
+    .container{width:min(calc(100% - 44px),1180px);margin:0 auto}
+    .section{padding:96px 0;position:relative}
+    .section-kicker{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 14px;border-radius:999px;
+      background:rgba(10,58,102,.08);
+      color:var(--primary);font-weight:700;
+      margin-bottom:16px;border:1px solid rgba(10,58,102,.1)
+    }
+    .section-title{
+      font-size:clamp(2rem,4.6vw,3.6rem);
+      line-height:1.02;letter-spacing:-.055em;
+      margin-bottom:16px;font-weight:800
+    }
+    .section-lead{color:var(--muted);max-width:760px;font-size:1.06rem;line-height:1.72}
+
+    .hero{padding:42px 0 82px}
+    .hero-wrap{display:grid;grid-template-columns:1.02fr .98fr;gap:34px;align-items:center}
+    .hero-copy h2{
+      font-size:clamp(2.9rem,6vw,6rem);
+      line-height:.92;letter-spacing:-.078em;
+      margin-bottom:20px;font-weight:800
+    }
+    .gradient-text{
+      background:linear-gradient(135deg,var(--primary),var(--primary-2),var(--accent));
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent
+    }
+    .hero-copy p{font-size:1.08rem;color:var(--muted);max-width:670px;margin-bottom:26px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:24px}
+    .hero-points{display:flex;flex-wrap:wrap;gap:16px;color:var(--muted)}
+    .hero-points span{display:inline-flex;align-items:center;gap:8px}
+
+    .card{
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.84);
+      border-radius:var(--radius);
+      backdrop-filter:blur(18px) saturate(135%);
+      box-shadow:var(--shadow);
+    }
+    .hero-panel{padding:24px;position:relative;overflow:hidden}
+    .hero-panel::before{
+      content:"";position:absolute;right:-70px;top:-70px;
+      width:240px;height:240px;border-radius:50%;
+      background:radial-gradient(circle,rgba(96,165,250,.18),transparent 60%)
+    }
+    .hero-panel img{
+      width:100%;height:320px;object-fit:cover;
+      border-radius:24px;margin-bottom:16px;
+      position:relative;z-index:1;box-shadow:var(--shadow-soft)
+    }
+    .hero-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative;z-index:1}
+    .metric-box{
+      padding:18px;border-radius:20px;background:rgba(255,255,255,.92);
+      border:1px solid var(--line);box-shadow:0 12px 28px rgba(10,58,102,0.06)
+    }
+    .metric-box strong{display:block;font-size:1.76rem;letter-spacing:-.04em;color:var(--primary);margin-bottom:4px}
+    .metric-box span{color:var(--muted);font-size:.94rem}
+
+    .about-grid,.process-grid,.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+    .about-panel,.process-panel,.faq-panel,.contact-panel{padding:32px}
+    .about-highlights,.services-grid,.portfolio-grid,.testimonials-grid,.stats-grid,.footer-grid{display:grid;gap:22px}
+    .about-highlights{grid-template-columns:repeat(2,1fr);margin-top:24px}
+    .mini-card{
+      padding:20px;border-radius:22px;background:#fff;
+      border:1px solid var(--line);transition:.28s ease;
+      box-shadow:0 14px 30px rgba(10,58,102,0.05)
+    }
+    .mini-card:hover{transform:translateY(-6px);box-shadow:0 20px 36px rgba(10,58,102,0.08)}
+    .mini-card h4{margin-bottom:8px}
+    .mini-card p{color:var(--muted);font-size:.96rem}
+
+    .services-grid{grid-template-columns:repeat(3,1fr);margin-top:36px}
+    .service-card{padding:28px;transition:.32s ease;position:relative;overflow:hidden}
+    .service-card::before{
+      content:"";position:absolute;right:-40px;top:-40px;
+      width:120px;height:120px;border-radius:50%;
+      background:radial-gradient(circle,rgba(96,165,250,.12),transparent 60%)
+    }
+    .service-card:hover{transform:translateY(-10px);box-shadow:0 28px 52px rgba(10,58,102,.14)}
+    .icon-box{
+      width:60px;height:60px;border-radius:20px;
+      display:grid;place-items:center;color:#fff;font-size:1.22rem;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      box-shadow:0 14px 28px rgba(10,58,102,.24);
+      margin-bottom:18px;position:relative;z-index:1
+    }
+    .service-card h3,.service-card p,.service-card ul{position:relative;z-index:1}
+    .service-card h3{margin-bottom:10px;font-size:1.18rem}
+    .service-card p{color:var(--muted);margin-bottom:14px}
+    .service-card ul{list-style:none;display:grid;gap:8px}
+    .service-card li{display:flex;gap:10px;color:var(--muted);font-size:.95rem}
+    .service-card li i{color:#0f9d75;margin-top:4px}
+
+    .steps{display:grid;gap:16px}
+    .step{
+      display:flex;gap:16px;padding:20px;border-radius:24px;
+      background:#fff;border:1px solid var(--line);
+      transition:.26s ease;box-shadow:0 12px 30px rgba(10,58,102,0.05)
+    }
+    .step:hover{transform:translateX(8px)}
+    .step-num{
+      min-width:50px;width:50px;height:50px;border-radius:16px;
+      display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      color:#fff;font-weight:800;box-shadow:0 12px 24px rgba(10,58,102,0.18)
+    }
+
+    .portfolio-grid{grid-template-columns:repeat(3,1fr);margin-top:36px}
+    .portfolio-card{overflow:hidden;transition:.32s ease;position:relative}
+    .portfolio-card:hover{transform:translateY(-10px)}
+    .portfolio-card img{width:100%;height:250px;object-fit:cover}
+    .portfolio-content{padding:24px}
+    .portfolio-content h3{margin-bottom:10px}
+    .portfolio-content p{color:var(--muted)}
+
+    .stats-grid{grid-template-columns:repeat(4,1fr);margin-top:36px}
+    .stat-card{padding:32px 22px;text-align:center;position:relative;overflow:hidden}
+    .stat-card::before{
+      content:"";position:absolute;inset:auto -30px -30px auto;
+      width:120px;height:120px;border-radius:50%;
+      background:radial-gradient(circle,rgba(96,165,250,.12),transparent 60%)
+    }
+    .stat-number{
+      font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.05em;
+      color:var(--primary);margin-bottom:6px;position:relative;z-index:1
+    }
+    .stat-card p{color:var(--muted);position:relative;z-index:1}
+
+    .testimonials-grid{grid-template-columns:repeat(3,1fr);margin-top:36px}
+    .testimonial-card{padding:26px;transition:.3s ease}
+    .testimonial-card:hover{transform:translateY(-8px)}
+    .stars{color:#f59e0b;margin-bottom:14px}
+    .testimonial-card p{color:var(--muted);margin-bottom:18px}
+    .reviewer{display:flex;align-items:center;gap:12px}
+    .avatar{
+      width:52px;height:52px;border-radius:50%;
+      display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      color:#fff;font-weight:800;box-shadow:0 12px 24px rgba(10,58,102,0.18)
+    }
+
+    .faq-list{margin-top:26px}
+    .faq-item{border-bottom:1px solid var(--line)}
+    .faq-btn{
+      width:100%;border:none;background:transparent;padding:22px 0;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      text-align:left;font-weight:700;cursor:pointer;color:var(--text)
+    }
+    .faq-btn i{color:var(--primary);transition:.3s ease}
+    .faq-content{max-height:0;overflow:hidden;transition:max-height .35s ease}
+    .faq-content p{color:var(--muted);padding-bottom:20px}
+    .faq-item.active .faq-content{max-height:220px}
+    .faq-item.active .faq-btn i{transform:rotate(180deg)}
+
+    .contact-points{display:grid;gap:14px;margin-top:22px}
+    .contact-point{
+      display:flex;gap:14px;align-items:flex-start;padding:18px;
+      border-radius:20px;background:#fff;border:1px solid var(--line);
+      box-shadow:0 12px 28px rgba(10,58,102,0.05)
+    }
+    .contact-point p,.contact-point a{color:var(--muted)}
+    .contact-form{display:grid;gap:16px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .field{
+      width:100%;padding:15px 16px;border-radius:16px;
+      border:1px solid rgba(8,18,37,.12);background:#fff;
+      outline:none;transition:.25s ease
+    }
+    .field:focus{border-color:rgba(10,58,102,.36);box-shadow:0 0 0 4px rgba(10,58,102,.08)}
+    textarea.field{min-height:150px;resize:vertical}
+    .form-note{color:var(--muted);font-size:.93rem}
+
+    .footer{padding:22px 0 44px}
+    .footer-inner{padding:32px}
+    .footer-grid{grid-template-columns:1.2fr .8fr .8fr 1fr}
+    .footer-col h4{margin-bottom:14px}
+    .footer-col p,.footer-col a{color:var(--muted)}
+    .footer-col a{display:block;margin-bottom:10px;transition:.25s ease}
+    .footer-col a:hover{color:var(--primary);transform:translateX(3px)}
+    .socials{display:flex;gap:12px;margin-top:14px}
+    .socials a{
+      width:44px;height:44px;border-radius:15px;
+      display:grid;place-items:center;background:#fff;border:1px solid var(--line);
+      box-shadow:0 10px 24px rgba(10,58,102,0.06)
+    }
+    .copyright{
+      margin-top:20px;padding-top:18px;border-top:1px solid var(--line);
+      display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--muted)
+    }
+
+    .whatsapp-float{
+      position:fixed;right:18px;bottom:18px;width:60px;height:60px;border-radius:50%;
+      display:grid;place-items:center;background:linear-gradient(135deg,#25D366,#128C7E);
+      color:#fff;font-size:1.55rem;box-shadow:0 18px 40px rgba(18,140,126,.28);z-index:1200
+    }
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .85s ease, transform .85s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .cursor{display:inline-block;color:var(--primary);animation:blink .9s infinite}
+    @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+
+    @media (max-width:1200px){
+      .hero-wrap,.about-grid,.process-grid,.contact-grid{grid-template-columns:1fr}
+      .services-grid,.portfolio-grid,.testimonials-grid,.stats-grid,.footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:980px){
+      .menu-toggle{display:grid;place-items:center}
+      .page-shell{display:block;width:100%;margin:0;padding-bottom:0}
+      .sidebar{
+        position:fixed;top:10px;left:10px;width:var(--sidebar-w);height:calc(100vh - 20px);
+        overflow:auto;transform:translateX(-110%);transition:.32s ease;z-index:1100
+      }
+      .sidebar.open{transform:translateX(0)}
+      .main{padding-top:84px}
+      .hero{padding-top:10px}
+    }
+    @media (max-width:760px){
+      .container{width:min(calc(100% - 24px),1180px)}
+      .hero-metrics,.about-highlights,.services-grid,.portfolio-grid,.testimonials-grid,.stats-grid,.footer-grid,.form-row{grid-template-columns:1fr}
+      .section{padding:74px 0}
+      .hero-copy h2{font-size:clamp(2.4rem,12vw,4rem)}
+      .section-title{font-size:clamp(1.9rem,9vw,2.6rem)}
+      .hero-actions{flex-direction:column;align-items:stretch}
+      :root{--sidebar-w:min(88vw,320px)}
+    }
+  </style>
+</head>
+<body>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+
+  <div class="page-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark"><i class="fa-solid fa-chart-line"></i></div>
+        <div>
+          <h1>Decode Online</h1>
+          <p>Full Stack Digital Marketing</p>
+        </div>
+      </div>
+
+      <div class="sidebar-tag">
+        Premium sticky sidebar experience with no inner desktop scrollbar. The left panel stays connected to the page and naturally stops near the bottom when the content ends.
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="active"><i class="fa-solid fa-house"></i><span>Home</span></a>
+        <a href="#about"><i class="fa-solid fa-circle-info"></i><span>About</span></a>
+        <a href="#services"><i class="fa-solid fa-layer-group"></i><span>Services</span></a>
+        <a href="#process"><i class="fa-solid fa-gears"></i><span>Process</span></a>
+        <a href="#showcase"><i class="fa-solid fa-images"></i><span>Showcase</span></a>
+        <a href="#stats"><i class="fa-solid fa-chart-pie"></i><span>Stats</span></a>
+        <a href="#reviews"><i class="fa-solid fa-star"></i><span>Reviews</span></a>
+        <a href="#faq"><i class="fa-solid fa-circle-question"></i><span>FAQ</span></a>
+        <a href="#contact"><i class="fa-solid fa-envelope"></i><span>Contact</span></a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-cta">
+          <h3>Need marketing support?</h3>
+          <p>Connect your brand with SEO, paid ads, social media, content, funnels, and analytics under one premium strategy.</p>
+          <a href="#contact" class="btn btn-primary">Book a Strategy Call</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="hero section" id="home">
+        <div class="container hero-wrap">
+          <div class="hero-copy reveal">
+            <div class="section-kicker"><i class="fa-solid fa-sparkles"></i> Premium Sticky Sidebar Website</div>
+            <h2>We decode <span class="gradient-text" id="typedText">growth</span><span class="cursor">|</span> for brands that want to look world-class.</h2>
+            <p>
+              Decode Online is a full stack digital marketing agency that brings SEO, paid advertising, social media, content strategy, branding, funnels, and analytics together into one smart growth system. This version uses a sticky connected sidebar on desktop, so the layout feels polished, premium, and naturally aligned with the right-side content.
+            </p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn btn-dark"><i class="fa-solid fa-arrow-right"></i> Start Your Project</a>
+              <a href="#services" class="btn btn-light"><i class="fa-solid fa-briefcase"></i> Explore Services</a>
+            </div>
+            <div class="hero-points">
+              <span><i class="fa-solid fa-circle-check"></i> Sticky connected sidebar</span>
+              <span><i class="fa-solid fa-circle-check"></i> Premium visual hierarchy</span>
+              <span><i class="fa-solid fa-circle-check"></i> Designed for trust and conversion</span>
+            </div>
+          </div>
+
+          <div class="hero-panel card reveal">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Digital marketing analytics dashboard">
+            <div class="hero-metrics">
+              <div class="metric-box">
+                <strong>182%</strong>
+                <span>Growth visibility uplift</span>
+              </div>
+              <div class="metric-box">
+                <strong>94%</strong>
+                <span>Lead quality focus</span>
+              </div>
+              <div class="metric-box">
+                <strong>24/7</strong>
+                <span>Campaign observation mindset</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container about-grid">
+          <div class="reveal">
+            <div class="section-kicker"><i class="fa-solid fa-circle-info"></i> About Decode Online</div>
+            <h2 class="section-title">A digital marketing partner built for visibility, performance, and scale.</h2>
+            <p class="section-lead">
+              Decode Online helps businesses move beyond disconnected marketing efforts. We build connected digital ecosystems where SEO, ads, social media, content, and conversion systems work together to create stronger brand presence and better business outcomes.
+            </p>
+            <div class="about-highlights">
+              <div class="mini-card">
+                <h4>Business-first strategy</h4>
+                <p>Every recommendation is aligned with leads, sales, awareness, or customer retention.</p>
+              </div>
+              <div class="mini-card">
+                <h4>Creative plus analytical</h4>
+                <p>We combine strong messaging with data-backed optimization.</p>
+              </div>
+              <div class="mini-card">
+                <h4>Connected channels</h4>
+                <p>SEO, paid ads, content, and social media work as one growth engine.</p>
+              </div>
+              <div class="mini-card">
+                <h4>Scalable systems</h4>
+                <p>Built for startups, local businesses, and growth-stage brands.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-panel card reveal">
+            <div class="section-kicker"><i class="fa-solid fa-bullseye"></i> Why this layout works</div>
+            <h3 style="font-size:1.55rem;line-height:1.2;margin-bottom:14px;">The left sidebar stays visually connected to the page instead of feeling like a separate floating column.</h3>
+            <p class="section-lead" style="max-width:100%;margin-bottom:18px;">
+              On desktop, the sidebar uses sticky positioning rather than its own internal scrollbar. That means it stays visible while you scroll, but naturally stops when the main page content ends. On mobile, it switches to a slide-out menu for better usability.
+            </p>
+            <div class="steps">
+              <div class="step">
+                <div class="step-num"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                <div><strong>Clear navigation</strong><p style="color:var(--muted)">Users can move through long sections without losing their place.</p></div>
+              </div>
+              <div class="step">
+                <div class="step-num"><i class="fa-solid fa-palette"></i></div>
+                <div><strong>Premium presentation</strong><p style="color:var(--muted)">The page feels more editorial, structured, and agency-grade.</p></div>
+              </div>
+              <div class="step">
+                <div class="step-num"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <div><strong>Responsive behavior</strong><p style="color:var(--muted)">Desktop gets sticky sidebar, mobile gets slide-out menu.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container">
+          <div class="reveal">
+            <div class="section-kicker"><i class="fa-solid fa-layer-group"></i> Services</div>
+            <h2 class="section-title">Full stack digital marketing services under one system.</h2>
+            <p class="section-lead">
+              Decode Online covers the entire digital growth journey, from visibility and traffic generation to conversion and reporting.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card card reveal">
+              <div class="icon-box"><i class="fa-solid fa-magnifying-glass"></i></div>
+              <h3>SEO & Organic Growth</h3>
+              <p>Build discoverability and long-term traffic with technical SEO, keyword mapping, and content optimization.</p>
+              <ul>
+                <li><i class="fa-solid fa-check"></i><span>On-page SEO and keyword targeting</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Technical audit and fixes</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Content strategy for search growth</span></li>
+              </ul>
+            </article>
+
+            <article class="service-card card reveal">
+              <div class="icon-box"><i class="fa-solid fa-bullhorn"></i></div>
+              <h3>Google & Meta Ads</h3>
+              <p>Run performance-focused campaigns across search, display, shopping, and social platforms.</p>
+              <ul>
+                <li><i class="fa-solid fa-check"></i><span>Campaign setup and targeting</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Creative and copy testing</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Budget optimization and reporting</span></li>
+              </ul>
+            </article>
+
+            <article class="service-card card reveal">
+              <div class="icon-box"><i class="fa-solid fa-hashtag"></i></div>
+              <h3>Social Media Marketing</h3>
+              <p>Create stronger engagement and brand recall through platform-specific content systems.</p>
+              <ul>
+                <li><i class="fa-solid fa-check"></i><span>Content planning and scheduling</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Creative hooks and visual direction</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Audience engagement support</span></li>
+              </ul>
+            </article>
+
+            <article class="service-card card reveal">
+              <div class="icon-box"><i class="fa-solid fa-pen-ruler"></i></div>
+              <h3>Branding & Content Strategy</h3>
+              <p>Sharpen your brand voice, campaign messaging, offer clarity, and digital identity.</p>
+              <ul>
+                <li><i class="fa-solid fa-check"></i><span>Brand messaging framework</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Campaign copy and landing page writing</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Content architecture and direction</span></li>
+              </ul>
+            </article>
+
+            <article class="service-card card reveal">
+              <div class="icon-box"><i class="fa-solid fa-chart-simple"></i></div>
+              <h3>Analytics & Reporting</h3>
+              <p>Understand what is really working with tracking systems and KPI-based reporting.</p>
+              <ul>
+                <li><i class="fa-solid fa-check"></i><span>GA4 and pixel setup</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Dashboard reporting and insights</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Attribution and decision support</span></li>
+              </ul>
+            </article>
+
+            <article class="service-card card reveal">
+              <div class="icon-box"><i class="fa-solid fa-filter-circle-dollar"></i></div>
+              <h3>Funnels & Conversion Optimization</h3>
+              <p>Improve how traffic turns into leads, sales, and inquiries through better digital journeys.</p>
+              <ul>
+                <li><i class="fa-solid fa-check"></i><span>Landing page flow recommendations</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Retargeting and follow-up paths</span></li>
+                <li><i class="fa-solid fa-check"></i><span>CTA and offer optimization</span></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="process">
+        <div class="container process-grid">
+          <div class="process-panel card reveal">
+            <div class="section-kicker"><i class="fa-solid fa-gears"></i> Process</div>
+            <h2 class="section-title">A smooth process from strategy to scaling.</h2>
+            <p class="section-lead" style="max-width:100%;">
+              We keep digital growth practical and structured, so every stage of the work is understandable, measurable, and aligned with business goals.
+            </p>
+          </div>
+          <div class="steps reveal">
+            <div class="step">
+              <div class="step-num">01</div>
+              <div><strong>Discovery</strong><p style="color:var(--muted)">Understand your brand, audience, offer, and current marketing gaps.</p></div>
+            </div>
+            <div class="step">
+              <div class="step-num">02</div>
+              <div><strong>Strategy Mapping</strong><p style="color:var(--muted)">Define channels, content, campaign structure, and measurement goals.</p></div>
+            </div>
+            <div class="step">
+              <div class="step-num">03</div>
+              <div><strong>Execution</strong><p style="color:var(--muted)">Launch campaigns, content systems, landing pages, and analytics setup.</p></div>
+            </div>
+            <div class="step">
+              <div class="step-num">04</div>
+              <div><strong>Optimization</strong><p style="color:var(--muted)">Analyze results, improve weak points, and scale what creates momentum.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="showcase">
+        <div class="container">
+          <div class="reveal">
+            <div class="section-kicker"><i class="fa-solid fa-images"></i> Signature Showcase</div>
+            <h2 class="section-title">Portfolio-style sections with real visuals.</h2>
+            <p class="section-lead">This showcase feels more editorial and premium, making it a strong fit for luxury service presentation, flagship projects, or polished case study storytelling.</p>
+          </div>
+
+          <div class="portfolio-grid">
+            <article class="portfolio-card card reveal">
+              <img src="https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&w=1200&q=80" alt="Performance marketing strategy meeting">
+              <div class="portfolio-content">
+                <h3>Performance campaign architecture</h3>
+                <p>Ad account structure, landing pages, creative direction, and retargeting aligned for better digital conversion quality.</p>
+              </div>
+            </article>
+            <article class="portfolio-card card reveal">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="SEO planning and content strategy on laptop">
+              <div class="portfolio-content">
+                <h3>SEO and content growth system</h3>
+                <p>Search visibility frameworks with technical fixes, content mapping, and long-term organic authority building.</p>
+              </div>
+            </article>
+            <article class="portfolio-card card reveal">
+              <img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=1200&q=80" alt="Social media content creation and digital brand engagement">
+              <div class="portfolio-content">
+                <h3>Social media engagement engine</h3>
+                <p>Visual content systems, posting strategy, branded storytelling, and audience-led creative planning.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="stats">
+        <div class="container">
+          <div class="reveal">
+            <div class="section-kicker"><i class="fa-solid fa-chart-pie"></i> Stats</div>
+            <h2 class="section-title">Numbers that make the message stronger.</h2>
+            <p class="section-lead">These counters create a stronger sense of momentum and make the page feel more polished, dynamic, and performance-led.</p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card card reveal">
+              <div class="stat-number" data-target="120">0</div>
+              <p>Growth plans launched</p>
+            </div>
+            <div class="stat-card card reveal">
+              <div class="stat-number" data-target="92">0</div>
+              <p>Conversion-focused campaign setups</p>
+            </div>
+            <div class="stat-card card reveal">
+              <div class="stat-number" data-target="180">0</div>
+              <p>Average visibility uplift benchmark</p>
+            </div>
+            <div class="stat-card card reveal">
+              <div class="stat-number" data-target="24">0</div>
+              <p>Optimization rhythm mindset</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="reviews">
+        <div class="container">
+          <div class="reveal">
+            <div class="section-kicker"><i class="fa-solid fa-star"></i> Reviews</div>
+            <h2 class="section-title">A layout that supports trust-building beautifully.</h2>
+            <p class="section-lead">Testimonials sit inside a more luxurious layout structure that strengthens trust while keeping the page elegant and conversion-ready.</p>
+          </div>
+
+          <div class="testimonials-grid">
+            <article class="testimonial-card card reveal">
+              <div class="stars"><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i></div>
+              <p>Decode Online helped us bring structure to our digital marketing. The strategy felt clear, the design felt premium, and the direction was far better than our earlier fragmented efforts.</p>
+              <div class="reviewer">
+                <div class="avatar">R</div>
+                <div><strong>Riya Sharma</strong><div style="color:var(--muted)">Founder, D2C Brand</div></div>
+              </div>
+            </article>
+            <article class="testimonial-card card reveal">
+              <div class="stars"><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i></div>
+              <p>The sticky sidebar layout looks premium and different from typical websites. It feels more like a modern agency brand and gives every section its own visual importance.</p>
+              <div class="reviewer">
+                <div class="avatar">A</div>
+                <div><strong>Arjun Mehta</strong><div style="color:var(--muted)">Service Business Owner</div></div>
+              </div>
+            </article>
+            <article class="testimonial-card card reveal">
+              <div class="stars"><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i></div>
+              <p>What I liked most was that the site is not just stylish. It is also practical, responsive, and designed in a way that can actually support leads and inquiries.</p>
+              <div class="reviewer">
+                <div class="avatar">N</div>
+                <div><strong>Nikhil Verma</strong><div style="color:var(--muted)">Marketing Lead</div></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="container">
+          <div class="faq-panel card reveal">
+            <div class="section-kicker"><i class="fa-solid fa-circle-question"></i> FAQ</div>
+            <h2 class="section-title">Common questions about this website style.</h2>
+            <p class="section-lead">The FAQ is styled to feel cleaner and more premium while still answering practical questions that help users feel confident.</p>
+
+            <div class="faq-list">
+              <div class="faq-item active">
+                <button class="faq-btn"><span>Does the sidebar have its own scroll on desktop?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-content"><p>No. On desktop it uses sticky positioning, so it stays connected to the page layout and does not show an inner scrollbar.</p></div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-btn"><span>Will the sidebar stop automatically when the page ends?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-content"><p>Yes. Because it is sticky inside the page grid, it naturally stops when the right-side content reaches the end of the layout.</p></div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-btn"><span>Will this layout work on mobile devices too?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-content"><p>Yes. On smaller screens, the sidebar becomes a slide-out menu so the experience remains smooth and user-friendly.</p></div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-btn"><span>Can this website be used for real business deployment?</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-content"><p>Yes. It is structured as a complete single-page website and can be connected to a real domain, hosting service, form backend, WhatsApp button, and social links.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container contact-grid">
+          <div class="contact-panel card reveal">
+            <div class="section-kicker"><i class="fa-solid fa-envelope"></i> Contact</div>
+            <h2 class="section-title">Let’s turn your digital presence into a smarter growth system.</h2>
+            <p class="section-lead" style="max-width:100%;">These are demo details right now. You can replace them with your real business contact details before publishing.</p>
+            <div class="contact-points">
+              <div class="contact-point">
+                <div class="icon-box" style="width:48px;height:48px;border-radius:14px;margin:0"><i class="fa-solid fa-envelope"></i></div>
+                <div><strong>Email</strong><p><a href="mailto:hello@decodeonline.in">hello@decodeonline.in</a></p></div>
+              </div>
+              <div class="contact-point">
+                <div class="icon-box" style="width:48px;height:48px;border-radius:14px;margin:0"><i class="fa-solid fa-phone"></i></div>
+                <div><strong>Phone</strong><p><a href="tel:+919876543210">+91 98765 43210</a></p></div>
+              </div>
+              <div class="contact-point">
+                <div class="icon-box" style="width:48px;height:48px;border-radius:14px;margin:0"><i class="fa-solid fa-location-dot"></i></div>
+                <div><strong>Location</strong><p>Muradnagar, Ghaziabad, Uttar Pradesh, India</p></div>
+              </div>
+              <div class="contact-point">
+                <div class="icon-box" style="width:48px;height:48px;border-radius:14px;margin:0"><i class="fa-brands fa-whatsapp"></i></div>
+                <div><strong>WhatsApp</strong><p><a href="https://wa.me/919876543210?text=Hello%20Decode%20Online%2C%20I%20want%20to%20discuss%20digital%20marketing%20services." target="_blank" rel="noopener">Chat instantly on WhatsApp</a></p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-panel card reveal">
+            <form class="contact-form" id="contactForm">
+              <div class="form-row">
+                <input class="field" type="text" name="name" placeholder="Your name" required>
+                <input class="field" type="email" name="email" placeholder="Business email" required>
+              </div>
+              <div class="form-row">
+                <input class="field" type="text" name="company" placeholder="Company name">
+                <input class="field" type="text" name="service" placeholder="Service you need">
+              </div>
+              <textarea class="field" name="message" placeholder="Tell us about your goals, challenges, or digital marketing needs." required></textarea>
+              <button class="btn btn-dark" type="submit"><i class="fa-solid fa-paper-plane"></i> Send Inquiry</button>
+              <a href="https://wa.me/919876543210?text=Hello%20Decode%20Online%2C%20I%20want%20to%20discuss%20digital%20marketing%20services." target="_blank" rel="noopener" class="btn btn-light"><i class="fa-brands fa-whatsapp"></i> Message on WhatsApp</a>
+              <p class="form-note" id="formNote">Front-end form is ready. Connect it with Formspree, Netlify Forms, EmailJS, or your custom backend for live deployment.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-inner card">
+            <div class="footer-grid">
+              <div class="footer-col">
+                <div class="brand" style="margin-bottom:14px;">
+                  <div class="brand-mark" style="background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff"><i class="fa-solid fa-chart-line"></i></div>
+                  <div>
+                    <h1 style="font-size:1.15rem;color:var(--text)">Decode Online</h1>
+                    <p style="color:var(--muted)">Full Stack Digital Marketing</p>
+                  </div>
+                </div>
+                <p>Modern digital marketing website with sticky premium navigation, responsive structure, contact flow, showcase blocks, and conversion-focused layout.</p>
+                <div class="socials">
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                  <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+              </div>
+              <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#showcase">Showcase</a>
+                <a href="#contact">Contact</a>
+              </div>
+              <div class="footer-col">
+                <h4>Solutions</h4>
+                <a href="#services">SEO Strategy</a>
+                <a href="#services">Paid Advertising</a>
+                <a href="#services">Social Media</a>
+                <a href="#services">Analytics</a>
+              </div>
+              <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:hello@decodeonline.in">hello@decodeonline.in</a>
+                <a href="tel:+919876543210">+91 98765 43210</a>
+                <a href="https://wa.me/919876543210?text=Hello%20Decode%20Online%2C%20I%20want%20to%20discuss%20digital%20marketing%20services." target="_blank" rel="noopener">WhatsApp Chat</a>
+                <a href="#home">Back to top</a>
+              </div>
+            </div>
+            <div class="copyright">
+              <span>© <span id="year"></span> Decode Online. All rights reserved.</span>
+              <span>Fresh sticky sidebar version with connected desktop navigation.</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <a class="whatsapp-float" href="https://wa.me/919876543210?text=Hello%20Decode%20Online%2C%20I%20want%20to%20discuss%20digital%20marketing%20services." target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const navLinks = document.querySelectorAll('#navLinks a');
+
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      menuToggle.innerHTML = sidebar.classList.contains('open')
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        if (window.innerWidth <= 980) {
+          sidebar.classList.remove('open');
+          menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        }
+      });
+    });
+
+    const typedText = document.getElementById('typedText');
+    const words = ['growth', 'visibility', 'performance', 'conversion', 'momentum'];
+    let wordIndex = 0, charIndex = 0, deleting = false;
+
+    function typeLoop(){
+      const current = words[wordIndex];
+      if(!deleting){
+        typedText.textContent = current.slice(0, charIndex + 1);
+        charIndex++;
+        if(charIndex === current.length){
+          deleting = true;
+          setTimeout(typeLoop, 1200);
+          return;
+        }
+      } else {
+        typedText.textContent = current.slice(0, charIndex - 1);
+        charIndex--;
+        if(charIndex === 0){
+          deleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+        }
+      }
+      setTimeout(typeLoop, deleting ? 55 : 95);
+    }
+    typeLoop();
+
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+    reveals.forEach(el => revealObserver.observe(el));
+
+    const counters = document.querySelectorAll('.stat-number');
+    const countObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = +el.dataset.target;
+        let count = 0;
+        const step = Math.max(1, Math.floor(target / 50));
+        const timer = setInterval(()=>{
+          count += step;
+          if(count >= target){ count = target; clearInterval(timer); }
+          if (target === 92 || target === 180) {
+            el.textContent = count + '%';
+          } else if (target === 24) {
+            el.textContent = count + '/7';
+          } else {
+            el.textContent = count + '+';
+          }
+        }, 30);
+        countObserver.unobserve(el);
+      });
+    }, {threshold:0.55});
+    counters.forEach(counter => countObserver.observe(counter));
+
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const btn = item.querySelector('.faq-btn');
+      btn.addEventListener('click', () => {
+        const openItem = document.querySelector('.faq-item.active');
+        if(openItem && openItem !== item) openItem.classList.remove('active');
+        item.classList.toggle('active');
+      });
+    });
+
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 140;
+        if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('href') === `#${current}`) link.classList.add('active');
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const contactForm = document.getElementById('contactForm');
+    const formNote = document.getElementById('formNote');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(contactForm);
+      const name = fd.get('name') || 'there';
+      formNote.textContent = `Thanks, ${name}! Your inquiry has been captured in this demo layout. Connect the form to your live backend to start receiving submissions.`;
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
