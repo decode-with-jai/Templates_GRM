@@ -83,7 +83,8 @@
 
     .hero::after{
       content:"";
-      position:absolute;
+      position:relative;
+      z-index: 10;
       inset:0;
       background:linear-gradient(180deg, rgba(255,255,255,0) 75%, rgba(255,255,255,.06) 100%);
       pointer-events:none;
@@ -486,7 +487,7 @@
             <input id="name" type="text" placeholder="Full Name" required />
           </div>
 
-          <div class="field">
+          <!-- <div class="field">
             <label for="countryButton">Country</label>
             <div class="country-picker">
               <button type="button" class="country-trigger" id="countryButton" aria-expanded="false">
@@ -506,7 +507,7 @@
               </div>
             </div>
             <input type="hidden" id="country" required />
-          </div>
+          </div> -->
 
           <button class="submit-btn" type="submit">Continue</button>
           <div class="mini-note">Simple lead capture for personal loan interest.</div>
@@ -605,6 +606,7 @@
       {name:"Cambodia", code:"+855", flag:"🇰🇭"},
       {name:"Cameroon", code:"+237", flag:"🇨🇲"},
       {name:"Canada", code:"+1", flag:"🇨🇦"},
+      {name:"America", code:"+1", flag:"US"},
       {name:"Cape Verde", code:"+238", flag:"🇨🇻"},
       {name:"Central African Republic", code:"+236", flag:"🇨🇫"},
       {name:"Chad", code:"+235", flag:"🇹🇩"},
