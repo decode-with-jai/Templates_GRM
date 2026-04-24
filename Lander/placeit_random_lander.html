@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PLACE IT - Random Lander</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f4f8;
+      color: #111;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lander-wrap {
+      width: min(1200px, 100%);
+      text-align: center;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .brand span {
+      color: #6f59ff;
+      font-style: italic;
+    }
+
+    .note {
+      font-size: 14px;
+      color: #555;
+      background: #fff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .lander-link {
+      display: block;
+      width: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      text-decoration: none;
+      background: #fff;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.14);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .lander-link:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 60px rgba(0,0,0,0.18);
+    }
+
+    .lander-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      background: #e9e9ee;
+    }
+
+    .bottom {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      background: #ffffff;
+      color: #333;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: #111;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn:hover { opacity: 0.9; }
+
+    @media (max-width: 640px) {
+      .page { padding: 14px; }
+      .topbar { justify-content: center; }
+      .note { border-radius: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="lander-wrap">
+      <div class="topbar">
+        <!-- <div class="brand">PLACE <span>IT</span></div>
+        <div class="note">Refresh the page to automatically show a different lander ✨</div> -->
+      </div>
+
+      <!-- User will go to the link of whichever lander appears -->
+      <a id="landerLink" class="lander-link" href="#" rel="noopener noreferrer">
+        <img id="landerImage" class="lander-image" src="" alt="PLACE IT landing page" />
+      </a>
+
+      <!-- <div class="bottom">
+        <div id="landerTitle" class="pill">Loading lander...</div>
+        <button class="btn" id="refreshBtn" type="button">Show Another Lander</button>
+      </div> -->
+    </div>
+  </div>
+
+  <script>
+    /*
+      ===========================
+      HOW TO ADD YOUR LINKS
+      ===========================
+      Replace each link below with your real website link.
+      Example:
+      link: "https://yourwebsite.com/page1"
+    */
+
+  const mainLink = "Change the link here"; // 👈 sirf yaha link change karna bhaiya 
+
+const landers = [
+  {
+    title: "T-Shirt Lander",
+    image: "assets/image-1.png",
+    link: mainLink
+  },
+  {
+    title: "Gaming Controller Skin Lander",
+    image: "assets/image-2.png",
+    link: mainLink
+  },
+  {
+    title: "Custom Mug Lander",
+    image: "assets/image-3.png",
+    link: mainLink
+  },
+  {
+    title: "Logo Maker Lander",
+    image: "assets/image-4.png",
+    link: mainLink
+  }
+];
+
+    function pickRandomLander() {
+      const randomIndex = Math.floor(Math.random() * landers.length);
+      return landers[randomIndex];
+    }
+
+    function renderRandomLander() {
+      const selected = pickRandomLander();
+      const imageEl = document.getElementById("landerImage");
+      const linkEl = document.getElementById("landerLink");
+      const titleEl = document.getElementById("landerTitle");
+
+      imageEl.src = selected.image;
+      imageEl.alt = selected.title;
+      linkEl.href = selected.link;
+      titleEl.textContent = selected.title;
+    }
+
+    document.addEventListener("DOMContentLoaded", renderRandomLander);
+
+    // Optional button so you can test without waiting for a real browser refresh
+    document.getElementById("refreshBtn").addEventListener("click", renderRandomLander);
+
+
+  </script>
+</body>
+</html>
