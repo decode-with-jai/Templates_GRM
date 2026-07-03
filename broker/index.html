@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BrokerFree | Open Demat Account Online</title>
+<meta name="description" content="BrokerFree helps users open demat accounts online with secure KYC assistance, partner broker support, risk awareness and transparent disclosures.">
+
+<style>
+:root{--bg:#07111f;--bg2:#0b1b2f;--card:rgba(255,255,255,.075);--text:#fff;--muted:#a8b3c7;--green:#34f5a6;--line:rgba(255,255,255,.12);--shadow:0 30px 80px rgba(0,0,0,.35)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);line-height:1.7}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,92%);margin:auto}
+.header{position:sticky;top:0;z-index:100;background:rgba(7,17,31,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:28px;font-weight:900;color:var(--green)}
+.logo span{color:#fff}
+.menu{display:flex;gap:26px;align-items:center}
+.menu a{color:var(--muted);font-weight:600;font-size:15px}
+.menu a:hover{color:var(--green)}
+.nav-btn{padding:10px 18px;background:var(--green);color:#07111f!important;border-radius:999px;font-weight:900!important}
+.menu-btn{display:none;background:none;border:0;color:white;font-size:28px}
+.hero{padding:95px 0;background:radial-gradient(circle at 80% 20%,rgba(52,245,166,.22),transparent 28%),radial-gradient(circle at 20% 0%,rgba(72,120,255,.22),transparent 30%),var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:55px;align-items:center}
+.badge{display:inline-block;padding:9px 15px;border:1px solid var(--line);border-radius:999px;color:var(--green);background:rgba(255,255,255,.06);margin-bottom:22px}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.03;letter-spacing:-2.4px;margin-bottom:24px}
+h1 span,.section-head h2 span{color:var(--green)}
+.hero-content p{max-width:680px;color:var(--muted);font-size:18px}
+.hero-actions{display:flex;gap:16px;margin:32px 0;flex-wrap:wrap}
+.btn{padding:14px 24px;border-radius:999px;font-weight:900;display:inline-flex}
+.primary{background:var(--green);color:#07111f}
+.secondary{border:1px solid var(--line);color:white}
+.risk-box{margin-top:25px;padding:18px;border-radius:18px;background:#fff3cd;color:#463400;font-weight:800;max-width:760px}
+.lead-card{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:32px;box-shadow:var(--shadow)}
+.lead-card h2{font-size:30px;margin-bottom:8px}
+.lead-card p{color:var(--muted);margin-bottom:20px}
+input,select{width:100%;padding:15px;margin-bottom:14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.08);color:white;outline:none}
+select option{color:#111}
+input::placeholder{color:#b8c2d6}
+.check{display:flex;gap:10px;font-size:13px;color:var(--muted);margin:13px 0}
+.check input{width:auto}
+form button{width:100%;border:none;background:var(--green);padding:15px;border-radius:999px;font-weight:900;cursor:pointer;margin-top:12px}
+#formMsg{margin-top:15px;font-weight:700}
+.trust{padding:34px 0;background:#06101d;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.trust h3,.card h3,.step h3,.faq-grid h3{color:var(--green);margin-bottom:8px}
+.trust p,.card p,.step p,.faq-grid p,.legal-box p,.footer p,.footer a{color:var(--muted)}
+.section{padding:86px 0}
+.dark{background:var(--bg2)}
+.section-head{text-align:center;max-width:760px;margin:0 auto 48px}
+.section-head h2{font-size:clamp(32px,4vw,48px);letter-spacing:-1.5px}
+.section-head p{color:var(--muted);margin-top:10px}
+.cards,.steps,.faq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card,.step,.legal-box,.faq-grid div{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px}
+.step span{display:inline-block;font-size:34px;color:rgba(52,245,166,.25);font-weight:900;margin-bottom:12px}
+.legal-box{max-width:900px;margin:auto}
+.legal-box p{margin-bottom:16px}
+.accordion{max-width:900px;margin:auto}
+.acc-item{border:1px solid var(--line);border-radius:18px;margin-bottom:14px;overflow:hidden;background:var(--card)}
+.acc-btn{width:100%;padding:20px;background:transparent;color:white;border:none;text-align:left;font-size:18px;font-weight:900;cursor:pointer}
+.acc-content{display:none;padding:0 20px 20px;color:var(--muted)}
+.acc-item.active .acc-content{display:block}
+.footer{background:#040a12;padding-top:60px;border-top:1px solid var(--line)}
+.footer-grid{display:grid;grid-template-columns:1.5fr .7fr 1fr;gap:40px}
+.footer h2{color:var(--green);margin-bottom:10px}
+.footer h4{margin-bottom:12px}
+.footer a{display:block;margin-bottom:8px}
+.footer-bottom{margin-top:40px;text-align:center;padding:20px;color:var(--muted);border-top:1px solid var(--line)}
+@media(max-width:900px){
+.menu{position:absolute;top:76px;left:0;width:100%;background:#07111f;flex-direction:column;align-items:flex-start;padding:25px;display:none}
+.menu.show{display:flex}
+.menu-btn{display:block}
+.hero-grid,.trust-grid,.footer-grid{grid-template-columns:1fr}
+.cards,.steps,.faq-grid{grid-template-columns:1fr}
+.hero{padding:65px 0}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a href="#" class="logo">Broker<span>Free</span></a>
+    <nav class="menu" id="menu">
+      <a href="#home">Home</a>
+      <a href="#why">Why Us</a>
+      <a href="#process">Process</a>
+      <a href="#documents">Documents</a>
+      <a href="#legal">Legal</a>
+      <a href="#contact" class="nav-btn">Get Started</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="badge">Secure • Transparent • Investor-Aware</div>
+      <h1>Open Your Demat Account Online With <span>BrokerFree</span></h1>
+      <p>BrokerFree helps beginners and investors start their demat account journey through a simple, guided and transparent account-opening process.</p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn primary">Open Demat Account</a>
+        <a href="#risk" class="btn secondary">Read Risk Disclosure</a>
+      </div>
+
+      <div class="risk-box">
+        Investments in securities market are subject to market risks. Read all related documents carefully before investing.
+      </div>
+    </div>
+
+    <div class="lead-card" id="contact">
+      <h2>Get Free Assistance</h2>
+      <p>Fill your details. Our team will contact you for demat account assistance.</p>
+
+      <form id="leadForm">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="tel" id="phone" placeholder="Mobile Number" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+
+        <select id="interest" required>
+          <option value="">Select Interest</option>
+          <option>Long-Term Investing</option>
+          <option>Trading</option>
+          <option>IPO</option>
+          <option>Mutual Funds</option>
+          <option>Beginner Guidance</option>
+        </select>
+
+        <label class="check">
+          <input type="checkbox" id="consent" required />
+          I agree to be contacted via call, SMS, WhatsApp or email.
+        </label>
+
+        <label class="check">
+          <input type="checkbox" id="privacy" required />
+          I agree to the Privacy Policy, Terms and Risk Disclosure.
+        </label>
+
+        <button type="submit">Submit Request</button>
+        <p id="formMsg"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="container trust-grid">
+    <div>
+      <h3>Important Disclosure</h3>
+      <p>BrokerFree is an account-opening assistance platform. We do not provide stock tips, buy/sell calls, portfolio management, research advice or guaranteed returns.</p>
+    </div>
+    <div>
+      <h3>Partner Broker Details</h3>
+      <p>Add registered broker name, SEBI registration number, exchange details, DP details and partner disclosure here.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="container">
+    <div class="section-head">
+      <h2>Why Choose <span>BrokerFree?</span></h2>
+      <p>Built for users who want clarity before starting their investing journey.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card"><h3>Transparent Process</h3><p>No confusing promises. Clear account-opening steps and document guidance.</p></div>
+      <div class="card"><h3>Beginner Friendly</h3><p>Helpful guidance for first-time users who want to understand demat accounts.</p></div>
+      <div class="card"><h3>Compliance First</h3><p>Risk disclosure, consent, privacy notice and legal information included.</p></div>
+      <div class="card"><h3>Secure Lead Handling</h3><p>Only necessary details are collected for communication and assistance.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="process">
+  <div class="container">
+    <div class="section-head">
+      <h2>How It Works</h2>
+      <p>Simple steps from callback to account opening.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step"><span>01</span><h3>Submit Details</h3><p>Fill your basic contact details and investment interest.</p></div>
+      <div class="step"><span>02</span><h3>Verification Call</h3><p>Our team explains the process, documents and partner broker details.</p></div>
+      <div class="step"><span>03</span><h3>Complete KYC</h3><p>Finish PAN, Aadhaar, bank and e-sign verification through official channels.</p></div>
+      <div class="step"><span>04</span><h3>Start Investing</h3><p>Once approved, you may start investing as per your own decision and risk profile.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="documents">
+  <div class="container">
+    <div class="section-head">
+      <h2>Documents Required</h2>
+      <p>Keep these documents ready for smoother account opening.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card"><h3>PAN Card</h3><p>Mandatory for demat and trading account opening.</p></div>
+      <div class="card"><h3>Aadhaar Card</h3><p>Used for identity verification and e-KYC process.</p></div>
+      <div class="card"><h3>Bank Proof</h3><p>Cancelled cheque, passbook or bank statement may be required.</p></div>
+      <div class="card"><h3>Income Proof</h3><p>May be required for derivatives/F&O activation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="risk">
+  <div class="container">
+    <div class="section-head">
+      <h2>Investor Risk Disclosure</h2>
+      <p>Please read this before opening or using a demat/trading account.</p>
+    </div>
+
+    <div class="legal-box">
+      <p>Investments in securities market are subject to market risks. Read all related documents carefully before investing.</p>
+      <p>BrokerFree does not guarantee profit, returns, capital safety, trading success, IPO allotment or investment performance.</p>
+      <p>Users should verify broker charges, account terms, exchange rules, product risks and official documents before making any investment decision.</p>
+      <p>BrokerFree does not provide investment advisory, research analysis, portfolio management, stock recommendations or guaranteed-return services.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="legal">
+  <div class="container">
+    <div class="section-head">
+      <h2>Legal Information</h2>
+      <p>Important legal sections for a professional demat account lead website.</p>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-item">
+        <button class="acc-btn">Privacy Policy</button>
+        <div class="acc-content">
+          <p>BrokerFree collects user data such as name, mobile number, email and investment interest only for communication, callback and demat account assistance. Users may request correction or deletion of their data by contacting privacy@brokerfree.in.</p>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn">Terms & Conditions</button>
+        <div class="acc-content">
+          <p>By using this website, users agree that BrokerFree is an information and account-opening assistance platform. Final account approval, charges and services depend on the registered broker or service provider.</p>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn">Disclaimer</button>
+        <div class="acc-content">
+          <p>BrokerFree does not provide stock tips, buy/sell calls, investment advice, portfolio management or guaranteed returns. All investment decisions are the sole responsibility of the user.</p>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn">Grievance Officer</button>
+        <div class="acc-content">
+          <p>Grievance Officer: Your Name<br>Email: grievance@brokerfree.in<br>Address: Your registered office address<br>Response Timeline: Within reasonable business timelines.</p>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn">Partner Disclosure</button>
+        <div class="acc-content">
+          <p>Add registered broker name, SEBI registration number, exchange membership details, DP details and official partner disclosure here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section faq">
+  <div class="container">
+    <div class="section-head">
+      <h2>FAQs</h2>
+    </div>
+
+    <div class="faq-grid">
+      <div><h3>Is BrokerFree a broker?</h3><p>No. BrokerFree is a demat account assistance and lead platform unless officially registered as a broker.</p></div>
+      <div><h3>Do you give stock tips?</h3><p>No. We do not provide buy/sell calls, tips or guaranteed-return advice.</p></div>
+      <div><h3>Is demat account opening free?</h3><p>This depends on the partner broker’s official pricing and account terms.</p></div>
+      <div><h3>Can I delete my data?</h3><p>Yes. Contact privacy@brokerfree.in for data correction or deletion requests.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <h2>BrokerFree</h2>
+      <p>Demat account assistance platform built with transparency and investor awareness.</p>
+    </div>
+
+    <div>
+      <h4>Company</h4>
+      <a href="#why">About</a>
+      <a href="#process">Process</a>
+      <a href="#legal">Legal</a>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <p>Email: support@brokerfree.in</p>
+      <p>Phone: +91 XXXXX XXXXX</p>
+      <p>Address: Your Office Address</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 BrokerFree. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+const menuBtn=document.getElementById("menuBtn");
+const menu=document.getElementById("menu");
+
+menuBtn.addEventListener("click",()=>{
+  menu.classList.toggle("show");
+});
+
+document.querySelectorAll(".acc-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    btn.parentElement.classList.toggle("active");
+  });
+});
+
+const form=document.getElementById("leadForm");
+const formMsg=document.getElementById("formMsg");
+
+form.addEventListener("submit",function(e){
+  e.preventDefault();
+
+  const name=document.getElementById("name").value.trim();
+  const phone=document.getElementById("phone").value.trim();
+  const email=document.getElementById("email").value.trim();
+  const interest=document.getElementById("interest").value;
+  const consent=document.getElementById("consent").checked;
+  const privacy=document.getElementById("privacy").checked;
+
+  if(!name||!phone||!email||!interest||!consent||!privacy){
+    formMsg.style.color="#ff6b6b";
+    formMsg.textContent="Please fill all details and accept consent.";
+    return;
+  }
+
+  const phoneRegex=/^[6-9]\d{9}$/;
+
+  if(!phoneRegex.test(phone)){
+    formMsg.style.color="#ff6b6b";
+    formMsg.textContent="Please enter a valid Indian mobile number.";
+    return;
+  }
+
+  const leadData={
+    name,
+    phone,
+    email,
+    interest,
+    consent:true,
+    submittedAt:new Date().toISOString()
+  };
+
+  console.log("Lead Data:",leadData);
+
+  formMsg.style.color="#34f5a6";
+  formMsg.textContent="Thank you! Your request has been submitted successfully.";
+
+  form.reset();
+});
+</script>
+
+</body>
+</html>

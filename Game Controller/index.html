@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PLACE IT Customs - Gaming Controller Skin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #6a57f5;
+      --bg-2: #0060ff;
+      --bg-3: #06b8ff;
+      --dark: #111633;
+      --dark-2: #161042;
+      --white: #ffffff;
+      --text: #23253a;
+      --muted: #6a6f86;
+      --purple: #b24dff;
+      --pink: #ff57cf;
+      --orange: #ffb24a;
+      --card: #ffffff;
+      --line: rgba(255, 255, 255, 0.12);
+      --border: rgba(25, 23, 61, 0.09);
+      --shadow: 0 18px 45px rgba(12, 16, 48, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: #f4f5f9;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(var(--max), calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 10% 15%, rgba(255,255,255,0.14), transparent 22%),
+        radial-gradient(circle at 78% 28%, rgba(255,255,255,0.12), transparent 20%),
+        linear-gradient(90deg, var(--bg-1) 0%, var(--bg-2) 42%, var(--bg-3) 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: 10%;
+      top: -60px;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.18), rgba(255,255,255,0.03) 48%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: -120px;
+      bottom: -120px;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(149, 80, 255, 0.3), transparent 62%);
+      filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .nav {
+      padding: 24px 0 10px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .nav__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 0.95;
+    }
+
+    .brand__title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .brand__title span { color: var(--orange); }
+
+    .brand__sub {
+      margin-top: 6px;
+      font-size: 0.82rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      opacity: 0.9;
+      font-weight: 700;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 30px;
+      font-weight: 700;
+      align-items: center;
+    }
+
+    .nav__links a {
+      opacity: 0.96;
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav__links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--white);
+      transition: width .24s ease;
+    }
+
+    .nav__links a:hover::after,
+    .nav__links a.active::after { width: 100%; }
+
+    .nav__actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .icon-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      font-size: 1.2rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .cart {
+      position: relative;
+    }
+
+    .cart__count {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #111;
+      display: grid;
+      place-items: center;
+      font-size: 0.75rem;
+      font-weight: 900;
+    }
+
+    .hero__grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 24px;
+      align-items: center;
+      padding: 44px 0 18px;
+    }
+
+    .hero__title {
+      margin: 0 0 18px;
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 1.04;
+      font-weight: 900;
+      letter-spacing: -1.4px;
+      max-width: 680px;
+    }
+
+    .hero__title .accent {
+      background: linear-gradient(90deg, #ff7fd9, #a855ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero__desc {
+      margin: 0;
+      font-size: clamp(1rem, 1.35vw, 1.28rem);
+      line-height: 1.7;
+      color: rgba(255,255,255,0.9);
+      max-width: 610px;
+    }
+
+    .hero__cta {
+      margin-top: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 17px 28px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ffbe54, #ff58c8 92%);
+      color: var(--white);
+      font-size: 1.12rem;
+      font-weight: 900;
+      box-shadow: 0 18px 34px rgba(255, 95, 199, 0.24);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .hero__cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 40px rgba(255, 95, 199, 0.28);
+    }
+
+    .hero__cta span:last-child {
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    .hero__mini-features {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+      max-width: 640px;
+    }
+
+    .mini {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+
+    .mini__icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.2);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      background: rgba(255,255,255,0.06);
+      flex: 0 0 42px;
+    }
+
+    .mini__text {
+      font-size: 0.98rem;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .hero__visual {
+      position: relative;
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero__image {
+      width: min(560px, 100%);
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 28px 40px rgba(0,0,0,0.3));
+    }
+
+    .offer-badge {
+      position: absolute;
+      right: 8px;
+      bottom: 62px;
+      width: 195px;
+      height: 195px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.96);
+      color: #5d35ca;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.16);
+      z-index: 3;
+      border: 5px solid rgba(255,255,255,0.55);
+    }
+
+    .offer-badge__big {
+      display: block;
+      font-size: 1.15rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #5e46b8;
+    }
+
+    .offer-badge__num {
+      display: block;
+      font-size: 4rem;
+      line-height: 0.95;
+      font-weight: 900;
+      color: #5a37c2;
+      margin: 2px 0;
+    }
+
+    .offer-badge__small {
+      display: block;
+      font-size: 0.86rem;
+      line-height: 1.2;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #ff50bc;
+    }
+
+    .info-bar-wrap {
+      position: relative;
+      z-index: 4;
+      margin-top: 18px;
+      padding-bottom: 22px;
+    }
+
+    .info-bar {
+      background: rgba(12, 18, 74, 0.72);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 26px;
+      box-shadow: 0 18px 45px rgba(12, 18, 74, 0.18);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow: hidden;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 24px 22px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .info-item:last-child { border-right: none; }
+
+    .info-item__icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+      color: #ff79dd;
+      flex: 0 0 46px;
+    }
+
+    .info-item h3 {
+      margin: 0 0 6px;
+      font-size: 1.2rem;
+      color: #fff;
+      line-height: 1.15;
+      font-weight: 800;
+    }
+
+    .info-item p {
+      margin: 0;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.45;
+      font-size: 0.95rem;
+    }
+
+    .section {
+      padding: 58px 0;
+    }
+
+    .section--light {
+      background: #f4f5f9;
+    }
+
+    .section--dark {
+      background:
+        radial-gradient(circle at left bottom, rgba(195, 66, 255, 0.25), transparent 22%),
+        radial-gradient(circle at right bottom, rgba(255, 90, 185, 0.22), transparent 18%),
+        linear-gradient(180deg, #1a1150 0%, #140f44 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      color: #1f2460;
+    }
+
+    .section--dark .section-title h2,
+    .section--dark .section-title p { color: #fff; }
+
+    .section-title p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .skins-wrap {
+      position: relative;
+    }
+
+    .skins-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      background: #4d2fcf;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 1.35rem;
+      box-shadow: 0 14px 28px rgba(77, 47, 207, 0.24);
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .skins-nav:hover { background: #5b39e0; }
+    .skins-nav--prev { left: -16px; }
+    .skins-nav--next { right: -16px; }
+
+    .skins-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .skin-card {
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform .2s ease;
+    }
+
+    .skin-card:hover { transform: translateY(-4px); }
+
+    .skin-card__img {
+      aspect-ratio: 1.2 / 1;
+      background: linear-gradient(180deg, #fff, #f2f3f8);
+      display: grid;
+      place-items: center;
+      padding: 16px;
+    }
+
+    .skin-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .skin-card__body {
+      padding: 16px 18px 20px;
+      text-align: center;
+    }
+
+    .skin-card__body h3 {
+      margin: 0;
+      font-size: 1.22rem;
+      color: #282c4f;
+      font-weight: 800;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 14px;
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+      padding: 0 8px;
+    }
+
+    .step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -12px;
+      top: 74px;
+      color: rgba(255,255,255,0.55);
+      font-size: 1.9rem;
+      font-weight: 900;
+    }
+
+    .step__num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #54a7ff, #4a67ff);
+      margin: 0 auto -16px;
+      display: grid;
+      place-items: center;
+      font-size: 0.95rem;
+      font-weight: 900;
+      position: relative;
+      z-index: 2;
+      border: 4px solid #1a1150;
+    }
+
+    .step__icon {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      background: rgba(255,255,255,0.06);
+      border: 2px solid rgba(110, 86, 255, 0.42);
+      display: grid;
+      place-items: center;
+      font-size: 2.5rem;
+      color: #fff;
+      box-shadow: inset 0 0 0 6px rgba(255,255,255,0.02);
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .step p {
+      margin: 0;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.55;
+      font-size: 1rem;
+    }
+
+    .reviews-wrap {
+      position: relative;
+    }
+
+    .reviews-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: #4d33d1;
+      font-size: 1.7rem;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .reviews-nav--prev { left: -10px; }
+    .reviews-nav--next { right: -10px; }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 24px 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      min-height: 100%;
+    }
+
+    .stars {
+      color: #ffb52f;
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .review-card p {
+      margin: 0 0 20px;
+      line-height: 1.65;
+      color: #474c69;
+      font-size: 1.04rem;
+    }
+
+    .review-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-user img {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: linear-gradient(135deg, #d8d9e7, #f5d39d);
+    }
+
+    .review-user strong {
+      display: block;
+      font-size: 1rem;
+      color: #23294f;
+    }
+
+    .cta-band {
+      background:
+        radial-gradient(circle at left center, rgba(255, 59, 190, 0.38), transparent 18%),
+        radial-gradient(circle at right center, rgba(255, 164, 59, 0.36), transparent 18%),
+        linear-gradient(90deg, #25125e 0%, #3721a6 48%, #ff5da9 100%);
+      color: #fff;
+      padding: 24px 0;
+    }
+
+    .cta-band__row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .cta-band__text h3 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+    }
+
+    .cta-band__text h3 span {
+      color: #ff7fe0;
+    }
+
+    .cta-band__button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(90deg, #a848ff, #ff8c70);
+      color: #fff;
+      padding: 18px 28px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 1.15rem;
+      box-shadow: 0 16px 34px rgba(255, 112, 151, 0.28);
+      white-space: nowrap;
+    }
+
+    .cta-band__meta {
+      display: flex;
+      gap: 24px;
+      color: rgba(255,255,255,0.95);
+      font-weight: 700;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+      .nav__links { gap: 18px; font-size: 0.95rem; }
+      .hero__grid { grid-template-columns: 1fr; padding-top: 30px; }
+      .hero__visual { min-height: 520px; }
+      .offer-badge { right: 6%; }
+      .info-bar,
+      .skins-grid,
+      .steps,
+      .reviews-grid,
+      .cta-band__row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .cta-band__text { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 820px) {
+      .nav__row { flex-wrap: wrap; justify-content: center; }
+      .nav__links { flex-wrap: wrap; justify-content: center; }
+      .hero__mini-features,
+      .info-bar,
+      .skins-grid,
+      .steps,
+      .reviews-grid,
+      .cta-band__row {
+        grid-template-columns: 1fr;
+      }
+      .info-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .info-item:last-child { border-bottom: none; }
+      .skins-nav,
+      .reviews-nav { display: none; }
+      .step:not(:last-child)::after { display: none; }
+      .hero__visual { min-height: 430px; }
+      .offer-badge {
+        width: 155px;
+        height: 155px;
+        bottom: 24px;
+      }
+      .offer-badge__num { font-size: 3rem; }
+      .cta-band__meta { justify-content: flex-start; }
+    }
+
+    @media (max-width: 560px) {
+      .container { width: min(var(--max), calc(100% - 20px)); }
+      .brand__title { font-size: 1.8rem; }
+      .brand__sub { letter-spacing: 3px; }
+      .hero__title { font-size: 2.4rem; }
+      .hero__desc { font-size: 0.98rem; }
+      .hero__cta { width: 100%; justify-content: center; }
+      .hero__visual { min-height: 360px; }
+      .offer-badge {
+        width: 128px;
+        height: 128px;
+        right: 2px;
+        bottom: 10px;
+      }
+      .offer-badge__big { font-size: 0.82rem; }
+      .offer-badge__num { font-size: 2.35rem; }
+      .offer-badge__small { font-size: 0.68rem; }
+      .section { padding: 42px 0; }
+      .step__icon { width: 94px; height: 94px; font-size: 2rem; }
+      .cta-band__button { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="home">
+    <nav class="nav">
+      <div class="container nav__row">
+        <a href="#home" class="brand" aria-label="PLACE IT home">
+          <span class="brand__title">PLACE <span>IT</span></span>
+          <span class="brand__sub">CUSTOMS</span>
+        </a>
+
+        <div class="nav__links">
+          <a class="active" href="#home">Home</a>
+          <a href="#skins">Skins</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="nav__actions">
+          <button class="icon-btn" aria-label="Search">⌕</button>
+          <button class="icon-btn cart" aria-label="Cart">
+            🛒
+            <span class="cart__count">0</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container hero__grid">
+      <div class="hero__content reveal">
+        <h1 class="hero__title">Custom Gaming<br>Controller <span class="accent">Skin</span></h1>
+        <p class="hero__desc">
+          Upgrade your controller from basic to beast mode. This high-quality printed design wrap adds a bold gaming aesthetic while protecting your controller from scratches and wear. Precision-cut for a perfect fit, it delivers both style and performance without affecting grip or comfort.
+        </p>
+
+        <a href="#skins" class="hero__cta">
+          <span>CUSTOMIZE NOW</span>
+          <span>→</span>
+        </a>
+
+        <div class="hero__mini-features">
+          <div class="mini">
+            <div class="mini__icon">🛡</div>
+            <div class="mini__text">Premium<br>Quality Print</div>
+          </div>
+          <div class="mini">
+            <div class="mini__icon">✔</div>
+            <div class="mini__text">Scratch &amp; Wear<br>Protection</div>
+          </div>
+          <div class="mini">
+            <div class="mini__icon">◎</div>
+            <div class="mini__text">Precision<br>Cut Fit</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal">
+        <img class="hero__image" src="assets/Game Controller.png" alt="Custom gaming controller skin" />
+        <div class="offer-badge" aria-label="30 percent off limited time offer">
+          <div>
+            <span class="offer-badge__big">30%</span>
+            <span class="offer-badge__num">OFF</span>
+            <span class="offer-badge__small">LIMITED TIME OFFER</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container info-bar-wrap reveal">
+      <div class="info-bar">
+        <article class="info-item">
+          <div class="info-item__icon">⚙</div>
+          <div>
+            <h3>High Quality Print</h3>
+            <p>Vibrant colors &amp; long lasting designs.</p>
+          </div>
+        </article>
+
+        <article class="info-item">
+          <div class="info-item__icon">🛡</div>
+          <div>
+            <h3>Ultimate Protection</h3>
+            <p>Protects from scratches, dust &amp; wear.</p>
+          </div>
+        </article>
+
+        <article class="info-item">
+          <div class="info-item__icon">🎮</div>
+          <div>
+            <h3>Perfect Fit</h3>
+            <p>Precision-cut for your controller model.</p>
+          </div>
+        </article>
+
+        <article class="info-item">
+          <div class="info-item__icon">⬒</div>
+          <div>
+            <h3>Easy Application</h3>
+            <p>Bubble-free, residue-free removal.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section--light" id="skins">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>DESIGN YOURS</h2>
+        <p>Choose your style, customize, and make it truly yours.</p>
+      </div>
+
+      <div class="skins-wrap reveal">
+        <button class="skins-nav skins-nav--prev" type="button" aria-label="Previous skins">‹</button>
+        <button class="skins-nav skins-nav--next" type="button" aria-label="Next skins">›</button>
+
+        <div class="skins-grid" id="gallery">
+          <article class="skin-card">
+            <div class="skin-card__img">
+              <img src="/mnt/data/image-2 (2).png" alt="Ocean Camo controller skin">
+            </div>
+            <div class="skin-card__body"><h3>Ocean Camo</h3></div>
+          </article>
+
+          <article class="skin-card">
+            <div class="skin-card__img">
+              <img src="/mnt/data/image-2 (2).png" alt="Galaxy Purple controller skin">
+            </div>
+            <div class="skin-card__body"><h3>Galaxy Purple</h3></div>
+          </article>
+
+          <article class="skin-card">
+            <div class="skin-card__img">
+              <img src="/mnt/data/image-2 (2).png" alt="Red Venom controller skin">
+            </div>
+            <div class="skin-card__body"><h3>Red Venom</h3></div>
+          </article>
+
+          <article class="skin-card">
+            <div class="skin-card__img">
+              <img src="/mnt/data/image-2 (2).png" alt="Comic Blast controller skin">
+            </div>
+            <div class="skin-card__body"><h3>Comic Blast</h3></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark" id="how-it-works">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>HOW IT WORKS</h2>
+      </div>
+
+      <div class="steps">
+        <article class="step reveal">
+          <div class="step__num">1</div>
+          <div class="step__icon">🎮</div>
+          <h3>Choose Your Controller</h3>
+          <p>Select your controller model.</p>
+        </article>
+
+        <article class="step reveal">
+          <div class="step__num">2</div>
+          <div class="step__icon">✎</div>
+          <h3>Pick Your Design</h3>
+          <p>Choose from our designs or upload your own.</p>
+        </article>
+
+        <article class="step reveal">
+          <div class="step__num">3</div>
+          <div class="step__icon">◫</div>
+          <h3>We Print &amp; Cut</h3>
+          <p>We print your skin with precision &amp; quality.</p>
+        </article>
+
+        <article class="step reveal">
+          <div class="step__num">4</div>
+          <div class="step__icon">📦</div>
+          <h3>We Ship To You</h3>
+          <p>Quick delivery to your doorstep.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--light" id="reviews">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>WHAT GAMERS ARE SAYING</h2>
+      </div>
+
+      <div class="reviews-wrap reveal">
+        <button class="reviews-nav reviews-nav--prev" type="button" aria-label="Previous reviews">‹</button>
+        <button class="reviews-nav reviews-nav--next" type="button" aria-label="Next reviews">›</button>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>“The print quality is insane! My controller looks amazing now.”</p>
+            <div class="review-user">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="Alex R.">
+              <div><strong>Alex R.</strong></div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>“Super easy to apply and fits perfectly. Totally worth it!”</p>
+            <div class="review-user">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80" alt="Jake M.">
+              <div><strong>Jake M.</strong></div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>“Best controller skin I’ve ever bought. Highly recommend!”</p>
+            <div class="review-user">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="Ryan T.">
+              <div><strong>Ryan T.</strong></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" id="faq">
+    <div class="container cta-band__row">
+      <div class="cta-band__text reveal">
+        <h3>Upgrade Your Game.<br><span>Play in Style.</span></h3>
+      </div>
+
+      <a href="#home" class="cta-band__button reveal">
+        <span>GET 30% OFF NOW</span>
+        <span>→</span>
+      </a>
+
+      <div class="cta-band__meta reveal">
+        <span>🚚 Fast Shipping</span>
+        <span>🛡 Secure Payment</span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const skins = [
+      { title: 'Ocean Camo', alt: 'Ocean Camo controller skin', src: '/mnt/data/image-2 (2).png' },
+      { title: 'Galaxy Purple', alt: 'Galaxy Purple controller skin', src: '/mnt/data/image-2 (2).png' },
+      { title: 'Red Venom', alt: 'Red Venom controller skin', src: '/mnt/data/image-2 (2).png' },
+      { title: 'Comic Blast', alt: 'Comic Blast controller skin', src: '/mnt/data/image-2 (2).png' },
+      { title: 'Cyber Wave', alt: 'Cyber Wave controller skin', src: '/mnt/data/image-2 (2).png' },
+      { title: 'Neon Strike', alt: 'Neon Strike controller skin', src: '/mnt/data/image-2 (2).png' }
+    ];
+
+    let startIndex = 0;
+    const cards = Array.from(document.querySelectorAll('.skin-card'));
+
+    function renderSkins() {
+      cards.forEach((card, i) => {
+        const item = skins[(startIndex + i) % skins.length];
+        card.querySelector('img').src = item.src;
+        card.querySelector('img').alt = item.alt;
+        card.querySelector('h3').textContent = item.title;
+      });
+    }
+
+    document.querySelector('.skins-nav--next')?.addEventListener('click', () => {
+      startIndex = (startIndex + 1) % skins.length;
+      renderSkins();
+    });
+
+    document.querySelector('.skins-nav--prev')?.addEventListener('click', () => {
+      startIndex = (startIndex - 1 + skins.length) % skins.length;
+      renderSkins();
+    });
+
+    const reviews = [
+      {
+        text: '“The print quality is insane! My controller looks amazing now.”',
+        name: 'Alex R.',
+        img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80'
+      },
+      {
+        text: '“Super easy to apply and fits perfectly. Totally worth it!”',
+        name: 'Jake M.',
+        img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80'
+      },
+      {
+        text: '“Best controller skin I’ve ever bought. Highly recommend!”',
+        name: 'Ryan T.',
+        img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80'
+      },
+      {
+        text: '“Perfect fit and the colors pop even more in real life.”',
+        name: 'Chris D.',
+        img: 'https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=120&q=80'
+      },
+      {
+        text: '“Fast shipping and zero residue when I changed the skin later.”',
+        name: 'Noah K.',
+        img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80'
+      }
+    ];
+
+    let reviewIndex = 0;
+    const reviewCards = Array.from(document.querySelectorAll('.review-card'));
+
+    function renderReviews() {
+      reviewCards.forEach((card, i) => {
+        const item = reviews[(reviewIndex + i) % reviews.length];
+        card.querySelector('p').textContent = item.text;
+        card.querySelector('strong').textContent = item.name;
+        card.querySelector('img').src = item.img;
+        card.querySelector('img').alt = item.name;
+      });
+    }
+
+    document.querySelector('.reviews-nav--next')?.addEventListener('click', () => {
+      reviewIndex = (reviewIndex + 1) % reviews.length;
+      renderReviews();
+    });
+
+    document.querySelector('.reviews-nav--prev')?.addEventListener('click', () => {
+      reviewIndex = (reviewIndex - 1 + reviews.length) % reviews.length;
+      renderReviews();
+    });
+
+    renderSkins();
+    renderReviews();
+  </script>
+</body>
+</html>

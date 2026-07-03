@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Single Page Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Inter or Poppins Google Font recommended -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sticky Glassmorphism Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">V.N</a>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#showcase">Showcase</a></li>
+        <li><a href="#desks">Desks</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Architecting digital products, uncovering modern insights.</h1>
+      <p>A unified space showcasing premium web development, strategic engineering, and deep editorial desks.</p>
+      <div class="hero-ctas">
+        <a href="#desks" class="btn btn-primary">Read Latest Desks</a>
+        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Showcase / Bento Grid Section -->
+  <section id="showcase" class="section-container">
+    <h2 class="section-title">Core Showcase</h2>
+    <div class="bento-grid">
+      <div class="bento-item item-large"><h3>Featured Product Layout</h3><p>Full-stack architectural design with seamless integration.</p></div>
+      <div class="bento-item"><h3>UI/UX & Systems</h3><p>Clean glassmorphism interfaces built with pixel perfection.</p></div>
+      <div class="bento-item"><h3>Product Strategy</h3><p>Data-driven decisions scaling platforms effectively.</p></div>
+      <div class="bento-item item-medium"><h3>Live Performance Metrics</h3><p>Optimized for 99+ Core Web Vitals performance score.</p></div>
+    </div>
+  </section>
+
+  <!-- Filterable Blog Hub (Desks) -->
+  <section id="desks" class="section-container">
+    <h2 class="section-title">Editorial Desks</h2>
+    
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button class="tab-btn active" data-filter="all">All Desks</button>
+      <button class="tab-btn" data-filter="intelligence">Intelligence</button>
+      <button class="tab-btn" data-filter="frontier">Frontier</button>
+      <button class="tab-btn" data-filter="planet">Planet</button>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="blog-grid">
+      <article class="blog-card" data-category="intelligence" onclick="openArticle('ai-agents')">
+        <span class="card-tag">Intelligence</span>
+        <h3>The Shift Toward Autonomous Web Systems</h3>
+        <p>Exploring how contextual API intelligence alters modern client-side architectures...</p>
+        <div class="card-meta">May 2026 • 5 min read</div>
+      </article>
+
+      <article class="blog-card" data-category="frontier" onclick="openArticle('next-js-17')">
+        <span class="card-tag">Frontier</span>
+        <h3>Optimizing Edge Server Components at Scale</h3>
+        <p>Strategies for handling massive real-time content delivery without caching overhead...</p>
+        <div class="card-meta">May 2026 • 4 min read</div>
+      </article>
+
+      <article class="blog-card" data-category="planet" onclick="openArticle('green-compute')">
+        <span class="card-tag">Planet</span>
+        <h3>The Architecture of Sustainable Green Computing</h3>
+        <p>How modern serverless structures minimize computing footprints globally...</p>
+        <div class="card-meta">May 2026 • 7 min read</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact & Newsletter Footer -->
+  <footer id="contact" class="footer">
+    <div class="footer-container">
+      <div class="footer-newsletter">
+        <h3>Subscribe to the Desks</h3>
+        <p>Get premium tech, strategy, and engineering deep-dives straight to your inbox.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="Enter your email address" required>
+          <button type="submit">Join</button>
+        </form>
+      </div>
+      <div class="footer-links">
+        <h3>Connect</h3>
+        <p>Have an interesting project or venture? Let's discuss details.</p>
+        <a href="mailto:hello@domain.com" class="contact-email">hello@domain.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Over Article Drawer Container -->
+  <div id="articleDrawer" class="drawer">
+    <div class="drawer-overlay" onclick="closeArticle()"></div>
+    <div class="drawer-content">
+      <button class="close-btn" onclick="closeArticle()">&times; Close</button>
+      <div id="drawerBody" class="drawer-body">
+        <!-- Content gets dynamically injected here by Javascript -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
