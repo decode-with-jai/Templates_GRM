@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ember & Grain — Small-Batch Coffee Roasted to Order</title>
+<meta name="description" content="Ember & Grain roasts coffee in small batches and ships within 48 hours of roast. Single-origin beans from Ethiopia, Guatemala and Sumatra, roasted for freshness, not shelf life.">
+<meta name="keywords" content="specialty coffee, small batch coffee roaster, fresh roasted coffee, single origin coffee, buy coffee beans online">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Ember & Grain">
+<link rel="canonical" href="https://www.emberandgrain.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ember & Grain — Small-Batch Coffee Roasted to Order">
+<meta property="og:description" content="Single-origin coffee, roasted in small batches and shipped within 48 hours of roast.">
+<meta property="og:url" content="https://www.emberandgrain.com/">
+<meta property="og:site_name" content="Ember & Grain">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ember & Grain — Small-Batch Coffee Roasted to Order">
+<meta name="twitter:description" content="Single-origin coffee, roasted in small batches and shipped within 48 hours of roast.">
+
+<!-- Favicon (inline, zero requests) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231C130D'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='%23A8622E' stroke-width='7'/%3E%3C/svg%3E">
+
+<!-- Structured data for search engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Ember & Grain",
+  "url": "https://www.emberandgrain.com/",
+  "description": "Small-batch specialty coffee roaster shipping single-origin beans within 48 hours of roast.",
+  "brand": "Ember & Grain",
+  "sameAs": []
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Ember & Grain Single-Origin Coffee",
+  "description": "Small-batch roasted single-origin coffee beans, roasted to order and shipped within 48 hours.",
+  "brand": { "@type": "Brand", "name": "Ember & Grain" },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "16",
+    "highPrice": "22",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+
+<style>
+  :root{
+    --espresso:#1C130D;
+    --espresso-2:#241A12;
+    --parchment:#F3E9DA;
+    --cream:#F6EFE4;
+    --copper:#A8622E;
+    --copper-light:#C98552;
+    --moss:#5B6B4C;
+    --line: rgba(246,239,228,0.14);
+    --line-dark: rgba(28,19,13,0.12);
+    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "URW Palladio", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --maxw: 1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--espresso);
+    color:var(--cream);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--copper-light); font-weight:600; margin:0 0 12px;
+  }
+  h1,h2,h3{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:-0.01em;}
+  h1{font-size:clamp(2.4rem, 6vw, 4.2rem); line-height:1.04;}
+  h2{font-size:clamp(1.7rem, 3.4vw, 2.4rem); line-height:1.15;}
+  h3{font-size:1.15rem;}
+  p{color:rgba(246,239,228,0.78);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 28px; border-radius:2px; border:1px solid transparent;
+    font-family:var(--sans); font-size:14px; letter-spacing:.04em; text-transform:uppercase;
+    font-weight:600; text-decoration:none; cursor:pointer; transition:transform .15s ease, background .2s ease;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--copper); color:var(--cream);}
+  .btn-primary:hover{background:var(--copper-light);}
+  .btn-ghost{background:transparent; color:var(--cream); border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--copper-light); color:var(--copper-light);}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(28,19,13,0.9); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 24px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--serif); font-size:20px; letter-spacing:.02em; text-decoration:none;}
+  .brand-mark{width:28px; height:28px; flex:none;}
+  .nav-links{display:flex; gap:32px; list-style:none; margin:0; padding:0;}
+  .nav-links a{font-size:14px; text-decoration:none; color:rgba(246,239,228,0.75); letter-spacing:.02em;}
+  .nav-links a:hover{color:var(--copper-light);}
+  .nav-cta{display:none;}
+  @media (min-width:860px){ .nav-cta{display:inline-flex;} }
+  .nav-toggle{display:inline-flex; background:none; border:1px solid var(--line); border-radius:2px; padding:8px 10px; color:var(--cream);}
+  @media (min-width:860px){ .nav-toggle{display:none;} .nav-links{display:flex;} }
+  @media (max-width:859px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0; background:var(--espresso-2);
+      flex-direction:column; padding:20px 24px; gap:18px; border-bottom:1px solid var(--line);
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+  }
+
+  /* Hero */
+  .hero{padding:72px 0 56px; overflow:hidden;}
+  .hero-grid{display:grid; grid-template-columns:1fr; gap:40px; align-items:center;}
+  @media (min-width:900px){ .hero-grid{grid-template-columns:1.1fr .9fr; gap:56px;} }
+  .hero h1{margin-bottom:20px;}
+  .hero p.lead{font-size:17px; max-width:46ch; margin-bottom:28px;}
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:28px;}
+  .hero-meta{display:flex; gap:28px; flex-wrap:wrap; padding-top:20px; border-top:1px solid var(--line);}
+  .hero-meta div{font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:rgba(246,239,228,0.55);}
+  .hero-meta strong{display:block; font-family:var(--serif); font-size:22px; color:var(--cream); font-weight:400; letter-spacing:0; text-transform:none;}
+
+  /* Signature gauge illustration */
+  .gauge-wrap{display:flex; justify-content:center;}
+  .gauge{width:min(360px, 80vw); height:auto;}
+  .gauge .ring{transform-origin:200px 200px; animation:spin 34s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* Section shell */
+  section{padding:64px 0;}
+  .section-head{max-width:640px; margin-bottom:40px;}
+  .divider{border:none; border-top:1px solid var(--line); margin:0;}
+
+  /* Origins / product cards */
+  .card-grid{display:grid; grid-template-columns:1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media (min-width:720px){ .card-grid{grid-template-columns:repeat(3,1fr);} }
+  .card{background:var(--espresso); padding:32px 28px; position:relative;}
+  .card .roast-dot{width:10px; height:10px; border-radius:50%; margin-bottom:18px;}
+  .card h3{margin-bottom:6px;}
+  .card .origin{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--copper-light); margin-bottom:14px;}
+  .card p{font-size:14.5px; margin:0 0 18px;}
+  .card .price{font-family:var(--serif); font-size:20px; color:var(--cream);}
+
+  /* Process */
+  .process-list{list-style:none; margin:0; padding:0; display:grid; gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media (min-width:720px){ .process-list{grid-template-columns:repeat(3,1fr);} }
+  .process-list li{background:var(--espresso); padding:30px 28px;}
+  .process-num{font-family:var(--serif); font-size:14px; color:var(--copper-light); margin-bottom:14px; letter-spacing:.05em;}
+  .process-list h3{margin-bottom:8px;}
+  .process-list p{font-size:14.5px; margin:0;}
+
+  /* CTA band */
+  .cta-band{background:var(--parchment); color:var(--espresso); border-radius:2px;}
+  .cta-band .wrap{padding:56px 24px; display:flex; flex-direction:column; align-items:flex-start; gap:20px;}
+  @media (min-width:760px){ .cta-band .wrap{flex-direction:row; align-items:center; justify-content:space-between;} }
+  .cta-band h2{color:var(--espresso);}
+  .cta-band p{color:rgba(28,19,13,0.72); max-width:44ch;}
+  .cta-band .btn-primary{background:var(--espresso);}
+  .cta-band .btn-primary:hover{background:#2c2018;}
+  .cta-form{display:flex; gap:0; max-width:420px; width:100%;}
+  .cta-form input{
+    flex:1; padding:14px 16px; border:1px solid rgba(28,19,13,0.25); border-right:none;
+    font-family:var(--sans); font-size:14px; background:#fff; color:var(--espresso); border-radius:0;
+  }
+  .cta-form button{border-radius:0;}
+
+  /* Footer */
+  footer{border-top:1px solid var(--line); padding:56px 0 28px;}
+  .footer-top{display:grid; grid-template-columns:1fr; gap:36px; margin-bottom:40px;}
+  @media (min-width:760px){ .footer-top{grid-template-columns:1.3fr 1fr 1fr;} }
+  .footer-brand p{font-size:14px; max-width:32ch;}
+  .footer-col h4{font-family:var(--serif); font-weight:400; font-size:15px; margin:0 0 14px; color:var(--cream);}
+  .footer-col ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .footer-col a{font-size:14px; color:rgba(246,239,228,0.7); text-decoration:none;}
+  .footer-col a:hover{color:var(--copper-light);}
+
+  /* Legal accordion */
+  .legal{border-top:1px solid var(--line); padding-top:28px;}
+  .legal-item{border-bottom:1px solid var(--line);}
+  .legal-item summary{
+    cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0; font-size:14px; letter-spacing:.03em; color:var(--cream);
+  }
+  .legal-item summary::-webkit-details-marker{display:none;}
+  .legal-item summary .plus{color:var(--copper-light); font-size:18px; transition:transform .2s ease;}
+  .legal-item[open] summary .plus{transform:rotate(45deg);}
+  .legal-item .legal-body{padding:0 0 22px; font-size:13.5px; color:rgba(246,239,228,0.68); max-width:74ch;}
+  .legal-item .legal-body p{color:inherit; font-size:inherit; margin:0 0 12px;}
+  .legal-item .legal-body h5{font-family:var(--sans); font-size:12.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--copper-light); margin:16px 0 6px;}
+
+  .bottom-bar{
+    display:flex; flex-direction:column; gap:12px; padding-top:24px; margin-top:24px;
+    border-top:1px solid var(--line); font-size:12.5px; color:rgba(246,239,228,0.5);
+  }
+  @media (min-width:600px){ .bottom-bar{flex-direction:row; justify-content:space-between; align-items:center;} }
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav wrap" style="padding-left:0; padding-right:0;">
+    <a href="#top" class="brand">
+      <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <rect width="100" height="100" rx="20" fill="#A8622E"/>
+        <circle cx="50" cy="50" r="26" fill="none" stroke="#1C130D" stroke-width="7"/>
+      </svg>
+      Ember & Grain
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#origins">Origins</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#order">Order</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+    <a href="#order" class="btn btn-primary nav-cta">Order beans</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Small-batch roastery</p>
+        <h1>Roasted Tuesday.<br>On your counter Thursday.</h1>
+        <p class="lead">We roast coffee in batches of nine kilos, never more, and ship within 48 hours of roast. No warehouse, no shelf time, no stale bags pretending otherwise.</p>
+        <div class="hero-ctas">
+          <a href="#order" class="btn btn-primary">Order beans</a>
+          <a href="#process" class="btn btn-ghost">See how we roast</a>
+        </div>
+        <div class="hero-meta">
+          <div><strong>48 hrs</strong>Roast to doorstep</div>
+          <div><strong>9 kg</strong>Batch size, always</div>
+          <div><strong>3</strong>Origins in rotation</div>
+        </div>
+      </div>
+      <div class="gauge-wrap" aria-hidden="true">
+        <svg class="gauge" viewBox="0 0 400 400">
+          <g class="ring">
+            <circle cx="200" cy="200" r="170" fill="none" stroke="#3a2a1c" stroke-width="1.5" stroke-dasharray="2 10"/>
+          </g>
+          <circle cx="200" cy="200" r="140" fill="none" stroke="#3a2a1c" stroke-width="1"/>
+          <path d="M200 60 A140 140 0 0 1 321 130" fill="none" stroke="#A8622E" stroke-width="10" stroke-linecap="round"/>
+          <path d="M321 270 A140 140 0 0 1 200 340" fill="none" stroke="#5B6B4C" stroke-width="10" stroke-linecap="round"/>
+          <circle cx="200" cy="200" r="86" fill="#241A12" stroke="#3a2a1c"/>
+          <text x="200" y="192" text-anchor="middle" fill="#F6EFE4" font-family="Georgia, serif" font-size="30">Medium</text>
+          <text x="200" y="216" text-anchor="middle" fill="#C98552" font-family="Arial" font-size="11" letter-spacing="2">ROAST LEVEL</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ORIGINS -->
+  <section id="origins">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">This week's lineup</p>
+        <h2>Three origins, roasted for what they are</h2>
+      </div>
+      <div class="card-grid reveal">
+        <article class="card">
+          <div class="roast-dot" style="background:#D8B67C;"></div>
+          <p class="origin">Ethiopia · Light</p>
+          <h3>Yirgacheffe</h3>
+          <p>Washed, floral, bright as citrus. Roasted light to keep the jasmine notes intact.</p>
+          <p class="price">$19 / 340g</p>
+        </article>
+        <article class="card">
+          <div class="roast-dot" style="background:#A8622E;"></div>
+          <p class="origin">Guatemala · Medium</p>
+          <h3>Huehuetenango</h3>
+          <p>Chocolate and stone fruit, grown above 1,700m. Our everyday cup.</p>
+          <p class="price">$17 / 340g</p>
+        </article>
+        <article class="card">
+          <div class="roast-dot" style="background:#3a2a1c;"></div>
+          <p class="origin">Sumatra · Dark</p>
+          <h3>Mandheling</h3>
+          <p>Earthy, syrupy body. Roasted dark, but stopped short of ash.</p>
+          <p class="price">$18 / 340g</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">How a bag reaches you</p>
+        <h2>Three steps, in order, every time</h2>
+      </div>
+      <ol class="process-list reveal" style="padding-left:0;">
+        <li>
+          <p class="process-num">01</p>
+          <h3>Sourced direct</h3>
+          <p>We buy from three farms we've visited, at prices set above commodity rate.</p>
+        </li>
+        <li>
+          <p class="process-num">02</p>
+          <h3>Roasted in nine-kilo batches</h3>
+          <p>Small enough that one roaster tastes and adjusts every single batch by hand.</p>
+        </li>
+        <li>
+          <p class="process-num">03</p>
+          <h3>Shipped within 48 hours</h3>
+          <p>Bags go out the same week they're roasted. Never held in a warehouse.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CTA / ORDER -->
+  <section id="order">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <div class="wrap" style="max-width:none;">
+          <h2>Get the next roast</h2>
+          <p>Leave your email and we'll let you know the day beans go into the drum — usually a day before they ship.</p>
+          <form class="cta-form" onsubmit="event.preventDefault(); this.reset(); alert('Thanks — we will be in touch before the next roast.');">
+            <label for="email" class="sr-only" style="position:absolute; left:-9999px;">Email address</label>
+            <input id="email" type="email" required placeholder="you@example.com" autocomplete="email">
+            <button type="submit" class="btn btn-primary">Notify me</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" class="brand" style="margin-bottom:14px; display:inline-flex;">
+          <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+            <rect width="100" height="100" rx="20" fill="#A8622E"/>
+            <circle cx="50" cy="50" r="26" fill="none" stroke="#1C130D" stroke-width="7"/>
+          </svg>
+          Ember & Grain
+        </a>
+        <p>A small roastery. Three origins at a time, roasted to order, shipped fast.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#origins">Origins</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#order">Order</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@emberandgrain.com">hello@emberandgrain.com</a></li>
+          <li><a href="tel:+10000000000">+1 (000) 000-0000</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="legal">
+      <details class="legal-item">
+        <summary>Disclaimer <span class="plus">+</span></summary>
+        <div class="legal-body">
+          <p>The content on this website is provided for general informational purposes only and does not constitute professional, medical, or financial advice. Roast levels, tasting notes, and origin descriptions reflect our own assessment at the time of roasting and may vary from batch to batch, as coffee is an agricultural product.</p>
+          <p>We make reasonable efforts to keep information on this site accurate and current but do not guarantee completeness or accuracy at all times. Your use of this website and any purchase made through it is at your own discretion.</p>
+        </div>
+      </details>
+
+      <details class="legal-item">
+        <summary>Terms & Conditions <span class="plus">+</span></summary>
+        <div class="legal-body">
+          <h5>Use of this site</h5>
+          <p>By accessing this website, you agree to use it only for lawful purposes and in a way that does not infringe the rights of, or restrict the use of, this site by any third party.</p>
+          <h5>Orders and payment</h5>
+          <p>All orders placed through this site are subject to acceptance and product availability. Prices are listed in USD and may change without prior notice. We reserve the right to refuse or cancel any order at our discretion.</p>
+          <h5>Shipping</h5>
+          <p>Estimated dispatch and delivery times are provided in good faith and are not guaranteed. We are not liable for delays caused by couriers or events outside our control.</p>
+          <h5>Intellectual property</h5>
+          <p>All text, graphics, and branding on this site belong to Ember & Grain and may not be reproduced without written permission.</p>
+          <h5>Limitation of liability</h5>
+          <p>To the fullest extent permitted by law, Ember & Grain is not liable for any indirect or consequential loss arising from the use of this website or its products.</p>
+        </div>
+      </details>
+
+      <details class="legal-item">
+        <summary>Privacy Policy <span class="plus">+</span></summary>
+        <div class="legal-body">
+          <h5>Information we collect</h5>
+          <p>We collect the information you provide directly, such as your name, email address, and shipping details, when you place an order or sign up for roast notifications.</p>
+          <h5>How we use it</h5>
+          <p>We use this information to fulfil orders, send roast-day notifications you've opted into, and improve our website. We do not sell your personal information to third parties.</p>
+          <h5>Cookies</h5>
+          <p>This site may use essential cookies required for basic functionality. No third-party advertising cookies are used.</p>
+          <h5>Your rights</h5>
+          <p>You may request access to, correction of, or deletion of your personal data at any time by contacting us at the email address listed above.</p>
+          <h5>Changes</h5>
+          <p>We may update this policy from time to time. Continued use of the site after changes constitutes acceptance of the updated policy.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="bottom-bar">
+      <span>© <span id="year"></span> Ember & Grain. All rights reserved.</span>
+      <span>Roasted and shipped from a small kitchen, not a warehouse.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ links.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
+  });
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>
