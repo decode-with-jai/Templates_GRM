@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://loanpolicy.online/sitemap.xml

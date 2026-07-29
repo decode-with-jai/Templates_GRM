@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loan Policy | Compare Loan Options & Make Smarter Financial Decisions</title>
+  <meta name="description" content="Loan Policy helps users understand loan options, eligibility basics, repayment planning, and responsible borrowing through a clean, easy-to-use online experience." />
+  <meta name="keywords" content="Loan Policy, personal loan, business loan, home loan, loan eligibility, EMI planning, loan comparison, responsible borrowing" />
+  <meta name="author" content="Loan Policy" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://loanpolicy.online/" />
+
+  <meta property="og:title" content="Loan Policy | Smarter Loan Decisions" />
+  <meta property="og:description" content="Explore loan categories, understand eligibility, and plan repayments with confidence." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://loanpolicy.online/" />
+  <meta property="og:image" content="https://loanpolicy.online/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Loan Policy | Smarter Loan Decisions" />
+  <meta name="twitter:description" content="Explore loan categories, understand eligibility, and plan repayments with confidence." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Loan Policy",
+    "url": "https://loanpolicy.online/",
+    "description": "Loan education and comparison-focused website for smarter financial decisions.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Loan Policy"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary: #2f6fed;
+      --primary-dark: #1e52bf;
+      --secondary: #0fba8a;
+      --text: #152238;
+      --muted: #637085;
+      --soft: #f5f8ff;
+      --border: #e8edf5;
+      --white: #ffffff;
+      --shadow: 0 18px 50px rgba(26, 54, 93, 0.10);
+      --radius: 22px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: pointer;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button, input, select { font: inherit; }
+
+    .container { width: min(1160px, 92%); margin: auto; }
+    .section { padding: 92px 0; position: relative; }
+    .section-title { max-width: 720px; margin: 0 auto 48px; text-align: center; }
+    .section-title span {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--primary); background: #edf3ff; padding: 8px 14px;
+      border-radius: 999px; font-weight: 800; font-size: .82rem;
+      letter-spacing: .06em; text-transform: uppercase;
+    }
+    .section-title h2 { font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.15; margin: 16px 0 14px; }
+    .section-title p { color: var(--muted); font-size: 1.05rem; }
+
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      background: rgba(255,255,255,.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(232,237,245,.9);
+    }
+    .nav-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 1.18rem; }
+    .logo-mark {
+      width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center;
+      color: #fff; background: linear-gradient(135deg,var(--primary),var(--secondary));
+      box-shadow: 0 10px 25px rgba(47,111,237,.28);
+    }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { color: var(--muted); font-weight: 700; font-size: .94rem; transition: .25s; }
+    .nav-links a:hover { color: var(--primary); transform: translateY(-1px); }
+    .nav-cta {
+      color:#fff !important; padding: 11px 18px; border-radius: 12px;
+      background: linear-gradient(135deg,var(--primary),var(--primary-dark));
+      box-shadow: 0 10px 25px rgba(47,111,237,.25);
+    }
+    .menu-btn { display: none; border: 0; background: transparent; font-size: 1.35rem; color: var(--text); }
+
+    .hero {
+      min-height: 100vh; padding: 130px 0 70px; display: flex; align-items: center;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(47,111,237,.12), transparent 32%),
+        radial-gradient(circle at 10% 80%, rgba(15,186,138,.10), transparent 30%),
+        linear-gradient(180deg,#fff 0%,#fbfdff 100%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 70px; align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; background: #eff5ff;
+      color: var(--primary); padding: 9px 15px; border-radius: 999px; font-weight: 800;
+      font-size: .86rem; margin-bottom: 22px;
+    }
+    .hero h1 { font-size: clamp(2.7rem, 6vw, 5.4rem); line-height: .98; letter-spacing: -.045em; max-width: 760px; }
+    .gradient-text {
+      background: linear-gradient(135deg,var(--primary),var(--secondary));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      display: inline-block; animation: floatText 3.8s ease-in-out infinite;
+    }
+    @keyframes floatText { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    .hero p { margin: 24px 0 30px; color: var(--muted); font-size: 1.1rem; max-width: 650px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 15px 22px; border-radius: 14px; font-weight: 800; transition: .3s;
+      border: 1px solid transparent;
+    }
+    .btn-primary { color: #fff; background: linear-gradient(135deg,var(--primary),var(--primary-dark)); box-shadow: 0 15px 30px rgba(47,111,237,.25); }
+    .btn-secondary { background:#fff; border-color:var(--border); color:var(--text); }
+    .btn:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .trust-row { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font-size:.9rem; font-weight:700; }
+    .trust-row span { display:flex; align-items:center; gap:8px; }
+    .trust-row i { color: var(--secondary); }
+
+    .loan-card {
+      position: relative; background: rgba(255,255,255,.86); border: 1px solid rgba(255,255,255,.9);
+      border-radius: 28px; padding: 28px; box-shadow: var(--shadow); backdrop-filter: blur(18px);
+      animation: cardFloat 4.5s ease-in-out infinite;
+    }
+    @keyframes cardFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .loan-card::before {
+      content:""; position:absolute; inset:-24px; z-index:-1; border-radius:36px;
+      background: linear-gradient(135deg,rgba(47,111,237,.14),rgba(15,186,138,.11)); filter: blur(24px);
+    }
+    .mini-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:22px; }
+    .mini-head strong { font-size:1.1rem; }
+    .score { background:#ebfbf6; color:#0b8b67; padding:8px 12px; border-radius:999px; font-size:.8rem; font-weight:800; }
+    .loan-option { display:flex; align-items:center; justify-content:space-between; padding:16px; border:1px solid var(--border); border-radius:16px; margin:12px 0; background:#fff; transition:.3s; }
+    .loan-option:hover { transform:translateX(5px); border-color:#bfd1fb; }
+    .loan-option .left { display:flex; gap:12px; align-items:center; }
+    .icon-box { width:44px; height:44px; border-radius:13px; display:grid; place-items:center; color:var(--primary); background:#eef4ff; }
+    .loan-option small { display:block; color:var(--muted); margin-top:2px; }
+    .emi-box { margin-top:18px; padding:20px; border-radius:18px; color:#fff; background:linear-gradient(135deg,#203a78,#2f6fed); }
+    .emi-box h3 { font-size:2rem; margin:6px 0 2px; }
+
+    .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .feature-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:28px; transition:.35s; box-shadow:0 10px 30px rgba(20,50,90,.05); }
+    .feature-card:hover { transform:translateY(-10px); box-shadow:var(--shadow); border-color:#cbd9f6; }
+    .feature-card .icon-box { width:52px; height:52px; margin-bottom:18px; font-size:1.2rem; }
+    .feature-card h3 { margin-bottom:10px; font-size:1.15rem; }
+    .feature-card p { color:var(--muted); font-size:.96rem; }
+
+    .process-section { background:var(--soft); }
+    .process-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .process-card { background:#fff; padding:30px; border-radius:var(--radius); border:1px solid var(--border); position:relative; overflow:hidden; }
+    .step-no { font-size:3.4rem; font-weight:800; color:#e4ebfa; position:absolute; right:20px; top:8px; }
+    .process-card i { font-size:1.35rem; color:var(--primary); margin-bottom:22px; }
+    .process-card h3 { margin-bottom:10px; }
+    .process-card p { color:var(--muted); }
+
+    .trust-section { padding-bottom:120px; }
+    .trust-panel {
+      display:grid; grid-template-columns:1fr 1fr; gap:46px; align-items:center;
+      border:1px solid var(--border); border-radius:30px; padding:46px;
+      background:linear-gradient(145deg,#fff,#f7faff); box-shadow:var(--shadow);
+    }
+    .trust-panel h2 { font-size:clamp(2rem,4vw,3rem); line-height:1.15; }
+    .trust-panel p { color:var(--muted); margin:16px 0 24px; }
+    .check-list { display:grid; gap:13px; }
+    .check-list div { display:flex; align-items:flex-start; gap:10px; font-weight:700; }
+    .check-list i { color:var(--secondary); margin-top:5px; }
+    .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .stat { padding:24px; border-radius:18px; background:#fff; border:1px solid var(--border); text-align:center; }
+    .stat strong { display:block; font-size:2rem; color:var(--primary); }
+    .stat span { color:var(--muted); font-weight:700; font-size:.88rem; }
+
+    footer { background:#11203a; color:#dce5f2; padding:46px 0 24px; }
+    .footer-grid { display:grid; grid-template-columns:1.3fr .7fr .7fr; gap:34px; }
+    .footer-brand p { color:#9fb0c8; max-width:520px; margin-top:15px; }
+    .footer-col h4 { color:#fff; margin-bottom:14px; }
+    .footer-col a { display:block; color:#9fb0c8; margin:9px 0; transition:.25s; }
+    .footer-col a:hover { color:#fff; transform:translateX(4px); }
+    .footer-bottom { margin-top:36px; padding-top:22px; border-top:1px solid rgba(255,255,255,.1); display:flex; justify-content:space-between; gap:20px; color:#8fa1bb; font-size:.88rem; }
+
+    .redirect-popup {
+      position:fixed; inset:0; z-index:3000; display:none; align-items:center; justify-content:center;
+      background:rgba(10,21,40,.68); backdrop-filter:blur(10px); padding:20px;
+    }
+    .redirect-popup.active { display:flex; }
+    .popup-card {
+      width:min(560px,100%); background:#fff; border-radius:28px; padding:36px; text-align:center;
+      box-shadow:0 28px 80px rgba(0,0,0,.28); position:relative; animation:popupIn .35s ease;
+    }
+    @keyframes popupIn { from{opacity:0;transform:scale(.88) translateY(25px)} to{opacity:1;transform:scale(1) translateY(0)} }
+    .popup-icon { width:72px;height:72px;border-radius:22px;display:grid;place-items:center;margin:0 auto 18px;color:#fff;font-size:1.7rem;background:linear-gradient(135deg,var(--primary),var(--secondary)); }
+    .popup-card h3 { font-size:1.8rem; margin-bottom:10px; }
+    .popup-card p { color:var(--muted); margin-bottom:24px; }
+    .popup-close { position:absolute; top:14px; right:16px; width:38px;height:38px;border:0;border-radius:50%;background:#f0f3f8;color:var(--text);font-size:1rem;cursor:pointer; }
+
+    .reveal { opacity:0; transform:translateY(28px); transition:.75s ease; }
+    .reveal.show { opacity:1; transform:translateY(0); }
+
+    @media (max-width: 900px) {
+      .hero-grid, .trust-panel { grid-template-columns:1fr; }
+      .hero { text-align:center; }
+      .hero p { margin-left:auto; margin-right:auto; }
+      .hero-actions, .trust-row { justify-content:center; }
+      .features-grid, .process-grid { grid-template-columns:1fr 1fr; }
+      .nav-links {
+        position:absolute; top:76px; left:4%; right:4%; padding:20px; border-radius:18px;
+        background:#fff; box-shadow:var(--shadow); flex-direction:column; align-items:stretch;
+        opacity:0; visibility:hidden; transform:translateY(-10px); transition:.3s;
+      }
+      .nav-links.open { opacity:1; visibility:visible; transform:translateY(0); }
+      .menu-btn { display:block; }
+    }
+
+    @media (max-width: 620px) {
+      .section { padding:72px 0; }
+      .hero { padding-top:110px; }
+      .features-grid, .process-grid, .stats-grid, .footer-grid { grid-template-columns:1fr; }
+      .loan-card { padding:20px; }
+      .trust-panel { padding:28px; }
+      .footer-bottom { flex-direction:column; }
+      .popup-card { padding:30px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="logo">
+        <span class="logo-mark"><i class="fa-solid fa-scale-balanced"></i></span>
+        <span>Loan Policy</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#features">Benefits</a>
+        <a href="#process">How It Works</a>
+        <a href="#trust">Why Choose Us</a>
+        <a href="#" class="nav-cta">Explore Options</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><i class="fa-solid fa-shield-halved"></i> Smarter borrowing starts here</div>
+          <h1>Understand loans. Compare better. Choose with <span class="gradient-text">confidence.</span></h1>
+          <p>Loan Policy gives you a clean and simple way to explore common loan categories, understand eligibility basics, and plan repayments responsibly before taking the next step.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary">Check Loan Options <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#features" class="btn btn-secondary"><i class="fa-regular fa-circle-play"></i> See How It Works</a>
+          </div>
+          <div class="trust-row">
+            <span><i class="fa-solid fa-circle-check"></i> Easy to understand</span>
+            <span><i class="fa-solid fa-circle-check"></i> Mobile friendly</span>
+            <span><i class="fa-solid fa-circle-check"></i> Responsible guidance</span>
+          </div>
+        </div>
+
+        <div class="loan-card reveal">
+          <div class="mini-head">
+            <strong>Explore Loan Categories</strong>
+            <span class="score">Simple & Clear</span>
+          </div>
+          <div class="loan-option">
+            <div class="left"><span class="icon-box"><i class="fa-solid fa-user"></i></span><div><strong>Personal Loan</strong><small>For planned personal expenses</small></div></div>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <div class="loan-option">
+            <div class="left"><span class="icon-box"><i class="fa-solid fa-house"></i></span><div><strong>Home Loan</strong><small>For buying or building a home</small></div></div>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <div class="loan-option">
+            <div class="left"><span class="icon-box"><i class="fa-solid fa-briefcase"></i></span><div><strong>Business Loan</strong><small>For business growth needs</small></div></div>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <div class="emi-box">
+            <small>Plan before you borrow</small>
+            <h3>Know your EMI</h3>
+            <span>Compare affordability with your monthly budget.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-title reveal">
+          <span><i class="fa-solid fa-sparkles"></i> Key Benefits</span>
+          <h2>A clearer way to understand loan choices</h2>
+          <p>Everything is designed to reduce confusion and help visitors make more informed decisions.</p>
+        </div>
+        <div class="features-grid">
+          <article class="feature-card reveal">
+            <span class="icon-box"><i class="fa-solid fa-layer-group"></i></span>
+            <h3>Multiple Loan Categories</h3>
+            <p>Explore personal, business, home, vehicle, and other common loan types from one easy interface.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="icon-box"><i class="fa-solid fa-calculator"></i></span>
+            <h3>Repayment Awareness</h3>
+            <p>Understand how tenure, interest, and monthly repayment can affect your total borrowing cost.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="icon-box"><i class="fa-solid fa-file-shield"></i></span>
+            <h3>Eligibility Basics</h3>
+            <p>Learn the key factors lenders may review, including income stability, documents, and credit history.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process-section" id="process">
+      <div class="container">
+        <div class="section-title reveal">
+          <span><i class="fa-solid fa-route"></i> Simple Process</span>
+          <h2>Three easy steps to move forward</h2>
+          <p>Browse, understand, and continue to the relevant service provider when you are ready.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-card reveal"><span class="step-no">01</span><i class="fa-solid fa-magnifying-glass"></i><h3>Explore</h3><p>Review available loan categories and choose the one that matches your requirement.</p></article>
+          <article class="process-card reveal"><span class="step-no">02</span><i class="fa-solid fa-chart-line"></i><h3>Evaluate</h3><p>Consider affordability, monthly repayment, eligibility, and total borrowing cost.</p></article>
+          <article class="process-card reveal"><span class="step-no">03</span><i class="fa-solid fa-arrow-up-right-from-square"></i><h3>Continue</h3><p>Proceed to the external platform for detailed terms, application steps, and lender-specific information.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section trust-section" id="trust">
+      <div class="container">
+        <div class="trust-panel reveal">
+          <div>
+            <div class="eyebrow"><i class="fa-solid fa-lock"></i> Built for clarity</div>
+            <h2>Clean, responsive, and easy to use on every screen</h2>
+            <p>Loan Policy is designed around mobile-first usability, readable content, fast interaction, and clear calls to action.</p>
+            <div class="check-list">
+              <div><i class="fa-solid fa-check"></i><span>Responsive layout for mobile, tablet, and desktop</span></div>
+              <div><i class="fa-solid fa-check"></i><span>SEO-ready structure with metadata and schema</span></div>
+              <div><i class="fa-solid fa-check"></i><span>Simple navigation and smooth micro-interactions</span></div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat"><strong data-target="100">0</strong><span>Responsive Design</span></div>
+            <div class="stat"><strong data-target="4">0</strong><span>Core Sections</span></div>
+            <div class="stat"><strong data-target="24">0</strong><span>Hour Accessibility</span></div>
+            <div class="stat"><strong data-target="1">0</strong><span>Single HTML File</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><span class="logo-mark"><i class="fa-solid fa-scale-balanced"></i></span><span style="color:#fff">Loan Policy</span></div>
+          <p>Educational information to help users understand loan categories and responsible borrowing. Final approval and terms depend on the respective lender.</p>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><a href="#home">Home</a><a href="#features">Benefits</a><a href="#process">Process</a></div>
+        <div class="footer-col"><h4>Legal</h4><a href="privacy-policy.html">Privacy Policy</a><a href="terms-and-conditions.html">Terms</a><a href="disclaimer.html">Disclaimer</a></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Loan Policy. All rights reserved.</span><span>Borrow responsibly. Review terms before applying.</span></div>
+    </div>
+  </footer>
+
+  <div class="redirect-popup" id="redirectPopup" aria-hidden="true">
+    <div class="popup-card">
+      <button class="popup-close" id="popupClose" aria-label="Close popup"><i class="fa-solid fa-xmark"></i></button>
+      <div class="popup-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+      <h3>Explore more loan options</h3>
+      <p>Continue to our partner platform to view additional details, eligibility criteria, and available offers.</p>
+      <a href="#" class="btn btn-primary">Continue Now <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <script>
+    // Change this one URL and it will update the redirect used across the full website.
+    // const REDIRECT_URL = '';
+
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const popup = document.getElementById('redirectPopup');
+    const popupClose = document.getElementById('popupClose');
+
+    menuBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      navLinks.classList.toggle('open');
+    });
+
+    popupClose.addEventListener('click', (event) => {
+      event.stopPropagation();
+      popup.classList.remove('active');
+      popup.setAttribute('aria-hidden', 'true');
+    });
+
+    // Show the full-page popup after a short delay.
+    setTimeout(() => {
+      popup.classList.add('active');
+      popup.setAttribute('aria-hidden', 'false');
+    }, 4500);
+
+    // Redirect when the visitor clicks anywhere on the page.
+    document.addEventListener('click', (event) => {
+      if (event.target.closest('#menuBtn') || event.target.closest('#popupClose')) return;
+      event.preventDefault();
+      window.location.href = REDIRECT_URL;
+    });
+
+    // Scroll reveal animation.
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.14 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Animated counters.
+    const counters = document.querySelectorAll('[data-target]');
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = Number(el.dataset.target);
+        let value = 0;
+        const step = Math.max(1, Math.ceil(target / 45));
+        const timer = setInterval(() => {
+          value += step;
+          if (value >= target) {
+            value = target;
+            clearInterval(timer);
+          }
+          el.textContent = target === 100 ? value + '%' : value + (target === 24 ? '/7' : '');
+        }, 28);
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(counter => counterObserver.observe(counter));
+  </script>
+</body>
+</html>

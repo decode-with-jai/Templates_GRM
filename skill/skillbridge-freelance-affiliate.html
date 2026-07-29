@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillBridge — Find Real Clients For Your Freelance Skills | Join Free</title>
+<meta name="description" content="SkillBridge connects freelancers directly with serious clients across writing, design, dev, and marketing. Verified budgets, escrow payments, zero bidding wars. Join free.">
+<meta name="keywords" content="freelance jobs, freelancing platform, work from home, remote jobs, earn online, freelance clients">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.skillbridge-example.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="SkillBridge — Find Real Clients For Your Freelance Skills">
+<meta property="og:description" content="Verified budgets, escrow payments, zero bidding wars. Join free today.">
+<meta property="og:url" content="https://www.skillbridge-example.com/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23109D63'/%3E%3Cpath d='M16 32c0-8.8 7.2-16 16-16M48 32c0 8.8-7.2 16-16 16' stroke='white' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='32' r='4.5' fill='white'/%3E%3Ccircle cx='48' cy='32' r='4.5' fill='white'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SkillBridge",
+  "url": "https://www.skillbridge-example.com/",
+  "description": "SkillBridge connects freelancers directly with verified, serious clients across writing, design, development, and marketing.",
+  "sameAs": []
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How is SkillBridge different from other freelance sites?","acceptedAnswer":{"@type":"Answer","text":"Clients on SkillBridge verify their budget before a brief goes live, so you never chase a project that was never going to pay."}},
+    {"@type":"Question","name":"What does it cost to join?","acceptedAnswer":{"@type":"Answer","text":"Joining and browsing briefs is completely free. There's no subscription required to start applying."}},
+    {"@type":"Question","name":"How quickly will I hear back from a client?","acceptedAnswer":{"@type":"Answer","text":"Most applicants hear back within 2 to 3 business days once their profile is complete."}},
+    {"@type":"Question","name":"Can I work from anywhere?","acceptedAnswer":{"@type":"Answer","text":"Yes, SkillBridge is fully remote. Clients are matched based on skill and availability, not location."}},
+    {"@type":"Question","name":"How does payment protection work?","acceptedAnswer":{"@type":"Answer","text":"Client funds are held in escrow before a project starts and released to you automatically once milestones are approved."}},
+    {"@type":"Question","name":"What if I only have limited hours available?","acceptedAnswer":{"@type":"Answer","text":"You set your own availability and only get matched to briefs that fit the hours you actually have free."}}
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --ink:#0E1F17;
+    --ink-soft:#556359;
+    --ink-faint:#93A199;
+    --green:#109D63;
+    --green-dark:#0C7A4C;
+    --green-deep:#0B3B27;
+    --lime:#C8F169;
+    --pale:#EEF8F2;
+    --pale-2:#F7FBF8;
+    --border:#E1EEE6;
+    --shadow:0 24px 48px -24px rgba(11,59,39,0.22);
+    --sidebar-w:236px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} *{animation-duration:.001ms !important; transition-duration:.001ms !important;} }
+
+  body{
+    font-family:'Manrope', sans-serif; color:var(--ink); background:var(--bg);
+    line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  h1,h2,h3,h4{ font-family:'Sora', sans-serif; font-weight:700; line-height:1.14; letter-spacing:-0.01em; color:var(--ink); }
+  .mono{ font-family:'Space Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  ul{ list-style:none; }
+  input, textarea, select, label, button{ font-family:inherit; }
+  button{ cursor:pointer; }
+
+  .wrap{ max-width:1240px; margin:0 auto; padding:0 28px; }
+  section{ padding:90px 0; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:9px; font-family:'Space Mono', monospace; font-size:12px;
+    font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--green-dark);
+    margin-bottom:18px;
+  }
+  .eyebrow::before{ content:''; width:26px; height:2px; background:var(--green); display:inline-block; }
+  .section-head{ max-width:600px; margin-bottom:50px; }
+  .section-head h2{ font-size:clamp(26px,3.8vw,38px); margin-bottom:14px; }
+  .section-head p{ color:var(--ink-soft); font-size:16.5px; }
+
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:15px 26px; border-radius:10px; font-weight:700; font-size:15px; border:1.5px solid transparent; transition:transform .18s ease, box-shadow .18s ease, background .18s ease; }
+  .btn-primary{ background:var(--green); color:#fff; box-shadow:0 14px 26px -12px rgba(16,157,99,0.55); }
+  .btn-primary:hover{ background:var(--green-dark); transform:translateY(-2px); }
+  .btn-outline{ border-color:var(--ink); color:var(--ink); }
+  .btn-outline:hover{ border-color:var(--green); color:var(--green-dark); }
+  .btn-sm{ padding:11px 18px; font-size:13.5px; border-radius:9px; }
+
+  /* ===== SIDEBAR (desktop nav) ===== */
+  .sidebar{
+    position:fixed; top:0; left:0; width:var(--sidebar-w); height:100vh; background:var(--green-deep);
+    display:flex; flex-direction:column; padding:30px 24px; z-index:200; color:#fff;
+  }
+  .sb-logo{ display:flex; align-items:center; gap:10px; font-family:'Sora'; font-weight:800; font-size:19px; margin-bottom:50px; }
+  .sb-logo .mark{ width:32px; height:32px; border-radius:9px; background:var(--lime); display:flex; align-items:center; justify-content:center; }
+  .sb-nav{ display:flex; flex-direction:column; gap:4px; flex:1; }
+  .sb-nav a{ padding:11px 12px; border-radius:8px; font-size:14px; font-weight:600; color:#B7CFC1; transition:background .15s ease, color .15s ease; display:flex; align-items:center; gap:10px; }
+  .sb-nav a:hover{ background:rgba(255,255,255,0.06); color:#fff; }
+  .sb-nav a .dot{ width:5px; height:5px; border-radius:50%; background:var(--lime); opacity:0; transition:opacity .15s ease; }
+  .sb-nav a:hover .dot{ opacity:1; }
+  .sb-foot{ margin-top:auto; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1); }
+  .sb-foot p{ font-size:12px; color:#7FA090; margin-bottom:14px; }
+
+  .mobile-bar{ display:none; }
+
+  .site{ margin-left:var(--sidebar-w); }
+
+  /* ===== HERO ===== */
+  .hero{ position:relative; padding:70px 0 0; overflow:hidden; }
+  .hero-diagonal{
+    position:absolute; top:0; right:0; width:46%; height:100%; background:var(--pale);
+    clip-path:polygon(28% 0, 100% 0, 100% 100%, 0% 100%); z-index:0;
+  }
+  .hero-grid{ position:relative; z-index:1; display:grid; grid-template-columns:1.15fr 0.85fr; gap:40px; align-items:center; }
+  .hero h1{ font-size:clamp(32px,4.6vw,52px); margin-bottom:20px; }
+  .hero h1 span.hl{ background:linear-gradient(180deg, transparent 62%, var(--lime) 62%); }
+  .hero p.lead{ font-size:17px; color:var(--ink-soft); max-width:460px; margin-bottom:30px; }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:30px; }
+  .hero-badges{ display:flex; gap:26px; flex-wrap:wrap; }
+  .hero-badge b{ font-family:'Space Mono'; font-size:20px; display:block; color:var(--green-dark); }
+  .hero-badge span{ font-size:12.5px; color:var(--ink-faint); }
+
+  /* stacked card deck — signature element */
+  .deck{ position:relative; height:420px; }
+  .deck-card{
+    position:absolute; top:0; left:0; width:100%; background:#fff; border:1px solid var(--border); border-radius:18px;
+    padding:24px; box-shadow:var(--shadow); transition:transform .3s ease;
+  }
+  .deck-card:nth-child(1){ transform:rotate(-6deg) translateY(30px); z-index:1; }
+  .deck-card:nth-child(2){ transform:rotate(4deg) translateY(10px); z-index:2; }
+  .deck-card:nth-child(3){ transform:rotate(-1deg); z-index:3; }
+  .deck:hover .deck-card:nth-child(1){ transform:rotate(-9deg) translateY(40px) translateX(-10px); }
+  .deck:hover .deck-card:nth-child(2){ transform:rotate(6deg) translateY(16px) translateX(8px); }
+  .deck-tag{ display:inline-block; font-family:'Space Mono'; font-size:11px; font-weight:700; background:var(--pale); color:var(--green-dark); padding:5px 10px; border-radius:999px; margin-bottom:14px; }
+  .deck-card h4{ font-size:17px; margin-bottom:6px; }
+  .deck-card p{ font-size:13.5px; color:var(--ink-soft); margin-bottom:16px; }
+  .deck-row{ display:flex; justify-content:space-between; align-items:center; border-top:1px dashed var(--border); padding-top:14px; }
+  .deck-row .pay{ font-family:'Space Mono'; font-weight:700; color:var(--green-dark); }
+  .deck-row .avatars2{ display:flex; }
+  .deck-row .avatars2 span{ width:24px; height:24px; border-radius:50%; border:2px solid #fff; margin-left:-8px; background:var(--green); }
+
+  /* ===== BENTO ABOUT ===== */
+  .bento{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; gap:16px; }
+  .bento-cell{ border-radius:18px; padding:26px; display:flex; flex-direction:column; justify-content:space-between; }
+  .bento-cell.b-1{ grid-column:span 2; grid-row:span 2; background:var(--green-deep); color:#fff; }
+  .bento-cell.b-2{ grid-column:span 2; background:var(--pale); }
+  .bento-cell.b-3{ grid-column:span 1; background:var(--lime); }
+  .bento-cell.b-4{ grid-column:span 1; background:#fff; border:1px solid var(--border); }
+  .bento-cell h3{ font-size:20px; }
+  .bento-cell.b-1 h3{ color:#fff; }
+  .bento-cell p{ font-size:13.5px; color:var(--ink-soft); }
+  .bento-cell.b-1 p{ color:#B7CFC1; }
+  .bento-num{ font-family:'Space Mono'; font-weight:700; font-size:34px; }
+
+  /* ===== SERVICES horizontal strip ===== */
+  .strip{ display:flex; gap:18px; overflow-x:auto; padding-bottom:14px; scroll-snap-type:x mandatory; }
+  .strip::-webkit-scrollbar{ height:6px; }
+  .strip::-webkit-scrollbar-thumb{ background:var(--border); border-radius:10px; }
+  .strip-card{
+    scroll-snap-align:start; flex:0 0 280px; background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .strip-card:hover{ transform:translateY(-6px); border-color:var(--green); }
+  .strip-num{ font-family:'Space Mono'; font-size:12px; color:var(--ink-faint); margin-bottom:14px; }
+  .strip-card h4{ font-size:17px; margin-bottom:8px; }
+  .strip-card p{ font-size:14px; color:var(--ink-soft); }
+
+  /* ===== TIMELINE (how it works) ===== */
+  .timeline{ position:relative; max-width:760px; }
+  .timeline::before{ content:''; position:absolute; left:19px; top:6px; bottom:6px; width:2px; background:var(--border); }
+  .tl-item{ position:relative; padding-left:60px; margin-bottom:46px; }
+  .tl-item:last-child{ margin-bottom:0; }
+  .tl-dot{ position:absolute; left:0; top:0; width:40px; height:40px; border-radius:50%; background:#fff; border:2px solid var(--green); display:flex; align-items:center; justify-content:center; font-family:'Space Mono'; font-weight:700; color:var(--green-dark); font-size:13px; }
+  .tl-item h4{ font-size:17px; margin-bottom:6px; }
+  .tl-item p{ font-size:14.5px; color:var(--ink-soft); max-width:520px; }
+
+  /* ===== MASONRY PORTFOLIO ===== */
+  .masonry{ columns:3; column-gap:18px; }
+  .masonry-card{
+    break-inside:avoid; margin-bottom:18px; background:#fff; border:1px solid var(--border); border-radius:16px; padding:22px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .masonry-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+  .masonry-card .m-top{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .masonry-card .m-av{ width:36px; height:36px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Sora'; font-weight:700; font-size:13px; }
+  .masonry-card h4{ font-size:14.5px; }
+  .masonry-card .m-role{ font-size:12px; color:var(--ink-faint); }
+  .masonry-card p{ font-size:13.5px; color:var(--ink-soft); margin-bottom:14px; }
+  .masonry-card .m-amt{ font-family:'Space Mono'; font-weight:700; color:var(--green-dark); font-size:15px; }
+
+  /* ===== MARQUEE TESTIMONIALS ===== */
+  .marquee-wrap{ overflow:hidden; position:relative; -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+  .marquee-track{ display:flex; gap:20px; width:max-content; animation:scrollX 38s linear infinite; }
+  @keyframes scrollX{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+  .marquee-wrap:hover .marquee-track{ animation-play-state:paused; }
+  .m-testi{ flex:0 0 320px; background:var(--pale-2); border:1px solid var(--border); border-radius:16px; padding:24px; }
+  .m-testi .stars{ color:#E8A93A; font-size:13px; margin-bottom:12px; }
+  .m-testi p{ font-size:13.5px; color:var(--ink); margin-bottom:16px; }
+  .m-testi .who{ display:flex; align-items:center; gap:10px; }
+  .m-testi .who .av{ width:32px; height:32px; border-radius:50%; background:var(--green-deep); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-family:'Sora'; font-weight:700; }
+  .m-testi .who .name{ font-weight:700; font-size:13px; }
+  .m-testi .who .role{ font-size:11.5px; color:var(--ink-faint); }
+
+  /* ===== FAQ two column ===== */
+  .faq-cols{ columns:2; column-gap:24px; }
+  .faq-item{ break-inside:avoid; border:1px solid var(--border); border-radius:14px; margin-bottom:16px; overflow:hidden; background:#fff; }
+  .faq-q{ width:100%; text-align:left; background:none; border:none; padding:18px 20px; display:flex; justify-content:space-between; align-items:center; gap:12px; font-family:'Sora'; font-weight:700; font-size:14.5px; }
+  .faq-q .plus{ width:20px; height:20px; border-radius:6px; background:var(--pale); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .25s ease; }
+  .faq-item.open .faq-q .plus{ transform:rotate(135deg); background:var(--lime); }
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
+  .faq-item.open .faq-a{ max-height:200px; }
+  .faq-a-inner{ padding:0 20px 18px; font-size:13.5px; color:var(--ink-soft); }
+
+  /* ===== CONTACT ===== */
+  .contact{ background:var(--green-deep); border-radius:28px; padding:64px; color:#fff; }
+  .contact-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:50px; }
+  .contact h2{ color:#fff; font-size:clamp(26px,3.4vw,36px); margin-bottom:14px; }
+  .contact p.sub{ color:#B7CFC1; margin-bottom:24px; }
+  .contact-item{ display:flex; gap:12px; align-items:center; margin-bottom:14px; font-size:14px; color:#D9EAE0; }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px; }
+  .field{ display:flex; flex-direction:column; gap:6px; }
+  .field.full{ grid-column:1 / -1; }
+  .field label{ font-size:12.5px; font-weight:700; color:#B7CFC1; }
+  .field input, .field select, .field textarea{ padding:13px 14px; border:1px solid rgba(255,255,255,0.18); border-radius:10px; font-size:14px; background:rgba(255,255,255,0.06); color:#fff; outline:none; transition:border-color .18s ease, background .18s ease; }
+  .field input::placeholder, .field textarea::placeholder{ color:#7FA090; }
+  .field input:focus, .field select:focus, .field textarea:focus{ border-color:var(--lime); background:rgba(255,255,255,0.1); }
+  .field textarea{ resize:vertical; min-height:80px; }
+  .field select option{ color:#0E1F17; }
+  .form-note{ font-size:11.5px; color:#7FA090; margin-top:12px; }
+
+  /* ===== FOOTER ===== */
+  .site-footer{ padding:50px 0 30px; }
+  .footer-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding-top:26px; border-top:1px solid var(--border); font-size:13px; color:var(--ink-faint); }
+  .footer-legal{ display:flex; gap:20px; }
+  .footer-legal a{ color:var(--ink-faint); }
+  .footer-legal a:hover{ color:var(--green-dark); }
+  .footer-social{ display:flex; gap:10px; }
+  .footer-social a{ width:34px; height:34px; border-radius:9px; background:var(--pale); display:flex; align-items:center; justify-content:center; }
+
+  /* reveal */
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  /* modals */
+  .modal-overlay{ position:fixed; inset:0; background:rgba(11,59,39,0.55); backdrop-filter:blur(3px); z-index:1000; display:none; align-items:center; justify-content:center; padding:24px; }
+  .modal-overlay.open{ display:flex; }
+  .modal-box{ background:#fff; border-radius:18px; max-width:600px; width:100%; max-height:80vh; overflow-y:auto; padding:34px; position:relative; }
+  .modal-box h3{ margin-bottom:14px; }
+  .modal-box p{ font-size:14.5px; color:var(--ink-soft); margin-bottom:12px; }
+  .modal-close{ position:absolute; top:20px; right:20px; width:34px; height:34px; border-radius:10px; background:var(--pale); border:none; display:flex; align-items:center; justify-content:center; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1080px){
+    .bento{ grid-template-columns:repeat(2,1fr); }
+    .bento-cell.b-1{ grid-column:span 2; grid-row:span 1; }
+    .masonry{ columns:2; }
+  }
+  @media (max-width: 900px){
+    :root{ --sidebar-w:0px; }
+    .sidebar{ display:none; }
+    .site{ margin-left:0; }
+    .mobile-bar{
+      display:flex; position:sticky; top:0; z-index:150; background:rgba(255,255,255,0.9); backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border); align-items:center; justify-content:space-between; padding:14px 20px;
+    }
+    .mobile-bar .logo{ display:flex; align-items:center; gap:8px; font-family:'Sora'; font-weight:800; font-size:18px; }
+    .mobile-bar .logo .mark{ width:28px; height:28px; border-radius:8px; background:var(--green); display:flex; align-items:center; justify-content:center; }
+    .hamburger{ display:flex; flex-direction:column; gap:5px; background:none; border:none; padding:8px; }
+    .hamburger span{ width:22px; height:2px; background:var(--ink); border-radius:2px; }
+    .mobile-menu{ display:none; flex-direction:column; background:#fff; border-bottom:1px solid var(--border); padding:10px 20px 18px; }
+    .mobile-menu.open{ display:flex; }
+    .mobile-menu a{ padding:13px 4px; font-weight:600; color:var(--ink-soft); border-bottom:1px solid var(--pale); }
+    .hero-diagonal{ display:none; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .deck{ height:340px; margin-top:20px; }
+    .contact{ padding:34px 22px; border-radius:20px; }
+    .contact-grid{ grid-template-columns:1fr; }
+  }
+  @media (max-width: 640px){
+    section{ padding:56px 0; }
+    .bento{ grid-template-columns:1fr; grid-auto-rows:auto; }
+    .bento-cell.b-1{ grid-column:span 1; }
+    .masonry{ columns:1; }
+    .faq-cols{ columns:1; }
+    .form-row{ grid-template-columns:1fr; }
+    .timeline::before{ left:15px; }
+    .tl-dot{ width:32px; height:32px; font-size:11px; }
+    .tl-item{ padding-left:48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== SIDEBAR NAV (desktop) ===== -->
+<aside class="sidebar">
+  <a href="#top" class="sb-logo js-no-redirect" data-scroll>
+    <span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M8 16c0-4.4 3.6-8 8-8" stroke="#0B3B27" stroke-width="2.4" stroke-linecap="round"/><circle cx="8" cy="16" r="2.2" fill="#0B3B27"/><circle cx="16" cy="8" r="2.2" fill="#0B3B27"/></svg></span>
+    SkillBridge
+  </a>
+  <nav class="sb-nav">
+    <a href="#about" class="js-no-redirect" data-scroll><span class="dot"></span>About</a>
+    <a href="#services" class="js-no-redirect" data-scroll><span class="dot"></span>Services</a>
+    <a href="#how" class="js-no-redirect" data-scroll><span class="dot"></span>How it works</a>
+    <a href="#portfolio" class="js-no-redirect" data-scroll><span class="dot"></span>Success stories</a>
+    <a href="#testimonials" class="js-no-redirect" data-scroll><span class="dot"></span>Reviews</a>
+    <a href="#faq" class="js-no-redirect" data-scroll><span class="dot"></span>FAQ</a>
+    <a href="#contact" class="js-no-redirect" data-scroll><span class="dot"></span>Contact</a>
+  </nav>
+  <div class="sb-foot">
+    <p>Ready to find real clients?</p>
+    <a href="#" class="btn btn-primary btn-sm" style="width:100%;">Join Free →</a>
+  </div>
+</aside>
+
+<!-- ===== MOBILE TOP BAR ===== -->
+<div class="mobile-bar js-no-redirect">
+  <a href="#top" class="logo js-no-redirect" data-scroll>
+    <span class="mark"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M8 16c0-4.4 3.6-8 8-8" stroke="white" stroke-width="2.4" stroke-linecap="round"/><circle cx="8" cy="16" r="2" fill="white"/><circle cx="16" cy="8" r="2" fill="white"/></svg></span>
+    SkillBridge
+  </a>
+  <button class="hamburger js-no-redirect" id="hamburgerBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <!-- <a href="#about" class="js-no-redirect" data-scroll>About</a>
+  <a href="#services" class="js-no-redirect" data-scroll>Services</a>
+  <a href="#how" class="js-no-redirect" data-scroll>How it works</a>
+  <a href="#portfolio" class="js-no-redirect" data-scroll>Success stories</a>
+  <a href="#testimonials" class="js-no-redirect" data-scroll>Reviews</a>
+  <a href="#faq" class="js-no-redirect" data-scroll>FAQ</a>
+  <a href="#contact" class="js-no-redirect" data-scroll>Contact</a> -->
+  <a href="#" class="btn btn-primary btn-sm" style="margin-top:10px;">Join Free →</a>
+</div>
+
+<div class="site">
+<div id="top"></div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-diagonal"></div>
+  <div class="wrap hero-grid">
+    <div class="reveal in-view">
+      <span class="eyebrow">Verified clients only</span>
+      <h1>Stop chasing leads. <span class="hl">Start getting matched</span> with clients who actually pay.</h1>
+      <p class="lead">SkillBridge screens every client's budget before a brief goes live, so the work you apply for is real — not a bidding war with a hundred other freelancers.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">Join Free Today →</a>
+        <a href="#how" class="btn btn-outline js-no-redirect" data-scroll>How it works</a>
+      </div>
+      <div class="hero-badges">
+        <div class="hero-badge"><b class="mono">2–3 days</b><span>avg. first response</span></div>
+        <div class="hero-badge"><b class="mono">0%</b><span>bidding required</span></div>
+        <div class="hero-badge"><b class="mono">100%</b><span>escrow protected</span></div>
+      </div>
+    </div>
+    <div class="deck reveal in-view">
+      <div class="deck-card">
+        <span class="deck-tag">VIRTUAL ASSISTANCE</span>
+        <h4>Inbox &amp; calendar management</h4>
+        <p>Client: Boutique consulting firm</p>
+        <div class="deck-row"><span class="pay mono">₹22,000</span><div class="avatars2"><span></span><span></span></div></div>
+      </div>
+      <div class="deck-card">
+        <span class="deck-tag">DEVELOPMENT</span>
+        <h4>Shopify store rebuild</h4>
+        <p>Client: Home goods brand, UK</p>
+        <div class="deck-row"><span class="pay mono">₹58,000</span><div class="avatars2"><span></span><span></span></div></div>
+      </div>
+      <div class="deck-card">
+        <span class="deck-tag">DESIGN</span>
+        <h4>Pitch deck visual design</h4>
+        <p>Client: Seed-stage startup</p>
+        <div class="deck-row"><span class="pay mono">₹15,500</span><div class="avatars2"><span></span><span></span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT — bento grid ===== -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">About SkillBridge</span>
+      <h2>A freelance platform built around your time, not the client's convenience</h2>
+      <p>We built SkillBridge after watching too many skilled people burn hours writing proposals for briefs that never had a real budget behind them.</p>
+    </div>
+    <div class="bento reveal">
+      <div class="bento-cell b-1">
+        <h3>Verified budgets before you apply</h3>
+        <p>Every brief shows a confirmed price range set by the client — no guessing, no lowball surprises.</p>
+      </div>
+      <div class="bento-cell b-2">
+        <div class="bento-num mono">48hrs</div>
+        <p>Average time from profile completion to first client match.</p>
+      </div>
+      <div class="bento-cell b-3">
+        <div class="bento-num" style="color:#0B3B27;">4.8★</div>
+        <p style="color:#1E3B2B;">Avg. rating across all categories</p>
+      </div>
+      <div class="bento-cell b-4">
+        <div class="bento-num mono">$9.4M</div>
+        <p>Paid out to freelancers so far</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES — horizontal strip ===== -->
+<section id="services" style="background:var(--pale-2);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Categories</span>
+      <h2>Six skill categories, hundreds of open briefs</h2>
+      <p>Swipe through to see where clients are actively hiring this week.</p>
+    </div>
+    <div class="strip reveal">
+      <div class="strip-card"><div class="strip-num">01 / WRITING</div><h4>Content &amp; Copywriting</h4><p>Landing pages, email sequences, and long-form articles for brands that need words that convert.</p></div>
+      <div class="strip-card"><div class="strip-num">02 / DESIGN</div><h4>Graphic &amp; Brand Design</h4><p>Identity systems, pitch decks, and social creative for founders building a brand from scratch.</p></div>
+      <div class="strip-card"><div class="strip-num">03 / DEVELOPMENT</div><h4>Web &amp; App Development</h4><p>Frontend builds, e-commerce setups, and API work for teams that need to ship on a deadline.</p></div>
+      <div class="strip-card"><div class="strip-num">04 / MARKETING</div><h4>Digital Marketing &amp; SEO</h4><p>Search strategy, ad campaigns, and growth plans built around real client budgets.</p></div>
+      <div class="strip-card"><div class="strip-num">05 / VIDEO</div><h4>Video &amp; Motion</h4><p>Short-form edits, YouTube content, and animated explainers for creators and brand channels.</p></div>
+      <div class="strip-card"><div class="strip-num">06 / SUPPORT</div><h4>Admin &amp; Virtual Assistance</h4><p>Calendar management, research, and operations support for busy founders.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS — timeline ===== -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Process</span>
+      <h2>Four steps, laid out honestly</h2>
+      <p>No hidden steps, no surprise fees along the way.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item"><div class="tl-dot">01</div><h4>Build a profile that shows your work</h4><p>Add real samples and set the rate you actually want — clients see it upfront, before they ever message you.</p></div>
+      <div class="tl-item"><div class="tl-dot">02</div><h4>Get matched to verified briefs</h4><p>We surface only briefs where the client's budget has already been confirmed to fit your rate.</p></div>
+      <div class="tl-item"><div class="tl-dot">03</div><h4>Deliver work through the platform</h4><p>Message, share files, and submit deliverables in one thread — no scattered email chains.</p></div>
+      <div class="tl-item"><div class="tl-dot">04</div><h4>Get paid the moment it's approved</h4><p>Funds sit in escrow from day one and release to your account automatically on milestone approval.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PORTFOLIO — masonry ===== -->
+<section id="portfolio" style="background:var(--pale-2);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Success stories</span>
+      <h2>Freelancers who started with one completed profile</h2>
+    </div>
+    <div class="masonry reveal">
+      <div class="masonry-card">
+        <div class="m-top"><div class="m-av">KN</div><div><h4>Karan N.</h4><div class="m-role">Full-stack Developer</div></div></div>
+        <p>"I stopped bidding against fifty other people for the same project. Clients here already know what they're paying."</p>
+        <div class="m-amt">₹1.3L/month</div>
+      </div>
+      <div class="masonry-card">
+        <div class="m-top"><div class="m-av">DS</div><div><h4>Divya S.</h4><div class="m-role">Brand Designer</div></div></div>
+        <p>"My first client matched within two days. Six months later I have three retainers running at once."</p>
+        <div class="m-amt">₹62,000/month</div>
+      </div>
+      <div class="masonry-card">
+        <div class="m-top"><div class="m-av">AT</div><div><h4>Arjun T.</h4><div class="m-role">SEO Consultant</div></div></div>
+        <p>"The escrow system means I never have to send a single follow-up email asking where my payment is."</p>
+        <div class="m-amt">₹75,000/month</div>
+      </div>
+      <div class="masonry-card">
+        <div class="m-top"><div class="m-av">NR</div><div><h4>Nisha R.</h4><div class="m-role">Copywriter</div></div></div>
+        <p>"I went part-time at my old job within three months because the freelance income finally became predictable."</p>
+        <div class="m-amt">₹40,000/month</div>
+      </div>
+      <div class="masonry-card">
+        <div class="m-top"><div class="m-av">SP</div><div><h4>Suresh P.</h4><div class="m-role">Video Editor</div></div></div>
+        <p>"Clients come with a clear brief and a real budget. I spend my time editing, not negotiating."</p>
+        <div class="m-amt">₹51,000/month</div>
+      </div>
+      <div class="masonry-card">
+        <div class="m-top"><div class="m-av">RJ</div><div><h4>Riya J.</h4><div class="m-role">Virtual Assistant</div></div></div>
+        <p>"I manage three clients' calendars part-time and it covers more than my previous full-time admin job did."</p>
+        <div class="m-amt">₹35,000/month</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS — marquee ===== -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Reviews</span>
+      <h2>What people say after their first payout lands</h2>
+    </div>
+  </div>
+  <div class="marquee-wrap reveal">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+</section>
+
+<!-- ===== FAQ — two column ===== -->
+<section id="faq" style="background:var(--pale-2);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Common questions before joining</h2>
+    </div>
+    <div class="faq-cols reveal">
+      <div class="faq-item">
+        <button class="faq-q js-no-redirect">How is SkillBridge different from other freelance sites?<span class="plus"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#0B3B27" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Clients on SkillBridge verify their budget before a brief goes live, so you never chase a project that was never going to pay.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q js-no-redirect">What does it cost to join?<span class="plus"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#0B3B27" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Joining and browsing briefs is completely free. There's no subscription required to start applying.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q js-no-redirect">How quickly will I hear back?<span class="plus"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#0B3B27" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Most applicants hear back within 2 to 3 business days once their profile is complete.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q js-no-redirect">Can I work from anywhere?<span class="plus"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#0B3B27" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes, SkillBridge is fully remote. Clients are matched based on skill and availability, not location.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q js-no-redirect">How does payment protection work?<span class="plus"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#0B3B27" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Client funds are held in escrow before a project starts and released to you automatically once milestones are approved.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q js-no-redirect">What if I only have limited hours available?<span class="plus"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#0B3B27" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">You set your own availability and only get matched to briefs that fit the hours you actually have free.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div class="contact-grid">
+        <div>
+          <span class="eyebrow" style="color:var(--lime);">Get started</span>
+          <h2>Tell us what you do best</h2>
+          <p class="sub">A few details is all we need to start matching you with verified briefs in your category.</p>
+          <div class="contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 8l9 6 9-6M4 6h16v12H4V6z" stroke="#C8F169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>hello@skillbridge-example.com</div>
+          <div class="contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#C8F169" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#C8F169" stroke-width="2" stroke-linecap="round"/></svg>Response within 2–3 business days</div>
+          <div class="contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.1-7-11a7 7 0 1114 0c0 4.9-7 11-7 11z" stroke="#C8F169" stroke-width="2"/></svg>Remote-first, worldwide</div>
+        </div>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="field"><label>Full name</label><input type="text" placeholder="Your name" required></div>
+            <div class="field"><label>Email address</label><input type="email" placeholder="you@email.com" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field full"><label>Primary skill</label>
+              <select required>
+                <option value="">Select a category</option>
+                <option>Content &amp; Copywriting</option>
+                <option>Graphic &amp; Brand Design</option>
+                <option>Web &amp; App Development</option>
+                <option>Digital Marketing &amp; SEO</option>
+                <option>Video &amp; Motion</option>
+                <option>Admin &amp; Virtual Assistance</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field full"><label>A sentence about your experience</label><textarea placeholder="What do you do best?"></textarea></div>
+          </div>
+          <button type="submit" class="btn btn-primary js-no-redirect" style="width:100%;">Join Free Today →</button>
+          <p class="form-note">By submitting, you agree to our Terms &amp; Conditions and Privacy Policy.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <span>© 2026 SkillBridge. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#" class="js-no-redirect" data-modal="modalPrivacy">Privacy Policy</a>
+        <a href="#" class="js-no-redirect" data-modal="modalTerms">Terms &amp; Conditions</a>
+        <a href="#" class="js-no-redirect" data-modal="modalDisclosure">Affiliate Disclosure</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#0B3B27" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="#0B3B27" stroke-width="1.8"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#0B3B27" stroke-width="1.8"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 014 0v4M11 13v4" stroke="#0B3B27" stroke-width="1.8" stroke-linecap="round"/></svg></a>
+        <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M20 4L4 20" stroke="#0B3B27" stroke-width="1.8" stroke-linecap="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+</div><!-- /.site -->
+
+<!-- ===== LEGAL MODALS ===== -->
+<div class="modal-overlay js-no-redirect" id="modalPrivacy">
+  <div class="modal-box">
+    <button class="modal-close js-no-redirect" data-close><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#0C7A4C" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <h3>Privacy Policy</h3>
+    <p>This page explains, in plain terms, what happens when you visit this site. We use standard analytics to understand traffic and improve the page. Any information you enter into the contact form is used only to route you to a relevant freelance opportunity and is not sold to third parties.</p>
+    <p>If you follow a link from this page to a partner platform, that platform's own privacy policy governs how they handle your data from that point forward. We recommend reviewing it before you sign up.</p>
+    <p>You can request removal of any information you've submitted here by contacting us through the details in the Contact section.</p>
+  </div>
+</div>
+<div class="modal-overlay js-no-redirect" id="modalTerms">
+  <div class="modal-box">
+    <button class="modal-close js-no-redirect" data-close><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#0C7A4C" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <h3>Terms &amp; Conditions</h3>
+    <p>This page is an independent informational resource about freelancing opportunities. It is not itself a freelance marketplace, employer, or payment processor. Clicking through links on this page may direct you to a third-party platform where you can create an account and begin freelancing.</p>
+    <p>We make reasonable efforts to keep information on this page accurate but cannot guarantee outcomes, earnings, or timelines mentioned in testimonials or examples, which are illustrative rather than guaranteed results.</p>
+    <p>By using this page, you agree that any engagement with a linked third-party platform is between you and that platform, under its own terms of service.</p>
+  </div>
+</div>
+<div class="modal-overlay js-no-redirect" id="modalDisclosure">
+  <div class="modal-box">
+    <button class="modal-close js-no-redirect" data-close><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#0C7A4C" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <h3>Affiliate Disclosure</h3>
+    <p>This page may contain affiliate links. If you click through and sign up on a partner platform, we may earn a referral commission at no additional cost to you. This helps support the upkeep of this page.</p>
+    <p>We only link to platforms and opportunities we believe are genuinely useful to freelancers. Our recommendation is not a guarantee of income or outcome — freelancing results vary by skill, effort, and market conditions.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =====================================================
+     1. AFFILIATE REDIRECT CONFIG
+     Replace with your real affiliate / tracking link.
+  ===================================================== */
+  const AFFILIATE_URL = "https://your-affiliate-link.com/?ref=skillbridge"; // TODO: replace with your real affiliate URL
+
+  document.addEventListener('click', function(e){
+    const tag = e.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'LABEL' || tag === 'OPTION') return;
+    if (e.target.closest('.js-no-redirect')) return;
+    e.preventDefault();
+    window.open(AFFILIATE_URL, '_blank', 'noopener');
+  });
+
+  /* 2. Mobile hamburger */
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (hamburgerBtn){
+    hamburgerBtn.addEventListener('click', function(){ mobileMenu.classList.toggle('open'); });
+  }
+
+  /* 3. Smooth scroll */
+  document.querySelectorAll('[data-scroll]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (target){
+        e.preventDefault();
+        target.scrollIntoView({ behavior:'smooth', block:'start' });
+        if (mobileMenu) mobileMenu.classList.remove('open');
+      }
+    });
+  });
+
+  /* 4. Marquee testimonials build */
+  const testimonials = [
+    { q:"I stopped bidding against fifty other people. Clients here already know what they're paying before they message me.", n:"Karan N.", r:"Full-stack Developer" },
+    { q:"My first client matched within two days of finishing my profile. That speed is what convinced me to stay.", n:"Divya S.", r:"Brand Designer" },
+    { q:"The escrow system means I never send a follow-up email asking where my payment is.", n:"Arjun T.", r:"SEO Consultant" },
+    { q:"I went part-time at my old job within three months because the income finally became predictable.", n:"Nisha R.", r:"Copywriter" },
+    { q:"Clients arrive with a real budget and a clear brief. I spend my time working, not negotiating.", n:"Suresh P.", r:"Video Editor" },
+    { q:"I manage three clients part-time and it covers more than my old full-time admin job did.", n:"Riya J.", r:"Virtual Assistant" }
+  ];
+  const track = document.getElementById('marqueeTrack');
+  function initials(name){ return name.split(' ').map(function(p){return p[0];}).join(''); }
+  function buildMarquee(){
+    let html = '';
+    testimonials.concat(testimonials).forEach(function(t){
+      html += '<div class="m-testi"><div class="stars">★★★★★</div><p>"'+t.q+'"</p><div class="who"><div class="av">'+initials(t.n)+'</div><div><div class="name">'+t.n+'</div><div class="role">'+t.r+'</div></div></div></div>';
+    });
+    track.innerHTML = html;
+  }
+  buildMarquee();
+
+  /* 5. Reveal on scroll */
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+    });
+  }, { threshold:0.12 });
+  document.querySelectorAll('.reveal:not(.in-view)').forEach(function(el){ io.observe(el); });
+
+  /* 6. FAQ accordion */
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const item = this.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  /* 7. Legal modals */
+  document.querySelectorAll('[data-modal]').forEach(function(trigger){
+    trigger.addEventListener('click', function(e){
+      e.preventDefault();
+      const modal = document.getElementById(this.getAttribute('data-modal'));
+      if (modal) modal.classList.add('open');
+    });
+  });
+  document.querySelectorAll('.modal-overlay').forEach(function(overlay){
+    overlay.addEventListener('click', function(e){ if (e.target === overlay) overlay.classList.remove('open'); });
+  });
+  document.querySelectorAll('[data-close]').forEach(function(btn){
+    btn.addEventListener('click', function(){ this.closest('.modal-overlay').classList.remove('open'); });
+  });
+
+  /* 8. Contact form -> affiliate redirect */
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    window.open(AFFILIATE_URL, '_blank', 'noopener');
+  });
+
+})();
+</script>
+
+</body>
+</html>

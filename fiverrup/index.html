@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FiverrUp | Become & Hire Freelancers</title>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%2300b67a'/%3E%3Ctext x='50' y='62' font-size='48' text-anchor='middle' fill='white' font-family='Arial'%3EF%3C/text%3E%3C/svg%3E">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #ffffff;
+      color: #10231c;
+      overflow-x: hidden;
+      cursor: pointer;
+    }
+
+    :root {
+      --green: #00b67a;
+      --dark: #10231c;
+      --light: #f4fff9;
+      --muted: #5f716a;
+      --border: #dff4ea;
+      --shadow: 0 20px 60px rgba(0, 182, 122, 0.14);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 26px;
+      color: var(--dark);
+    }
+
+    .logo span {
+      width: 42px;
+      height: 42px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .nav-btn, .btn {
+      background: var(--green);
+      color: white;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      box-shadow: 0 12px 28px rgba(0,182,122,.25);
+      transition: .3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .nav-btn:hover, .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 38px rgba(0,182,122,.32);
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      color: var(--green);
+    }
+
+    section {
+      padding: 100px 0;
+    }
+
+    .hero {
+      min-height: calc(100vh - 76px);
+      display: grid;
+      align-items: center;
+      background:
+        radial-gradient(circle at top right, rgba(0,182,122,.16), transparent 35%),
+        linear-gradient(180deg, #ffffff, #f8fffc);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #eafff5;
+      border: 1px solid var(--border);
+      color: var(--green);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 1.02;
+      letter-spacing: -3px;
+      margin-bottom: 22px;
+    }
+
+    .animated-text {
+      color: var(--green);
+      position: relative;
+    }
+
+    .hero p {
+      font-size: 19px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline {
+      background: white;
+      color: var(--dark);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .mini-card {
+      background: #fff;
+      padding: 22px;
+      border-radius: 24px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      transition: .3s;
+    }
+
+    .mini-card:hover {
+      transform: translateX(8px);
+    }
+
+    .mini-card i {
+      width: 48px;
+      height: 48px;
+      background: var(--light);
+      color: var(--green);
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 60px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      letter-spacing: -2px;
+      margin-bottom: 16px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.04);
+      transition: .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+    }
+
+    .card i {
+      width: 58px;
+      height: 58px;
+      background: var(--green);
+      color: white;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      margin-bottom: 22px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .about {
+      background: var(--light);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .about-box {
+      background: white;
+      border-radius: 34px;
+      padding: 36px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .about-box h2 {
+      font-size: 44px;
+      margin-bottom: 18px;
+      letter-spacing: -2px;
+    }
+
+    .about-box p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .check {
+      display: flex;
+      gap: 12px;
+      margin: 15px 0;
+      color: var(--dark);
+      font-weight: 700;
+    }
+
+    .check i {
+      color: var(--green);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .step {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 28px;
+    }
+
+    .step span {
+      width: 44px;
+      height: 44px;
+      background: var(--green);
+      color: white;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .showcase {
+      background: linear-gradient(180deg, #ffffff, #f4fff9);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .gallery-item {
+      min-height: 230px;
+      border-radius: 30px;
+      padding: 28px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(135deg, #00b67a, #087f5b);
+      box-shadow: var(--shadow);
+      transition: .3s;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+
+    .stats {
+      background: var(--dark);
+      color: white;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      text-align: center;
+    }
+
+    .stat h3 {
+      font-size: 46px;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 14px 38px rgba(0,0,0,.04);
+    }
+
+    .review p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .faq {
+      background: var(--light);
+    }
+
+    .faq-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 800;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: .3s;
+      color: var(--muted);
+      line-height: 1.7;
+      padding: 0 22px;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 180px;
+      padding: 0 22px 22px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 35px;
+    }
+
+    .contact-info, form {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 16px;
+      margin-bottom: 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      outline: none;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    footer {
+      background: #071711;
+      color: white;
+      padding: 55px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    footer p, footer a {
+      color: #b8c9c1;
+      line-height: 1.8;
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .socials a {
+      width: 42px;
+      height: 42px;
+      background: var(--green);
+      color: white;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 22px;
+      color: #9fb1aa;
+    }
+
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .popup.show {
+      display: flex;
+    }
+
+    .popup-box {
+      background: white;
+      max-width: 520px;
+      width: 100%;
+      border-radius: 34px;
+      padding: 38px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 30px 90px rgba(0,0,0,.25);
+      animation: pop .4s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .close-popup {
+      position: absolute;
+      right: 20px;
+      top: 18px;
+      font-size: 24px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .popup-box i {
+      font-size: 48px;
+      color: var(--green);
+      margin-bottom: 18px;
+    }
+
+    .popup-box h2 {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .popup-box p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: .8s;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .gallery,
+      .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .steps,
+      .stats-grid,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 25px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 560px) {
+      section {
+        padding: 72px 0;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .cards,
+      .gallery,
+      .testimonials-grid,
+      .steps,
+      .stats-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card, .about-box, form, .contact-info {
+        padding: 24px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar no-redirect">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <span>F</span> FiverrUp
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="#" class="nav-btn redirect-btn">Join Now</a>
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="fade">
+        <div class="badge"><i class="fa-solid fa-bolt"></i> Freelance Growth Platform</div>
+        <h1>Become a better <span class="animated-text">freelancer</span> and find real opportunities.</h1>
+        <p>
+          FiverrUp helps beginners, skilled professionals, and business owners connect through simple freelance services, smart learning, and growth-focused opportunities.
+        </p>
+        <div class="hero-actions">
+          <a href="#" class="btn redirect-btn"><i class="fa-solid fa-rocket"></i> Start Now</a>
+          <a href="#services" class="btn btn-outline no-redirect"><i class="fa-solid fa-layer-group"></i> Explore Services</a>
+        </div>
+      </div>
+
+      <div class="hero-card fade">
+        <div class="mini-card">
+          <i class="fa-solid fa-user-tie"></i>
+          <div>
+            <h3>For Freelancers</h3>
+            <p>Build profile, skills, confidence, and client-ready services.</p>
+          </div>
+        </div>
+        <div class="mini-card">
+          <i class="fa-solid fa-briefcase"></i>
+          <div>
+            <h3>For Businesses</h3>
+            <p>Find creative, tech, marketing, and digital service providers.</p>
+          </div>
+        </div>
+        <div class="mini-card">
+          <i class="fa-solid fa-chart-line"></i>
+          <div>
+            <h3>For Growth</h3>
+            <p>Learn, showcase work, attract projects, and scale income.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container about-grid">
+      <div class="about-box fade">
+        <h2>What is FiverrUp?</h2>
+        <p>
+          FiverrUp is a modern freelance-focused website made for people who want to become freelancers and for clients who need reliable digital talent.
+        </p>
+        <p>
+          The goal is simple: make freelancing easier, cleaner, and more accessible for beginners, creators, developers, marketers, designers, and small businesses.
+        </p>
+        <a href="#" class="btn redirect-btn">Join FiverrUp</a>
+      </div>
+
+      <div class="about-box fade">
+        <div class="check"><i class="fa-solid fa-check-circle"></i> Learn how freelancing works</div>
+        <div class="check"><i class="fa-solid fa-check-circle"></i> Showcase your service professionally</div>
+        <div class="check"><i class="fa-solid fa-check-circle"></i> Connect with people who need your skill</div>
+        <div class="check"><i class="fa-solid fa-check-circle"></i> Build income through digital work</div>
+        <div class="check"><i class="fa-solid fa-check-circle"></i> Grow with a clean and trusted platform</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title fade">
+        <h2>What People Say</h2>
+        <p>Designed for people who want simple freelance growth without confusion.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="review fade">
+          <p>“FiverrUp feels clean, beginner-friendly, and useful for anyone starting a freelance journey.”</p>
+          <h4>Rahul Sharma</h4>
+          <small>Web Freelancer</small>
+        </div>
+
+        <div class="review fade">
+          <p>“A simple platform idea where clients can quickly understand services and contact freelancers.”</p>
+          <h4>Ananya Verma</h4>
+          <small>Startup Founder</small>
+        </div>
+
+        <div class="review fade">
+          <p>“Perfect for showcasing digital skills like SEO, design, development, and marketing.”</p>
+          <h4>Karan Mehta</h4>
+          <small>Digital Marketer</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="no-redirect">
+    <div class="container contact-grid">
+      <div class="contact-info fade">
+        <h2>Start your freelance journey</h2>
+        <p style="color:var(--muted);line-height:1.8;margin:18px 0;">
+          Want to become a freelancer or need one for your business? Connect with FiverrUp and take the next step.
+        </p>
+        <div class="check"><i class="fa-solid fa-envelope"></i> support@fiverrup.online</div>
+        <div class="check"><i class="fa-solid fa-globe"></i> fiverrup.online</div>
+        <div class="check"><i class="fa-solid fa-location-dot"></i> Available Online</div>
+      </div>
+
+      <form class="fade">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="text" placeholder="I want to become / hire a freelancer">
+        <textarea placeholder="Tell us what you need"></textarea>
+        <button type="submit" class="btn">Submit Request</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="logo" style="color:white;"><span>F</span> FiverrUp</div>
+        <p style="margin-top:18px;">
+          FiverrUp is built for freelancers, creators, businesses, and digital professionals who want to grow with skills and opportunities.
+        </p>
+        <div class="socials">
+          <a href="#" class="redirect-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="redirect-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="redirect-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="redirect-btn"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Company</h3>
+        <p><a href="#about">About</a></p>
+        <p><a href="#services">Services</a></p>
+        <p><a href="#process">Process</a></p>
+      </div>
+
+      <div>
+        <h3>Support</h3>
+        <p><a href="#faq">FAQ</a></p>
+        <p><a href="#contact">Contact</a></p>
+        <p><a href="#" class="redirect-btn">Join</a></p>
+      </div>
+
+      <div>
+        <h3>Domain</h3>
+        <p>fiverrup.online</p>
+        <p>Freelancer Platform</p>
+      </div>
+    </div>
+
+    <div class="container copyright">
+      © 2026 FiverrUp. All Rights Reserved.
+    </div>
+  </footer>
+
+  <div class="popup no-redirect" id="popup">
+    <div class="popup-box">
+      <div class="close-popup" id="closePopup">&times;</div>
+      <i class="fa-solid fa-users"></i>
+      <h2>Join FiverrUp Today</h2>
+      <p>Become a freelancer, find digital work, or hire skilled people for your next project.</p>
+      <a href="#" class="btn redirect-btn">Join Now</a>
+    </div>
+  </div>
+
+  <script>
+    const REDIRECT_URL = "";
+
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+
+    hamburger.addEventListener("click", function(e) {
+      e.stopPropagation();
+      navLinks.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".redirect-btn").forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.href = REDIRECT_URL;
+      });
+    });
+
+    document.body.addEventListener("click", function(e) {
+      const noRedirect = e.target.closest(".no-redirect, input, textarea, button, .faq-item, .hamburger, .nav-links a[href^='#']");
+      if (!noRedirect) {
+        window.location.href = REDIRECT_URL;
+      }
+    });
+
+    document.querySelectorAll(".faq-question").forEach(question => {
+      question.addEventListener("click", function(e) {
+        e.stopPropagation();
+        this.parentElement.classList.toggle("active");
+      });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+
+    const counters = document.querySelectorAll("[data-count]");
+    let counterStarted = false;
+
+    function startCounters() {
+      if (counterStarted) return;
+
+      counters.forEach(counter => {
+        const target = +counter.getAttribute("data-count");
+        let count = 0;
+        const speed = target / 90;
+
+        const update = () => {
+          count += speed;
+          if (count < target) {
+            counter.innerText = Math.ceil(count);
+            requestAnimationFrame(update);
+          } else {
+            counter.innerText = target + (target === 95 ? "%" : "+");
+          }
+        };
+        update();
+      });
+
+      counterStarted = true;
+    }
+
+    const statsSection = document.querySelector(".stats");
+    const statsObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) startCounters();
+    }, { threshold: 0.4 });
+
+    statsObserver.observe(statsSection);
+
+    const popup = document.getElementById("popup");
+    const closePopup = document.getElementById("closePopup");
+
+    setTimeout(() => {
+      popup.classList.add("show");
+    }, 5000);
+
+    closePopup.addEventListener("click", function(e) {
+      e.stopPropagation();
+      popup.classList.remove("show");
+    });
+
+    popup.addEventListener("click", function(e) {
+      if (e.target === popup) {
+        popup.classList.remove("show");
+      }
+    });
+
+    document.querySelector("form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      window.location.href = REDIRECT_URL;
+    });
+  </script>
+
+</body>
+</html>

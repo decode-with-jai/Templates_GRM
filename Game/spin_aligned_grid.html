@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPIN Game Hub</title>
+
+<style>
+:root{
+  --primary:#2563eb;
+  --text:#0f172a;
+  --card-radius:22px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  min-height:100vh;
+  color:var(--text);
+  overflow-x:hidden;
+  background:linear-gradient(135deg,#64f0d5,#8fe9ff);
+}
+
+/* NAVBAR */
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  padding:14px 30px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  cursor:pointer;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:30px;
+  font-weight:800;
+  color:var(--text);
+}
+
+.logo svg{
+  width:44px;
+  height:44px;
+  flex:none;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.18));
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.nav-btn{
+  min-width:110px;
+  padding:12px 20px;
+  border:0;
+  border-radius:999px;
+  background:var(--primary);
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+
+.nav-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(37,99,235,.26);
+}
+
+/* 
+  CSS GRID replaces column-count masonry.
+  This keeps the final row perfectly aligned.
+*/
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:22px;
+  width:100%;
+  padding:26px 30px 40px;
+  align-items:stretch;
+}
+
+.card{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  height:100%;
+  overflow:hidden;
+  border-radius:var(--card-radius);
+  background:#fff;
+  box-shadow:0 10px 25px rgba(0,0,0,.16);
+  cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 32px rgba(0,0,0,.22);
+}
+
+.card img{
+  display:block;
+  width:100%;
+  height:310px;
+  object-fit:cover;
+  background:#dbeafe;
+}
+
+.label{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:70px;
+  padding:16px;
+  font-size:20px;
+  font-weight:800;
+  text-align:center;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  inset:0;
+  z-index:99;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.8);
+  cursor:pointer;
+}
+
+.box{
+  width:min(420px,100%);
+  padding:36px;
+  border-radius:22px;
+  background:#fff;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:0 22px 60px rgba(0,0,0,.35);
+}
+
+.box h2{
+  margin-bottom:10px;
+  font-size:40px;
+}
+
+.box p{
+  margin-bottom:24px;
+  color:#475569;
+  font-size:16px;
+  line-height:1.5;
+}
+
+.btns{
+  display:flex;
+  gap:14px;
+}
+
+.btns button{
+  flex:1;
+  padding:15px;
+  border:0;
+  border-radius:12px;
+  color:#fff;
+  font-size:17px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.yes{background:#17b857}
+.no{background:#ef4444}
+
+/* TABLET */
+@media(max-width:1050px){
+  .grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .card img{
+    height:280px;
+  }
+}
+
+/* MOBILE / SMALL TABLET */
+@media(max-width:760px){
+  .navbar{
+    padding:12px 16px;
+  }
+
+  .logo{
+    gap:8px;
+    font-size:24px;
+  }
+
+  .logo svg{
+    width:38px;
+    height:38px;
+  }
+
+  .nav-right{
+    gap:8px;
+  }
+
+  .nav-btn{
+    min-width:auto;
+    padding:10px 15px;
+    font-size:14px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+    padding:16px;
+  }
+
+  .card{
+    border-radius:17px;
+  }
+
+  .card img{
+    height:210px;
+  }
+
+  .label{
+    min-height:58px;
+    padding:12px 8px;
+    font-size:16px;
+  }
+}
+
+/* SMALL MOBILE */
+@media(max-width:440px){
+  .navbar{
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .logo{
+    font-size:22px;
+  }
+
+  .nav-btn{
+    padding:9px 12px;
+    font-size:13px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .card img{
+    height:250px;
+  }
+
+  .btns{
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar" aria-label="Main navigation">
+  <div class="logo">
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="spinGradient" x1="0" x2="1">
+          <stop offset="0%" stop-color="#22c55e"/>
+          <stop offset="100%" stop-color="#2563eb"/>
+        </linearGradient>
+      </defs>
+      <circle cx="32" cy="32" r="28" fill="url(#spinGradient)"/>
+      <path d="M32 10 L38 26 L54 32 L38 38 L32 54 L26 38 L10 32 L26 26 Z" fill="#fff"/>
+      <circle cx="32" cy="32" r="5" fill="#2563eb"/>
+    </svg>
+    <span>SPIN</span>
+  </div>
+
+  <div class="nav-right">
+    <button class="nav-btn login" type="button">Login</button>
+    <button class="nav-btn signup" type="button">Sign Up</button>
+  </div>
+</nav>
+
+<main class="grid" id="grid"></main>
+
+<div class="popup" id="popup" role="dialog" aria-modal="true" aria-label="Age verification">
+  <div class="box">
+    <h2>18+</h2>
+    <p>This content is intended for users aged 18 or above.</p>
+    <div class="btns">
+      <button class="yes" type="button">YES</button>
+      <button class="no" type="button">NO</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Replace this with your final destination URL */
+const redirectURL = "https://example.com";
+
+const games = [
+  ["Battleground","https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1000&auto=format&fit=crop"],
+  ["Racing","https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1000&auto=format&fit=crop"],
+  ["Casino","https://images.unsplash.com/photo-1541267646418-54dd246a53db?w=1000&auto=format&fit=crop"],
+  ["Casino","https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1000&auto=format&fit=crop"],
+  ["Puzzle","https://images.unsplash.com/photo-1516117172878-fd2c41f4a759?w=1000&auto=format&fit=crop"],
+  ["Sports","https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1000&auto=format&fit=crop"],
+  ["Casino","https://images.unsplash.com/photo-1515687652280-bf0bb698562a?w=1000&auto=format&fit=crop"],
+  ["Arcade","https://images.unsplash.com/photo-1511882150382-421056c89033?w=1000&auto=format&fit=crop"],
+  ["Driving","https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1000&auto=format&fit=crop"],
+  ["Adventure","https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=1000&auto=format&fit=crop"],
+  ["Battle","https://images.unsplash.com/photo-1542751110-97427bbecf20?w=1000&auto=format&fit=crop"],
+  ["Casino","https://images.unsplash.com/photo-1446669052213-5dcff53f1f3f?w=1000&auto=format&fit=crop"]
+];
+
+const grid = document.getElementById("grid");
+const popup = document.getElementById("popup");
+
+function go(){
+  window.location.href = redirectURL;
+}
+
+games.forEach(([name,image]) => {
+  const card = document.createElement("article");
+  card.className = "card";
+  card.innerHTML = `
+    <img src="${image}" alt="${name} game" loading="lazy">
+    <div class="label">${name}</div>
+  `;
+  card.addEventListener("click", go);
+  grid.appendChild(card);
+});
+
+/* Navbar redirects */
+document.querySelector(".navbar").addEventListener("click", go);
+document.querySelector(".login").addEventListener("click", go);
+document.querySelector(".signup").addEventListener("click", go);
+
+/* Whole page redirects, except the cards/navbar already handling the same action */
+document.body.addEventListener("click", event => {
+  if (
+    event.target.closest(".card") ||
+    event.target.closest(".navbar") ||
+    event.target.closest(".popup")
+  ) return;
+
+  go();
+});
+
+/* Show full-screen age popup after 5 seconds */
+setTimeout(() => {
+  popup.style.display = "flex";
+}, 5000);
+
+/* Every part of the popup redirects */
+popup.addEventListener("click", go);
+</script>
+
+</body>
+</html>

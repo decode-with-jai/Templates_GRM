@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GigLeap — Turn Your Skills Into a Freelance Career | Start Free Today</title>
+<meta name="description" content="Join GigLeap and get matched with real, paying clients worldwide. No bidding wars, no race to the bottom — just skilled work, fair pay, and fast payouts. Start free.">
+<meta name="keywords" content="freelancing, freelance jobs, work from home, remote work, earn online, freelance platform, start freelancing">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.giglead-example.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="GigLeap — Turn Your Skills Into a Freelance Career">
+<meta property="og:description" content="Get matched with real, paying clients worldwide. No bidding wars. Start free today.">
+<meta property="og:url" content="https://www.giglead-example.com/">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Favicon: inline green SVG, no external file needed -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E9F6E'/%3E%3Cpath d='M18 40 L30 22 L36 32 L46 18' stroke='white' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='46' cy='18' r='4.5' fill='white'/%3E%3C/svg%3E">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<!-- Schema.org: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GigLeap",
+  "url": "https://www.giglead-example.com/",
+  "description": "GigLeap connects skilled freelancers with vetted, paying clients across writing, design, development, marketing and more.",
+  "sameAs": []
+}
+</script>
+
+<!-- Schema.org: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is it free to join GigLeap?","acceptedAnswer":{"@type":"Answer","text":"Yes. Creating a profile and browsing client matches costs nothing. You only succeed when you get paid for real work."}},
+    {"@type":"Question","name":"How do I actually get paid?","acceptedAnswer":{"@type":"Answer","text":"Payments are held securely and released to your linked account once a client approves delivered work, so you're never chasing invoices."}},
+    {"@type":"Question","name":"Do I need years of experience to start?","acceptedAnswer":{"@type":"Answer","text":"No. Clients on GigLeap range from first project to full portfolio. What matters is showing your skill clearly, not your resume length."}},
+    {"@type":"Question","name":"How fast can I start getting matched?","acceptedAnswer":{"@type":"Answer","text":"Most profiles are reviewed and matched with a first client opportunity within 48 hours of completing setup."}},
+    {"@type":"Question","name":"Is my payment information secure?","acceptedAnswer":{"@type":"Answer","text":"All transactions run through encrypted, escrow-backed payment rails, so funds are protected on both sides before work begins."}},
+    {"@type":"Question","name":"What if I don't have a portfolio yet?","acceptedAnswer":{"@type":"Answer","text":"You can build one inside GigLeap using small starter projects designed to help new freelancers earn their first reviews."}}
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --ink:#10231A;
+    --ink-soft:#4B5A52;
+    --ink-faint:#8A968F;
+    --green:#0E9F6E;
+    --green-dark:#0B7A54;
+    --green-pale:#EAF7F1;
+    --green-pale-2:#F4FBF8;
+    --amber:#F2A93B;
+    --border:#E3EFE9;
+    --shadow: 0 20px 40px -20px rgba(16,35,26,0.18);
+    --radius: 16px;
+    --maxw: 1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    cursor:pointer;
+  }
+
+  h1,h2,h3,h4{ font-family:'Space Grotesk', sans-serif; font-weight:600; line-height:1.15; letter-spacing:-0.01em; color:var(--ink); }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  ul{ list-style:none; }
+  input, textarea, select, label, button{ font-family:inherit; cursor:auto; }
+  button{ cursor:pointer; }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+  section{ padding:100px 0; position:relative; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; font-weight:600;
+    letter-spacing:0.06em; text-transform:uppercase; color:var(--green-dark);
+    background:var(--green-pale); border:1px solid var(--border);
+    padding:7px 14px; border-radius:999px; margin-bottom:20px;
+  }
+  .eyebrow::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--green); }
+
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head h2{ font-size:clamp(28px,4vw,40px); margin-bottom:14px; }
+  .section-head p{ color:var(--ink-soft); font-size:17px; }
+  .center{ text-align:center; margin-left:auto; margin-right:auto; }
+
+  /* Buttons */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:15px 28px; border-radius:12px; font-weight:600; font-size:15.5px;
+    border:1px solid transparent; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{ background:var(--green); color:#fff; box-shadow:0 12px 24px -10px rgba(14,159,110,0.55); }
+  .btn-primary:hover{ background:var(--green-dark); transform:translateY(-2px); box-shadow:0 16px 30px -10px rgba(14,159,110,0.6); }
+  .btn-ghost{ background:#fff; color:var(--ink); border-color:var(--border); }
+  .btn-ghost:hover{ border-color:var(--green); color:var(--green-dark); transform:translateY(-2px); }
+  .btn-sm{ padding:10px 18px; font-size:14px; border-radius:10px; }
+
+  /* Navbar */
+  header{
+    position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid transparent; transition:border-color .25s ease, box-shadow .25s ease;
+  }
+  header.scrolled{ border-color:var(--border); box-shadow:0 4px 24px -12px rgba(16,35,26,0.15); }
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:var(--maxw); margin:0 auto; }
+  .logo{ display:flex; align-items:center; gap:9px; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; }
+  .logo-mark{ width:34px; height:34px; border-radius:9px; background:var(--green); display:flex; align-items:center; justify-content:center; }
+  .nav-links{ display:flex; align-items:center; gap:32px; }
+  .nav-links a{ font-size:14.5px; font-weight:500; color:var(--ink-soft); transition:color .15s ease; position:relative; }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-cta{ display:flex; align-items:center; gap:14px; }
+  .hamburger{ display:none; flex-direction:column; gap:5px; background:none; border:none; padding:8px; }
+  .hamburger span{ width:22px; height:2px; background:var(--ink); border-radius:2px; transition:transform .25s ease, opacity .25s ease; }
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-top:1px solid var(--border);
+    padding:12px 24px 20px;
+  }
+  .mobile-menu a{ padding:13px 4px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--green-pale); }
+  .mobile-menu.open{ display:flex; }
+
+  /* Hero */
+  .hero{ padding:88px 0 0; }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
+  .hero h1{ font-size:clamp(34px,5vw,56px); margin-bottom:22px; }
+  .hero h1 .rotate-word{ color:var(--green); display:inline-block; }
+  .hero p.lead{ font-size:18px; color:var(--ink-soft); max-width:480px; margin-bottom:32px; }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:28px; }
+  .hero-trust{ display:flex; align-items:center; gap:12px; font-size:13.5px; color:var(--ink-faint); }
+  .avatars{ display:flex; }
+  .avatars span{
+    width:30px; height:30px; border-radius:50%; border:2px solid #fff; margin-left:-9px;
+    display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk'; font-weight:600; font-size:11px; color:#fff;
+  }
+  .avatars span:first-child{ margin-left:0; }
+
+  .hero-visual{ position:relative; }
+  .hero-card{
+    background:var(--green-pale-2); border:1px solid var(--border); border-radius:20px;
+    padding:26px; box-shadow:var(--shadow);
+  }
+  .hero-card-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
+  .hero-card-top .dot-row{ display:flex; gap:6px; }
+  .hero-card-top .dot-row span{ width:9px; height:9px; border-radius:50%; background:var(--border); }
+  .hero-gig{
+    display:flex; justify-content:space-between; align-items:center; background:#fff; border:1px solid var(--border);
+    border-radius:12px; padding:14px 16px; margin-bottom:10px; transition:transform .2s ease;
+  }
+  .hero-gig:hover{ transform:translateX(4px); border-color:var(--green); }
+  .hero-gig .g-title{ font-weight:600; font-size:14px; margin-bottom:3px; }
+  .hero-gig .g-meta{ font-size:12px; color:var(--ink-faint); }
+  .hero-gig .g-pay{ font-family:'JetBrains Mono'; font-weight:600; color:var(--green-dark); font-size:13.5px; }
+  .badge-float{
+    position:absolute; top:-14px; right:18px; background:var(--amber); color:#231604;
+    font-family:'JetBrains Mono'; font-weight:600; font-size:12px; padding:8px 14px; border-radius:10px;
+    box-shadow:0 10px 20px -8px rgba(242,169,59,0.6); transform:rotate(3deg);
+  }
+
+  /* Ticker (signature element) */
+  .ticker-wrap{ background:var(--ink); margin-top:80px; overflow:hidden; position:relative; }
+  .ticker-inner{
+    display:flex; align-items:center; gap:48px; padding:20px 0; white-space:nowrap;
+    font-family:'JetBrains Mono', monospace; font-size:14px; color:#DDEDE5;
+  }
+  .ticker-item{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
+  .ticker-item .pulse{ width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 0 0 rgba(14,159,110,0.7); animation:pulse 1.8s infinite; }
+  @keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(14,159,110,0.55);} 70%{box-shadow:0 0 0 8px rgba(14,159,110,0);} 100%{box-shadow:0 0 0 0 rgba(14,159,110,0);} }
+  .ticker-item b{ color:#fff; font-weight:600; }
+  .ticker-sep{ color:#3F5A4E; }
+
+  /* Reveal animation */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  .reveal-stagger.in-view > *{ transition-delay:calc(var(--i,0) * 90ms); }
+
+  /* About */
+  .about{ background:var(--green-pale-2); }
+  .about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:center; }
+  .about-points{ display:flex; flex-direction:column; gap:18px; margin-top:26px; }
+  .about-point{ display:flex; gap:14px; align-items:flex-start; }
+  .about-point .ico{ width:38px; height:38px; border-radius:10px; background:var(--green-pale); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .about-point h4{ font-size:15.5px; margin-bottom:4px; }
+  .about-point p{ font-size:14.5px; color:var(--ink-soft); }
+  .about-stat-card{
+    background:#fff; border:1px solid var(--border); border-radius:18px; padding:34px; box-shadow:var(--shadow);
+  }
+  .about-stat-card .big{ font-family:'Space Grotesk'; font-size:44px; font-weight:700; color:var(--green-dark); }
+  .about-stat-card .lbl{ color:var(--ink-soft); font-size:14px; margin-top:4px; margin-bottom:22px; }
+
+  /* Services */
+  .cards-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .service-card{
+    background:#fff; border:1px solid var(--border); border-radius:18px; padding:30px;
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+  .service-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow); border-color:var(--green); }
+  .service-icon{
+    width:48px; height:48px; border-radius:12px; background:var(--green-pale);
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+  }
+  .service-card h3{ font-size:18px; margin-bottom:8px; }
+  .service-card p{ font-size:14.5px; color:var(--ink-soft); margin-bottom:16px; }
+  .service-card .link{ font-size:13.5px; font-weight:600; color:var(--green-dark); display:inline-flex; align-items:center; gap:6px; }
+
+  /* How it works */
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
+  .step{ padding:0 18px; position:relative; }
+  .step::before{
+    content:''; position:absolute; top:23px; left:calc(-50% + 23px); width:calc(100% - 46px); height:2px;
+    background:linear-gradient(90deg, var(--border), var(--border) 60%, transparent 60%);
+    background-size:12px 2px; z-index:0;
+  }
+  .step:first-child::before{ display:none; }
+  .step-num{
+    width:46px; height:46px; border-radius:50%; background:var(--ink); color:#fff; font-family:'JetBrains Mono';
+    font-weight:600; display:flex; align-items:center; justify-content:center; margin-bottom:20px; position:relative; z-index:1; font-size:15px;
+  }
+  .step:nth-child(2) .step-num, .step:nth-child(4) .step-num{ background:var(--green); }
+  .step h4{ font-size:16.5px; margin-bottom:8px; }
+  .step p{ font-size:14px; color:var(--ink-soft); }
+
+  /* Showcase / portfolio */
+  .showcase{ background:var(--green-pale-2); }
+  .showcase-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .receipt-card{
+    background:#fff; border:1px solid var(--border); border-radius:16px; padding:0; overflow:hidden;
+    transition:transform .22s ease, box-shadow .22s ease;
+  }
+  .receipt-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow); }
+  .receipt-top{ padding:22px 22px 18px; border-bottom:1px dashed var(--border); }
+  .receipt-avatar{ width:42px; height:42px; border-radius:50%; background:var(--green); color:#fff; font-family:'Space Grotesk'; font-weight:600; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
+  .receipt-top h4{ font-size:15.5px; margin-bottom:2px; }
+  .receipt-top .role{ font-size:13px; color:var(--ink-faint); }
+  .receipt-body{ padding:18px 22px 22px; }
+  .receipt-body p{ font-size:14px; color:var(--ink-soft); margin-bottom:16px; }
+  .receipt-figures{ display:flex; justify-content:space-between; align-items:center; }
+  .receipt-figures .amt{ font-family:'JetBrains Mono'; font-weight:600; color:var(--green-dark); font-size:16px; }
+  .receipt-figures .tag{ font-size:11.5px; background:var(--green-pale); color:var(--green-dark); padding:4px 9px; border-radius:999px; font-weight:600; }
+
+  /* Testimonials */
+  .testi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .testi-card{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:28px; }
+  .stars{ color:var(--amber); font-size:14px; margin-bottom:14px; letter-spacing:2px; }
+  .testi-card p.quote{ font-size:14.5px; color:var(--ink); margin-bottom:20px; line-height:1.65; }
+  .testi-person{ display:flex; align-items:center; gap:12px; }
+  .testi-person .av{ width:38px; height:38px; border-radius:50%; background:var(--green-pale); color:var(--green-dark); font-family:'Space Grotesk'; font-weight:700; display:flex; align-items:center; justify-content:center; font-size:14px; }
+  .testi-person .name{ font-weight:600; font-size:14px; }
+  .testi-person .role{ font-size:12.5px; color:var(--ink-faint); }
+
+  /* Stats */
+  .stats-band{ background:var(--ink); border-radius:24px; padding:56px 40px; display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .stat-item{ text-align:center; }
+  .stat-item .num{ font-family:'JetBrains Mono'; font-weight:700; font-size:clamp(28px,3.4vw,40px); color:#fff; }
+  .stat-item .num .suffix{ color:var(--green); }
+  .stat-item .lbl{ color:#B9C9C0; font-size:13.5px; margin-top:8px; }
+
+  /* FAQ */
+  .faq-list{ max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:12px; }
+  .faq-item{ border:1px solid var(--border); border-radius:14px; overflow:hidden; background:#fff; }
+  .faq-q{
+    width:100%; text-align:left; background:none; border:none; padding:20px 22px; display:flex; justify-content:space-between; align-items:center;
+    font-family:'Space Grotesk'; font-weight:600; font-size:15.5px; color:var(--ink);
+  }
+  .faq-q .plus{ width:22px; height:22px; border-radius:6px; background:var(--green-pale); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .25s ease; margin-left:16px; }
+  .faq-item.open .faq-q .plus{ transform:rotate(135deg); background:var(--green); }
+  .faq-item.open .faq-q .plus svg path{ stroke:var(--green-dark); }
+  .faq-item.open .faq-q .plus{ }
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
+  .faq-a-inner{ padding:0 22px 20px; font-size:14.5px; color:var(--ink-soft); }
+  .faq-item.open .faq-a{ max-height:220px; }
+
+  /* Contact */
+  .contact{ background:var(--green-pale-2); }
+  .contact-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:50px; }
+  .contact-info h2{ font-size:clamp(26px,3.6vw,36px); margin-bottom:14px; }
+  .contact-info p{ color:var(--ink-soft); margin-bottom:26px; }
+  .contact-item{ display:flex; gap:12px; align-items:center; margin-bottom:16px; font-size:14.5px; }
+  .contact-item .ico{ width:36px; height:36px; border-radius:10px; background:var(--green-pale); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .form-card{ background:#fff; border:1px solid var(--border); border-radius:20px; padding:34px; box-shadow:var(--shadow); }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+  .field{ display:flex; flex-direction:column; gap:6px; }
+  .field.full{ grid-column:1 / -1; }
+  .field label{ font-size:13px; font-weight:600; color:var(--ink-soft); }
+  .field input, .field select, .field textarea{
+    padding:12px 14px; border:1px solid var(--border); border-radius:10px; font-size:14.5px; color:var(--ink);
+    background:var(--green-pale-2); outline:none; transition:border-color .18s ease, background .18s ease;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{ border-color:var(--green); background:#fff; }
+  .field textarea{ resize:vertical; min-height:90px; }
+  .form-note{ font-size:12px; color:var(--ink-faint); margin-top:12px; text-align:center; }
+
+  /* Footer */
+  footer{ background:var(--ink); color:#CFE0D7; padding:70px 0 0; }
+  .footer-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:40px; padding-bottom:50px; border-bottom:1px solid #24392F; }
+  .footer-brand .logo{ color:#fff; margin-bottom:14px; }
+  .footer-brand p{ font-size:14px; color:#93A79A; max-width:280px; margin-bottom:20px; }
+  .social-row{ display:flex; gap:10px; }
+  .social-row a{ width:36px; height:36px; border-radius:10px; background:#1B2E24; display:flex; align-items:center; justify-content:center; transition:background .2s ease; }
+  .social-row a:hover{ background:var(--green); }
+  .footer-col h5{ font-family:'Space Grotesk'; color:#fff; font-size:14.5px; margin-bottom:16px; }
+  .footer-col ul{ display:flex; flex-direction:column; gap:11px; }
+  .footer-col a{ font-size:14px; color:#93A79A; transition:color .15s ease; }
+  .footer-col a:hover{ color:#fff; }
+  .footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding:26px 0; font-size:13px; color:#7C9186; flex-wrap:wrap; gap:10px; }
+
+  /* Modals */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(16,35,26,0.55); backdrop-filter:blur(3px); z-index:1000;
+    display:none; align-items:center; justify-content:center; padding:24px;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal-box{
+    background:#fff; border-radius:18px; max-width:600px; width:100%; max-height:80vh; overflow-y:auto;
+    padding:34px; position:relative;
+  }
+  .modal-box h3{ margin-bottom:14px; }
+  .modal-box p{ font-size:14.5px; color:var(--ink-soft); margin-bottom:12px; }
+  .modal-close{ position:absolute; top:20px; right:20px; width:34px; height:34px; border-radius:10px; background:var(--green-pale); border:none; display:flex; align-items:center; justify-content:center; }
+
+  /* Responsive */
+  @media (max-width: 980px){
+    .hero-grid, .about-grid, .contact-grid{ grid-template-columns:1fr; }
+    .hero-visual{ order:-1; }
+    .cards-grid, .showcase-grid, .testi-grid{ grid-template-columns:repeat(2,1fr); }
+    .steps{ grid-template-columns:repeat(2,1fr); row-gap:36px; }
+    .step:nth-child(3)::before{ display:none; }
+    .stats-band{ grid-template-columns:repeat(2,1fr); row-gap:28px; }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width: 720px){
+    .nav-links, .nav-cta .btn-ghost{ display:none; }
+    .hamburger{ display:flex; }
+    section{ padding:64px 0; }
+    .cards-grid, .showcase-grid, .testi-grid, .form-row{ grid-template-columns:1fr; }
+    .steps{ grid-template-columns:1fr; }
+    .step::before{ display:none; }
+    .stats-band{ grid-template-columns:1fr 1fr; padding:40px 22px; }
+    .footer-grid{ grid-template-columns:1fr; }
+    .hero{ padding-top:20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header id="siteHeader">
+  <nav>
+    <a href="#top" class="logo js-no-redirect" data-scroll>
+      <span class="logo-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 15 L10 7 L14 12 L20 4" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      GigLeap
+    </a>
+    <div class="nav-links">
+      <a href="#about" class="js-no-redirect" data-scroll>About</a>
+      <a href="#services" class="js-no-redirect" data-scroll>Services</a>
+      <a href="#how" class="js-no-redirect" data-scroll>How it works</a>
+      <a href="#testimonials" class="js-no-redirect" data-scroll>Reviews</a>
+      <a href="#faq" class="js-no-redirect" data-scroll>FAQ</a>
+      <a href="#contact" class="js-no-redirect" data-scroll>Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost btn-sm js-no-redirect" data-scroll>Sign in</a>
+      <a href="#" class="btn btn-primary btn-sm">Start Free</a>
+    </div>
+    <button class="hamburger js-no-redirect" id="hamburgerBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu js-no-redirect" id="mobileMenu">
+    <a href="#about" class="js-no-redirect" data-scroll>About</a>
+    <a href="#services" class="js-no-redirect" data-scroll>Services</a>
+    <a href="#how" class="js-no-redirect" data-scroll>How it works</a>
+    <a href="#testimonials" class="js-no-redirect" data-scroll>Reviews</a>
+    <a href="#faq" class="js-no-redirect" data-scroll>FAQ</a>
+    <a href="#contact" class="js-no-redirect" data-scroll>Contact</a>
+    <a href="#" style="margin-top:8px;" class="btn btn-primary btn-sm">Start Free</a>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal in-view">
+      <span class="eyebrow">Trusted by 50,000+ freelancers</span>
+      <h1>Turn your skills into a <span class="rotate-word mono" id="rotateWord">thriving career</span></h1>
+      <p class="lead">GigLeap matches skilled professionals with real, vetted clients — no bidding wars, no race-to-the-bottom pricing. Just good work, fair pay, and money that actually lands in your account.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">Get Matched With Clients →</a>
+        <a href="#how" class="btn btn-ghost js-no-redirect" data-scroll>See how it works</a>
+      </div>
+      <div class="hero-trust">
+        <div class="avatars">
+          <span style="background:#0E9F6E;">PS</span>
+          <span style="background:#F2A93B;">RK</span>
+          <span style="background:#3E7CB1;">AM</span>
+          <span style="background:#B15E3E;">TN</span>
+        </div>
+        <span>Joined by 1,200+ freelancers this month</span>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal in-view">
+      <div class="hero-card">
+        <div class="badge-float">+₹18,400 today</div>
+        <div class="hero-card-top">
+          <strong style="font-family:'Space Grotesk'; font-size:14.5px;">Open opportunities</strong>
+          <div class="dot-row"><span></span><span></span><span></span></div>
+        </div>
+        <div class="hero-gig">
+          <div>
+            <div class="g-title">Landing page copywriting</div>
+            <div class="g-meta">Client: D2C skincare brand</div>
+          </div>
+          <div class="g-pay">₹8,000</div>
+        </div>
+        <div class="hero-gig">
+          <div>
+            <div class="g-title">React dashboard build</div>
+            <div class="g-meta">Client: SaaS startup, US</div>
+          </div>
+          <div class="g-pay">₹42,000</div>
+        </div>
+        <div class="hero-gig">
+          <div>
+            <div class="g-title">Instagram reel editing (10)</div>
+            <div class="g-meta">Client: Fitness coach</div>
+          </div>
+          <div class="g-pay">₹12,500</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signature element: live payout ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker-inner" id="tickerInner">
+      <!-- duplicated by JS for seamless loop -->
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="about-stat-card">
+        <div class="big mono" data-counter="12" data-suffix="M+">$0M+</div>
+        <div class="lbl">Paid out to freelancers to date</div>
+        <div style="height:1px; background:var(--border); margin:18px 0;"></div>
+        <div class="big mono" style="font-size:30px;" data-counter="4.8" data-decimal="1">0.0</div>
+        <div class="lbl">Average client rating across all categories</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Why freelancers choose GigLeap</span>
+      <h2 style="font-size:clamp(26px,3.6vw,36px); margin-bottom:16px;">Built for people who do the work, not people who chase leads</h2>
+      <p style="color:var(--ink-soft); font-size:16px;">Most freelance marketplaces reward whoever bids lowest. GigLeap works differently — clients come to us already screened and ready to pay fair rates, so you spend your time delivering, not competing on price.</p>
+      <div class="about-points">
+        <div class="about-point">
+          <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0B7A54" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Pre-vetted clients only</h4><p>Every client goes through identity and budget verification before a project ever gets posted.</p></div>
+        </div>
+        <div class="about-point">
+          <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0B7A54" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Escrow-protected payments</h4><p>Funds are locked in before you start, so delivering work never means chasing an invoice.</p></div>
+        </div>
+        <div class="about-point">
+          <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0B7A54" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>No race-to-the-bottom bidding</h4><p>You set your rate. Clients see your rate. That's the negotiation.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Categories</span>
+      <h2>Work across every skill that pays</h2>
+      <p>Whatever you're good at, there's a client on GigLeap actively looking to hire for it.</p>
+    </div>
+    <div class="cards-grid reveal-stagger">
+      <div class="service-card reveal" style="--i:0">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 19h16M4 15l9-9 4 4-9 9H4v-4z" stroke="#0B7A54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Writing &amp; Content</h3>
+        <p>Blog posts, landing pages, technical docs, and scripts for brands that need words that convert.</p>
+        <span class="link">Explore category →</span>
+      </div>
+      <div class="service-card reveal" style="--i:1">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#0B7A54" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="#0B7A54" stroke-width="2"/></svg></div>
+        <h3>Graphic &amp; Web Design</h3>
+        <p>Brand identities, UI/UX, and marketing creative for startups and growing product teams.</p>
+        <span class="link">Explore category →</span>
+      </div>
+      <div class="service-card reveal" style="--i:2">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14" stroke="#0B7A54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Web &amp; App Development</h3>
+        <p>Frontend builds, full-stack apps, and API integrations for founders who need to ship fast.</p>
+        <span class="link">Explore category →</span>
+      </div>
+      <div class="service-card reveal" style="--i:3">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 11l18-8-8 18-2-8-8-2z" stroke="#0B7A54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Digital Marketing &amp; SEO</h3>
+        <p>Search strategy, paid campaigns, and content plans built to actually move a client's numbers.</p>
+        <span class="link">Explore category →</span>
+      </div>
+      <div class="service-card reveal" style="--i:4">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="14" height="12" rx="2" stroke="#0B7A54" stroke-width="2"/><path d="M21 9l-4 3 4 3V9z" stroke="#0B7A54" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <h3>Video Editing &amp; Animation</h3>
+        <p>Short-form reels, YouTube edits, and motion graphics for creators and brand channels.</p>
+        <span class="link">Explore category →</span>
+      </div>
+      <div class="service-card reveal" style="--i:5">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h11" stroke="#0B7A54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Virtual Assistance &amp; Admin</h3>
+        <p>Inbox management, scheduling, and operations support for busy founders and small teams.</p>
+        <span class="link">Explore category →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section id="how" style="background:var(--green-pale-2);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Process</span>
+      <h2>From sign-up to your first payout</h2>
+      <p>Four steps stand between you and your first client — most freelancers clear all four inside a week.</p>
+    </div>
+    <div class="steps reveal-stagger">
+      <div class="step reveal" style="--i:0"><div class="step-num">01</div><h4>Create your profile</h4><p>Show your best work and set the rate you actually want to be paid.</p></div>
+      <div class="step reveal" style="--i:1"><div class="step-num">02</div><h4>Get matched</h4><p>Our team surfaces client briefs that fit your exact skill set.</p></div>
+      <div class="step reveal" style="--i:2"><div class="step-num">03</div><h4>Deliver the work</h4><p>Communicate directly with the client and submit through the platform.</p></div>
+      <div class="step reveal" style="--i:3"><div class="step-num">04</div><h4>Get paid, fast</h4><p>Escrowed funds release to your account the moment work is approved.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SHOWCASE / PORTFOLIO ================= -->
+<section class="showcase">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Real results</span>
+      <h2>Freelancers who started exactly where you are</h2>
+      <p>Every payout below started with one completed profile and one first client.</p>
+    </div>
+    <div class="showcase-grid reveal-stagger">
+      <div class="receipt-card reveal" style="--i:0">
+        <div class="receipt-top">
+          <div class="receipt-avatar">PS</div>
+          <h4>Priya S.</h4>
+          <div class="role">Content Writer · Pune</div>
+        </div>
+        <div class="receipt-body">
+          <p>"I went from zero clients to a full monthly retainer in four months, writing for brands I actually respect."</p>
+          <div class="receipt-figures"><span class="amt">₹45,000/mo</span><span class="tag">4 months in</span></div>
+        </div>
+      </div>
+      <div class="receipt-card reveal" style="--i:1">
+        <div class="receipt-top">
+          <div class="receipt-avatar" style="background:#3E7CB1;">RK</div>
+          <h4>Rohit K.</h4>
+          <div class="role">Frontend Developer · Noida</div>
+        </div>
+        <div class="receipt-body">
+          <p>"The client briefs are specific and the budgets are real. I stopped wasting time on proposals that go nowhere."</p>
+          <div class="receipt-figures"><span class="amt">₹1.1L/mo</span><span class="tag">7 months in</span></div>
+        </div>
+      </div>
+      <div class="receipt-card reveal" style="--i:2">
+        <div class="receipt-top">
+          <div class="receipt-avatar" style="background:#B15E3E;">AN</div>
+          <h4>Ayesha N.</h4>
+          <div class="role">Video Editor · Lucknow</div>
+        </div>
+        <div class="receipt-body">
+          <p>"Escrow payments changed everything for me. I never worry about whether a client will actually pay anymore."</p>
+          <div class="receipt-figures"><span class="amt">₹38,500/mo</span><span class="tag">3 months in</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Testimonials</span>
+      <h2>What freelancers say after their first payout</h2>
+    </div>
+    <div class="testi-grid reveal-stagger">
+      <div class="testi-card reveal" style="--i:0">
+        <div class="stars">★★★★★</div>
+        <p class="quote">The onboarding took fifteen minutes and I had my first client call by the following Tuesday. Didn't expect it to move that fast.</p>
+        <div class="testi-person"><div class="av">MS</div><div><div class="name">Meera S.</div><div class="role">Graphic Designer</div></div></div>
+      </div>
+      <div class="testi-card reveal" style="--i:1">
+        <div class="stars">★★★★★</div>
+        <p class="quote">I've used three other platforms before this one. GigLeap is the only one where clients don't try to negotiate my rate down to nothing.</p>
+        <div class="testi-person"><div class="av">VT</div><div><div class="name">Vikram T.</div><div class="role">SEO Specialist</div></div></div>
+      </div>
+      <div class="testi-card reveal" style="--i:2">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Payments land on time, every time. That alone is worth more to me than any feature list.</p>
+        <div class="testi-person"><div class="av">SK</div><div><div class="name">Sana K.</div><div class="role">Virtual Assistant</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section>
+  <div class="wrap">
+    <div class="stats-band reveal">
+      <div class="stat-item"><div class="num mono"><span class="count" data-counter="50" data-suffix="K">0</span><span class="suffix">+</span></div><div class="lbl">Freelancers onboarded</div></div>
+      <div class="stat-item"><div class="num mono"><span class="count" data-counter="120">0</span><span class="suffix">+</span></div><div class="lbl">Countries represented</div></div>
+      <div class="stat-item"><div class="num mono">$<span class="count" data-counter="12">0</span><span class="suffix">M+</span></div><div class="lbl">Total freelancer payouts</div></div>
+      <div class="stat-item"><div class="num mono"><span class="count" data-counter="4.8" data-decimal="1">0.0</span></div><div class="lbl">Average client rating</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" style="background:var(--green-pale-2);">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions freelancers ask before joining</h2>
+      <p>Can't find what you're looking for? Reach out through the contact section below.</p>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q js-no-redirect">Is it free to join GigLeap?<span class="plus"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#0B7A54" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Creating a profile and browsing client matches costs nothing. You only succeed when you get paid for real work.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q js-no-redirect">How do I actually get paid?<span class="plus"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#0B7A54" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Payments are held securely and released to your linked account once a client approves delivered work, so you're never chasing invoices.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q js-no-redirect">Do I need years of experience to start?<span class="plus"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#0B7A54" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">No. Clients on GigLeap range from first project to full portfolio needs. What matters is showing your skill clearly, not your resume length.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q js-no-redirect">How fast can I start getting matched?<span class="plus"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#0B7A54" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Most profiles are reviewed and matched with a first client opportunity within 48 hours of completing setup.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q js-no-redirect">Is my payment information secure?<span class="plus"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#0B7A54" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">All transactions run through encrypted, escrow-backed payment rails, so funds are protected on both sides before work begins.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q js-no-redirect">What if I don't have a portfolio yet?<span class="plus"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#0B7A54" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">You can build one inside GigLeap using small starter projects designed to help new freelancers earn their first reviews.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info reveal">
+      <span class="eyebrow">Get started</span>
+      <h2>Ready to send your first proposal?</h2>
+      <p>Fill in a few details and we'll point you to the client matches that fit your skills right now.</p>
+      <div class="contact-item"><div class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 8l9 6 9-6M4 6h16v12H4V6z" stroke="#0B7A54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>hello@giglead-example.com</div>
+      <div class="contact-item"><div class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.1-7-11a7 7 0 1114 0c0 4.9-7 11-7 11z" stroke="#0B7A54" stroke-width="2"/><circle cx="12" cy="10" r="2.5" stroke="#0B7A54" stroke-width="2"/></svg></div>Remote-first, worldwide</div>
+      <div class="contact-item"><div class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#0B7A54" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#0B7A54" stroke-width="2" stroke-linecap="round"/></svg></div>Typical response: under 24 hours</div>
+    </div>
+    <div class="form-card reveal">
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="field"><label>Full name</label><input type="text" placeholder="Your name" required></div>
+          <div class="field"><label>Email address</label><input type="email" placeholder="you@email.com" required></div>
+        </div>
+        <div class="form-row">
+          <div class="field full"><label>Primary skill</label>
+            <select required>
+              <option value="">Select a category</option>
+              <option>Writing &amp; Content</option>
+              <option>Graphic &amp; Web Design</option>
+              <option>Web &amp; App Development</option>
+              <option>Digital Marketing &amp; SEO</option>
+              <option>Video Editing &amp; Animation</option>
+              <option>Virtual Assistance &amp; Admin</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field full"><label>Tell us about your experience</label><textarea placeholder="A couple of sentences about what you do best..."></textarea></div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Get Matched With Clients →</button>
+        <p class="form-note">By submitting, you agree to our Terms &amp; Conditions and Privacy Policy.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 15 L10 7 L14 12 L20 4" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          GigLeap
+        </div>
+        <p>Connecting skilled freelancers with vetted, paying clients across writing, design, development, marketing and more.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#CFE0D7" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="#CFE0D7" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="#CFE0D7"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#CFE0D7" stroke-width="1.8"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 014 0v4M11 13v4" stroke="#CFE0D7" stroke-width="1.8" stroke-linecap="round"/></svg></a>
+          <a href="#" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M20 4L4 20" stroke="#CFE0D7" stroke-width="1.8" stroke-linecap="round"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <ul>
+          <li><a href="#about" class="js-no-redirect" data-scroll>About</a></li>
+          <li><a href="#services" class="js-no-redirect" data-scroll>Services</a></li>
+          <li><a href="#how" class="js-no-redirect" data-scroll>How it works</a></li>
+          <li><a href="#testimonials" class="js-no-redirect" data-scroll>Reviews</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Categories</h5>
+        <ul>
+          <li><a href="#services" class="js-no-redirect" data-scroll>Writing</a></li>
+          <li><a href="#services" class="js-no-redirect" data-scroll>Design</a></li>
+          <li><a href="#services" class="js-no-redirect" data-scroll>Development</a></li>
+          <li><a href="#services" class="js-no-redirect" data-scroll>Marketing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#" class="js-no-redirect" data-modal="modalPrivacy">Privacy Policy</a></li>
+          <li><a href="#" class="js-no-redirect" data-modal="modalTerms">Terms &amp; Conditions</a></li>
+          <li><a href="#" class="js-no-redirect" data-modal="modalDisclosure">Affiliate Disclosure</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 GigLeap. All rights reserved.</span>
+      <span>Made for freelancers, everywhere.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= LEGAL MODALS ================= -->
+<div class="modal-overlay js-no-redirect" id="modalPrivacy">
+  <div class="modal-box">
+    <button class="modal-close js-no-redirect" data-close><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#0B7A54" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <h3>Privacy Policy</h3>
+    <p>This page explains, in plain terms, what happens when you visit this site. We use standard analytics to understand traffic and improve the page. Any information you enter into the contact form is used only to route you to a relevant freelance opportunity and is not sold to third parties.</p>
+    <p>If you follow a link from this page to a partner platform, that platform's own privacy policy governs how they handle your data from that point forward. We recommend reviewing it before you sign up.</p>
+    <p>You can request removal of any information you've submitted here by contacting us through the details in the Contact section.</p>
+  </div>
+</div>
+<div class="modal-overlay js-no-redirect" id="modalTerms">
+  <div class="modal-box">
+    <button class="modal-close js-no-redirect" data-close><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#0B7A54" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <h3>Terms &amp; Conditions</h3>
+    <p>This page is an independent informational resource about freelancing opportunities. It is not itself a freelance marketplace, employer, or payment processor. Clicking through links on this page may direct you to a third-party platform where you can create an account and begin freelancing.</p>
+    <p>We make reasonable efforts to keep information on this page accurate but cannot guarantee outcomes, earnings, or timelines mentioned in testimonials or examples, which are illustrative rather than guaranteed results.</p>
+    <p>By using this page, you agree that any engagement with a linked third-party platform is between you and that platform, under its own terms of service.</p>
+  </div>
+</div>
+<div class="modal-overlay js-no-redirect" id="modalDisclosure">
+  <div class="modal-box">
+    <button class="modal-close js-no-redirect" data-close><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#0B7A54" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <h3>Affiliate Disclosure</h3>
+    <p>This page may contain affiliate links. If you click through and sign up on a partner platform, we may earn a referral commission at no additional cost to you. This helps support the upkeep of this page.</p>
+    <p>We only link to platforms and opportunities we believe are genuinely useful to freelancers. Our recommendation is not a guarantee of income or outcome — freelancing results vary by skill, effort, and market conditions.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =====================================================
+     1. AFFILIATE REDIRECT CONFIG
+     Replace this single URL with your real affiliate /
+     tracking link. Every non-functional element on the
+     page (headings, paragraphs, empty space, cards, etc.)
+     will open this URL in a new tab when clicked.
+  ===================================================== */
+  const AFFILIATE_URL = "https://your-affiliate-link.com/?ref=giglead"; // TODO: replace with your real affiliate URL
+
+  /* Elements that must keep their normal behaviour
+     (menu, accordion, modals, form fields) carry the
+     class "js-no-redirect" and are skipped below. */
+  document.addEventListener('click', function(e){
+    const tag = e.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'LABEL' || tag === 'OPTION') return;
+    if (e.target.closest('.js-no-redirect')) return;
+    e.preventDefault();
+    window.open(AFFILIATE_URL, '_blank', 'noopener');
+  });
+
+  /* =====================================================
+     2. STICKY NAVBAR SHADOW ON SCROLL
+  ===================================================== */
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('scrolled', window.scrollY > 8);
+  });
+
+  /* =====================================================
+     3. HAMBURGER / MOBILE MENU
+  ===================================================== */
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', function(){
+    mobileMenu.classList.toggle('open');
+    hamburgerBtn.classList.toggle('active');
+  });
+
+  /* =====================================================
+     4. SMOOTH SCROLL FOR NAV LINKS
+  ===================================================== */
+  document.querySelectorAll('[data-scroll]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (target){
+        e.preventDefault();
+        target.scrollIntoView({ behavior:'smooth', block:'start' });
+        mobileMenu.classList.remove('open');
+      }
+    });
+  });
+
+  /* =====================================================
+     5. HERO HEADLINE WORD ROTATOR
+  ===================================================== */
+  const words = ["thriving career", "steady income", "global business", "creative freedom"];
+  let wIndex = 0;
+  const rotateEl = document.getElementById('rotateWord');
+  setInterval(function(){
+    wIndex = (wIndex + 1) % words.length;
+    rotateEl.style.opacity = 0;
+    setTimeout(function(){
+      rotateEl.textContent = words[wIndex];
+      rotateEl.style.opacity = 1;
+    }, 220);
+  }, 2600);
+  rotateEl.style.transition = 'opacity .22s ease';
+
+  /* =====================================================
+     6. LIVE PAYOUT TICKER (signature element)
+  ===================================================== */
+  const tickerData = [
+    "Priya S. just got matched — Content Writing",
+    "$18,400 paid out in the last hour",
+    "Rohit K. completed a project — React Dashboard",
+    "New client opportunity posted — Digital Marketing",
+    "Ayesha N. received a 5-star review",
+    "$1.2M+ paid to freelancers this month"
+  ];
+  const tickerInner = document.getElementById('tickerInner');
+  function buildTicker(){
+    let html = '';
+    const combined = tickerData.concat(tickerData); // duplicate for seamless scroll illusion
+    combined.forEach(function(t, i){
+      html += '<div class="ticker-item"><span class="pulse"></span>' + t + '</div>';
+      if (i < combined.length - 1) html += '<span class="ticker-sep">/</span>';
+    });
+    tickerInner.innerHTML = html;
+  }
+  buildTicker();
+
+  /* =====================================================
+     7. SCROLL REVEAL ANIMATIONS
+  ===================================================== */
+  const revealEls = document.querySelectorAll('.reveal:not(.in-view)');
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.15 });
+  revealEls.forEach(function(el){ io.observe(el); });
+
+  /* =====================================================
+     8. ANIMATED COUNTERS (stats + about card)
+  ===================================================== */
+  const counters = document.querySelectorAll('[data-counter]');
+  const counterIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.getAttribute('data-counter'));
+      const decimals = parseInt(el.getAttribute('data-decimal') || '0', 10);
+      const suffix = el.getAttribute('data-suffix') || '';
+      let current = 0;
+      const duration = 1400;
+      const start = performance.now();
+      function step(now){
+        const progress = Math.min((now - start) / duration, 1);
+        current = target * progress;
+        el.textContent = current.toFixed(decimals) + (decimals === 0 && el.classList.contains('count') ? '' : (suffix && !el.classList.contains('count') ? suffix : ''));
+        if (el.classList.contains('count')) {
+          el.textContent = current.toFixed(decimals);
+        } else {
+          el.textContent = current.toFixed(decimals) + suffix;
+        }
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      counterIO.unobserve(el);
+    });
+  }, { threshold:0.4 });
+  counters.forEach(function(el){ counterIO.observe(el); });
+
+  /* =====================================================
+     9. FAQ ACCORDION
+  ===================================================== */
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const item = this.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  /* =====================================================
+     10. LEGAL MODALS
+  ===================================================== */
+  document.querySelectorAll('[data-modal]').forEach(function(trigger){
+    trigger.addEventListener('click', function(e){
+      e.preventDefault();
+      const modal = document.getElementById(this.getAttribute('data-modal'));
+      if (modal) modal.classList.add('open');
+    });
+  });
+  document.querySelectorAll('.modal-overlay').forEach(function(overlay){
+    overlay.addEventListener('click', function(e){
+      if (e.target === overlay) overlay.classList.remove('open');
+    });
+  });
+  document.querySelectorAll('[data-close]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      this.closest('.modal-overlay').classList.remove('open');
+    });
+  });
+
+  /* =====================================================
+     11. CONTACT FORM — no backend, so submission routes
+     to the affiliate URL (typical for a lead-gen page)
+  ===================================================== */
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    window.open(AFFILIATE_URL, '_blank', 'noopener');
+  });
+
+})();
+</script>
+
+</body>
+</html>

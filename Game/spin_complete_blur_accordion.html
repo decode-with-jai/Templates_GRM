@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPIN</title>
+
+<style>
+:root{
+  --primary:#2563eb;
+  --text:#0f172a;
+  --muted:#475569;
+  --card-radius:22px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  min-height:100vh;
+  color:var(--text);
+  overflow-x:hidden;
+  background:linear-gradient(135deg,#64f0d5,#8fe9ff);
+}
+
+button{font:inherit}
+
+/* PAGE BLUR */
+#page-content{
+  min-height:100vh;
+  transition:filter .35s ease, transform .35s ease;
+}
+
+#page-content.popup-blur{
+  filter:blur(10px);
+  transform:scale(1.015);
+  pointer-events:none;
+  user-select:none;
+}
+
+/* NAVBAR */
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  padding:14px 30px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  cursor:pointer;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:30px;
+  font-weight:800;
+}
+
+.logo svg{
+  width:44px;
+  height:44px;
+  flex:none;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.18));
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.nav-btn{
+  min-width:110px;
+  padding:12px 20px;
+  border:0;
+  border-radius:999px;
+  background:var(--primary);
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+
+.nav-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(37,99,235,.26);
+}
+
+/* GAMES */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:22px;
+  width:100%;
+  padding:26px 30px 34px;
+}
+
+.card{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  height:100%;
+  overflow:hidden;
+  border-radius:var(--card-radius);
+  background:#fff;
+  box-shadow:0 10px 25px rgba(0,0,0,.16);
+  cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 32px rgba(0,0,0,.22);
+}
+
+.card img{
+  display:block;
+  width:100%;
+  height:310px;
+  object-fit:cover;
+  background:#dbeafe;
+}
+
+.label{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:70px;
+  padding:16px;
+  font-size:20px;
+  font-weight:800;
+  text-align:center;
+}
+
+/* LEGAL ACCORDION */
+.legal-section{
+  width:100%;
+  padding:0 30px 48px;
+}
+
+.legal-title{
+  margin-bottom:18px;
+  text-align:center;
+  font-size:30px;
+}
+
+.legal-list{
+  width:min(1100px,100%);
+  margin:auto;
+  display:grid;
+  gap:14px;
+}
+
+.legal-item{
+  overflow:hidden;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 9px 24px rgba(0,0,0,.13);
+}
+
+.legal-toggle{
+  width:100%;
+  border:0;
+  padding:21px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  background:#fff;
+  color:var(--text);
+  font-size:21px;
+  font-weight:800;
+  text-align:left;
+  cursor:pointer;
+}
+
+.legal-toggle:hover{
+  background:#f8fafc;
+}
+
+.legal-icon{
+  flex:none;
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#eff6ff;
+  color:var(--primary);
+  font-size:25px;
+  line-height:1;
+  transition:transform .25s ease;
+}
+
+.legal-item.open .legal-icon{
+  transform:rotate(45deg);
+}
+
+.legal-content{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:max-height .45s ease, opacity .25s ease;
+}
+
+.legal-content-inner{
+  padding:0 24px 25px;
+  border-top:1px solid #e2e8f0;
+}
+
+.legal-content h3{
+  margin:20px 0 8px;
+  color:var(--primary);
+  font-size:18px;
+}
+
+.legal-content p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.75;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(15,23,42,.48);
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+}
+
+.popup.show{
+  display:flex;
+}
+
+.box{
+  width:min(430px,100%);
+  padding:38px;
+  border-radius:24px;
+  background:#fff;
+  text-align:center;
+  box-shadow:0 24px 70px rgba(0,0,0,.38);
+  animation:popupIn .3s ease;
+}
+
+@keyframes popupIn{
+  from{opacity:0;transform:translateY(15px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.box h2{
+  margin-bottom:10px;
+  font-size:42px;
+}
+
+.box p{
+  margin-bottom:24px;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.55;
+}
+
+.btns{
+  display:flex;
+  gap:14px;
+}
+
+.btns button{
+  flex:1;
+  padding:15px;
+  border:0;
+  border-radius:12px;
+  color:#fff;
+  font-size:17px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.yes{background:#17b857}
+.no{background:#ef4444}
+
+/* TABLET */
+@media(max-width:1050px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .card img{height:280px}
+}
+
+/* MOBILE / SMALL TABLET */
+@media(max-width:760px){
+  .navbar{padding:12px 16px}
+  .logo{gap:8px;font-size:24px}
+  .logo svg{width:38px;height:38px}
+  .nav-right{gap:8px}
+  .nav-btn{min-width:auto;padding:10px 15px;font-size:14px}
+
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+    padding:16px 16px 28px;
+  }
+
+  .card{border-radius:17px}
+  .card img{height:210px}
+  .label{min-height:58px;padding:12px 8px;font-size:16px}
+
+  .legal-section{padding:0 16px 35px}
+  .legal-title{font-size:25px}
+  .legal-toggle{padding:18px;font-size:18px}
+  .legal-content-inner{padding:0 18px 22px}
+}
+
+/* SMALL MOBILE */
+@media(max-width:440px){
+  .navbar{flex-wrap:wrap;gap:10px}
+  .logo{font-size:22px}
+  .nav-btn{padding:9px 12px;font-size:13px}
+  .grid{grid-template-columns:1fr}
+  .card img{height:250px}
+  .btns{flex-direction:column}
+  .box{padding:30px 22px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="page-content">
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="logo">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="spinGradient" x1="0" x2="1">
+            <stop offset="0%" stop-color="#22c55e"/>
+            <stop offset="100%" stop-color="#2563eb"/>
+          </linearGradient>
+        </defs>
+        <circle cx="32" cy="32" r="28" fill="url(#spinGradient)"/>
+        <path d="M32 10 L38 26 L54 32 L38 38 L32 54 L26 38 L10 32 L26 26 Z" fill="#fff"/>
+        <circle cx="32" cy="32" r="5" fill="#2563eb"/>
+      </svg>
+      <span>SPIN</span>
+    </div>
+
+    <div class="nav-right">
+      <button class="nav-btn login" type="button">Login</button>
+      <button class="nav-btn signup" type="button">Sign Up</button>
+    </div>
+  </nav>
+
+  <main class="grid" id="grid"></main>
+
+  <section class="legal-section" aria-label="Legal information">
+    <h2 class="legal-title">Legal Information</h2>
+
+    <div class="legal-list">
+
+      <article class="legal-item">
+        <button class="legal-toggle" type="button" aria-expanded="false">
+          <span>Terms &amp; Conditions</span>
+          <span class="legal-icon">+</span>
+        </button>
+
+        <div class="legal-content">
+          <div class="legal-content-inner">
+            <p>By accessing or using the SPIN website, you agree to these Terms and Conditions. If you do not agree, please stop using the website.</p>
+
+            <h3>Age Requirement</h3>
+            <p>This website is intended only for users who are 18 years of age or older. By continuing, you confirm that you meet the legal age requirement applicable in your country or region.</p>
+
+            <h3>Entertainment Purpose</h3>
+            <p>The content displayed on SPIN is provided for general entertainment and informational purposes. SPIN does not guarantee that every game, offer, service, or third-party platform will be available in every location.</p>
+
+            <h3>Third-Party Websites</h3>
+            <p>SPIN may redirect users to external websites. These websites operate independently and have their own terms, privacy policies, payment systems, and services. SPIN does not control or accept responsibility for their content, security, availability, payments, losses, or actions.</p>
+
+            <h3>User Responsibility</h3>
+            <p>You are responsible for checking whether accessing gaming, casino-related, promotional, or entertainment services is legal in your jurisdiction. You must not use this website for unlawful, fraudulent, abusive, or unauthorized activities.</p>
+
+            <h3>Website Changes</h3>
+            <p>SPIN may modify, suspend, remove, or update any part of the website or these Terms and Conditions at any time without prior notice. Continued use means that you accept the updated terms.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="legal-item">
+        <button class="legal-toggle" type="button" aria-expanded="false">
+          <span>Privacy Policy</span>
+          <span class="legal-icon">+</span>
+        </button>
+
+        <div class="legal-content">
+          <div class="legal-content-inner">
+            <p>This Privacy Policy explains how SPIN may collect, use, and protect information when visitors access the website.</p>
+
+            <h3>Information We May Collect</h3>
+            <p>SPIN may automatically collect limited technical information, including browser type, device type, operating system, screen size, IP-based approximate location, referral source, pages visited, and general website activity.</p>
+
+            <h3>How Information Is Used</h3>
+            <p>Information may be used to improve website performance, understand visitor activity, maintain security, prevent misuse, analyse traffic, and improve the overall user experience.</p>
+
+            <h3>Cookies</h3>
+            <p>SPIN or third-party services may use cookies, analytics technologies, or similar tools to remember preferences, measure website usage, and improve services. Visitors may disable cookies through their browser settings.</p>
+
+            <h3>Third-Party Services</h3>
+            <p>External websites opened through SPIN may collect information according to their own privacy policies. SPIN is not responsible for the privacy practices or data handling activities of third-party platforms.</p>
+
+            <h3>Data Security</h3>
+            <p>Reasonable measures may be used to protect website information. However, no internet transmission or storage method can be guaranteed to be completely secure.</p>
+
+            <h3>Policy Updates</h3>
+            <p>This Privacy Policy may be updated when website services, legal requirements, or data practices change. Visitors should review this section periodically.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="legal-item">
+        <button class="legal-toggle" type="button" aria-expanded="false">
+          <span>Disclaimer</span>
+          <span class="legal-icon">+</span>
+        </button>
+
+        <div class="legal-content">
+          <div class="legal-content-inner">
+            <p>The information and visual content available on SPIN are provided on an “as is” and “as available” basis without guarantees of any kind.</p>
+
+            <h3>No Ownership of Third-Party Services</h3>
+            <p>SPIN may display game-related images, categories, promotional content, or links that direct visitors to external platforms. Unless clearly stated otherwise, SPIN does not own, manage, or operate those websites or services.</p>
+
+            <h3>No Financial or Gambling Advice</h3>
+            <p>Nothing displayed on SPIN should be considered financial, legal, betting, gambling, or investment advice. Users are responsible for their own decisions and should participate only where legally permitted.</p>
+
+            <h3>Risk Responsibility</h3>
+            <p>Gaming and casino-related activities may involve financial risk and can result in loss. Users should never participate using money they cannot afford to lose. SPIN is not responsible for financial losses, payment disputes, service interruptions, or damages arising from third-party platforms.</p>
+
+            <h3>Accuracy and Availability</h3>
+            <p>SPIN does not guarantee that all content, links, images, offers, or external services will always be accurate, available, secure, or error-free.</p>
+
+            <h3>Responsible Use</h3>
+            <p>Users should access gaming-related content responsibly and comply with all applicable local laws, age restrictions, and platform rules.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</div>
+
+<div class="popup" id="popup" role="dialog" aria-modal="true" aria-label="Age verification">
+  <div class="box">
+    <h2>18+</h2>
+    <p>This content is intended for users aged 18 or above.</p>
+    <div class="btns">
+      <button class="yes" type="button">YES</button>
+      <button class="no" type="button">NO</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Change this one URL */
+const redirectURL = "https://example.com";
+
+const games = [
+  ["Battleground","https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1000&auto=format&fit=crop"],
+  ["Racing","https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1000&auto=format&fit=crop"],
+  ["Casino","https://images.unsplash.com/photo-1541267646418-54dd246a53db?w=1000&auto=format&fit=crop"],
+  ["Casino","https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1000&auto=format&fit=crop"],
+  ["Puzzle","https://images.unsplash.com/photo-1516117172878-fd2c41f4a759?w=1000&auto=format&fit=crop"],
+  ["Sports","https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1000&auto=format&fit=crop"],
+  ["Casino","https://images.unsplash.com/photo-1515687652280-bf0bb698562a?w=1000&auto=format&fit=crop"],
+  ["Arcade","https://images.unsplash.com/photo-1511882150382-421056c89033?w=1000&auto=format&fit=crop"],
+  ["Driving","https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1000&auto=format&fit=crop"],
+  ["Adventure","https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=1000&auto=format&fit=crop"],
+  ["Battle","https://images.unsplash.com/photo-1542751110-97427bbecf20?w=1000&auto=format&fit=crop"],
+  ["Casino","https://images.unsplash.com/photo-1446669052213-5dcff53f1f3f?w=1000&auto=format&fit=crop"]
+];
+
+const grid = document.getElementById("grid");
+const popup = document.getElementById("popup");
+const pageContent = document.getElementById("page-content");
+
+function go(){
+  window.location.href = redirectURL;
+}
+
+/* Create game cards */
+games.forEach(([name,image]) => {
+  const card = document.createElement("article");
+  card.className = "card";
+  card.innerHTML = `
+    <img src="${image}" alt="${name} game" loading="lazy">
+    <div class="label">${name}</div>
+  `;
+  card.addEventListener("click", go);
+  grid.appendChild(card);
+});
+
+/* Navbar redirects */
+document.querySelector(".navbar").addEventListener("click", go);
+
+/* Legal hide/show accordion */
+document.querySelectorAll(".legal-toggle").forEach(toggle => {
+  toggle.addEventListener("click", event => {
+    event.stopPropagation();
+
+    const currentItem = toggle.closest(".legal-item");
+    const currentContent = currentItem.querySelector(".legal-content");
+    const isOpen = currentItem.classList.contains("open");
+
+    /* Close other legal sections */
+    document.querySelectorAll(".legal-item.open").forEach(item => {
+      if(item !== currentItem){
+        item.classList.remove("open");
+        item.querySelector(".legal-toggle").setAttribute("aria-expanded","false");
+        item.querySelector(".legal-content").style.maxHeight = null;
+        item.querySelector(".legal-content").style.opacity = "0";
+      }
+    });
+
+    if(isOpen){
+      currentItem.classList.remove("open");
+      toggle.setAttribute("aria-expanded","false");
+      currentContent.style.maxHeight = null;
+      currentContent.style.opacity = "0";
+    }else{
+      currentItem.classList.add("open");
+      toggle.setAttribute("aria-expanded","true");
+      currentContent.style.maxHeight = currentContent.scrollHeight + "px";
+      currentContent.style.opacity = "1";
+    }
+  });
+});
+
+/* Prevent legal content clicks from redirecting */
+document.querySelector(".legal-section").addEventListener("click", event => {
+  event.stopPropagation();
+});
+
+/* Redirect when clicking other empty page areas */
+pageContent.addEventListener("click", event => {
+  if(
+    event.target.closest(".card") ||
+    event.target.closest(".navbar") ||
+    event.target.closest(".legal-section")
+  ) return;
+
+  go();
+});
+
+/* Show popup after five seconds and blur page */
+setTimeout(() => {
+  popup.classList.add("show");
+  pageContent.classList.add("popup-blur");
+  document.body.style.overflow = "hidden";
+}, 5000);
+
+/* YES and NO both redirect */
+document.querySelector(".yes").addEventListener("click", go);
+document.querySelector(".no").addEventListener("click", go);
+
+/* Popup background also redirects */
+popup.addEventListener("click", event => {
+  if(event.target === popup){
+    go();
+  }
+});
+</script>
+
+</body>
+</html>

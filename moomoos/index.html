@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>moomoos</title>
+
+<style>
+:root{
+  --bg-black:#0b0c10;
+  --accent:#ff7a1a;
+  --accent-2:#ffb27a;
+  --white:#ffffff;
+  --text-dark:#16181d;
+  --text-muted:#6b7280;
+  --border:#e7e7ea;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,body{
+  width:100%;
+  min-height:100%;
+  font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg-black);
+}
+
+/* Background Page */
+.page{
+  min-height:100vh;
+  width:100%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,122,26,0.15), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(255,122,26,0.10), transparent 50%),
+    var(--bg-black);
+  cursor:pointer;
+}
+
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 40px;
+  color:#e5e5e5;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+  font-size:22px;
+  color:var(--white);
+}
+
+.brand svg{
+  width:30px;
+  height:30px;
+}
+
+.navlinks{
+  display:flex;
+  gap:28px;
+  font-size:14px;
+  color:#c7c7cc;
+}
+
+.cta-pill{
+  padding:10px 22px;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--accent),#ff5a1f);
+  color:var(--white);
+  font-weight:600;
+  font-size:14px;
+}
+
+/* Overlay */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(5,5,8,0.55);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:10;
+}
+
+/* Modal */
+.modal{
+  display:flex;
+  width:100%;
+  max-width:920px;
+  max-height:90vh;
+  background:var(--white);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,0.55);
+  animation:pop .35s ease;
+}
+
+@keyframes pop{
+  from{
+    transform:scale(0.94);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+/* Image Side */
+.modal-left{
+  flex:1 1 46%;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,122,26,0.35), transparent 55%),
+    linear-gradient(160deg,#1a1b1f,#0b0c10 70%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+}
+
+.image-slot{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#0b0c10;
+}
+
+.image-slot img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  display:block;
+}
+
+/* Form Side */
+.modal-right{
+  flex:1 1 54%;
+  padding:40px 44px;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+  overflow-y:auto;
+}
+
+.close-btn{
+  align-self:flex-end;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  background:var(--white);
+  color:var(--text-muted);
+  font-size:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  margin-bottom:-10px;
+}
+
+.modal-right h2{
+  font-size:26px;
+  font-weight:800;
+  color:var(--text-dark);
+}
+
+.tabs{
+  display:flex;
+  gap:22px;
+  border-bottom:1px solid var(--border);
+  padding-bottom:10px;
+}
+
+.tab{
+  font-size:15px;
+  font-weight:700;
+  color:var(--text-muted);
+  padding-bottom:10px;
+}
+
+.tab.active{
+  color:var(--text-dark);
+  border-bottom:2px solid var(--accent);
+  margin-bottom:-11px;
+}
+
+.field{
+  width:100%;
+  padding:15px 16px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  font-size:15px;
+  color:var(--text-dark);
+  background:#fafafa;
+}
+
+.field::placeholder{
+  color:#9a9aa2;
+}
+
+.primary-btn{
+  width:100%;
+  padding:15px 16px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--accent-2),var(--accent));
+  color:var(--white);
+  font-weight:700;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.switch-line{
+  text-align:center;
+  font-size:14px;
+  color:var(--text-dark);
+}
+
+.switch-line a{
+  color:var(--accent);
+  font-weight:600;
+  text-decoration:none;
+}
+
+/* Tablet */
+@media (max-width:900px){
+  .navlinks{
+    display:none;
+  }
+}
+
+/* Mobile */
+@media (max-width:760px){
+  body{
+    overflow:auto;
+  }
+
+  .overlay{
+    align-items:flex-start;
+    overflow-y:auto;
+  }
+
+  .modal{
+    flex-direction:column;
+    max-height:none;
+    min-height:auto;
+  }
+
+  .modal-left{
+    width:100%;
+    height:auto;
+    min-height:280px;
+    flex:none;
+  }
+
+  .image-slot{
+    width:100%;
+    height:auto;
+    min-height:280px;
+  }
+
+  .image-slot img{
+    width:100%;
+    height:auto;
+    max-height:360px;
+    object-fit:contain;
+  }
+
+  .modal-right{
+    padding:28px 26px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width:420px){
+  .overlay{
+    padding:0;
+  }
+
+  .modal{
+    width:100%;
+    min-height:100vh;
+    border-radius:0;
+  }
+
+  .navbar{
+    padding:16px 20px;
+  }
+
+  .brand{
+    font-size:20px;
+  }
+
+  .cta-pill{
+    padding:8px 14px;
+    font-size:12px;
+  }
+
+  .modal-left{
+    min-height:240px;
+  }
+
+  .image-slot{
+    min-height:240px;
+  }
+
+  .image-slot img{
+    max-height:320px;
+  }
+
+  .modal-right{
+    padding:24px 22px;
+  }
+
+  .modal-right h2{
+    font-size:24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+  <div class="navbar">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" fill="none">
+        <path d="M4 22 L12 12 L18 18 L28 6" stroke="#ff7a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21 6 H28 V13" stroke="#ff7a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      moomoos
+    </div>
+
+    <div class="navlinks">
+      <span>Markets</span>
+      <span>Products</span>
+      <span>Pricing</span>
+      <span>Resources</span>
+    </div>
+
+    <div class="cta-pill">Sign up / Log in</div>
+  </div>
+</div>
+
+<div class="overlay">
+  <div class="modal">
+
+    <div class="modal-left">
+      <div class="image-slot">
+        <img src="img.png" alt="Moomoos Image" />
+      </div>
+    </div>
+
+    <div class="modal-right">
+      <button class="close-btn">✕</button>
+
+      <h2>Sign Up</h2>
+
+      <div class="tabs">
+        <div class="tab active">Email</div>
+        <div class="tab">Phone</div>
+      </div>
+
+      <input class="field" type="text" placeholder="Email Address" disabled />
+
+      <button class="primary-btn">Next</button>
+
+      <div class="switch-line">
+        Already have an account? <a href="#">Log In</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const REDIRECT_URL = "https://example.com";
+
+document.addEventListener("click", function(){
+  window.location.href = REDIRECT_URL;
+});
+</script>
+
+</body>
+</html>
